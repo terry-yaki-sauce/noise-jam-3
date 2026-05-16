@@ -11,29 +11,29 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
-  void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-  void Update()
-  {
-    Debug.DrawLine(feet.position,feet.position+Vector3.down*1f,Color.red);
-  }
+    void Update()
+    {
+        Debug.DrawLine(feet.position, feet.position + Vector3.down * 1f, Color.red);
+    }
 
-  void FixedUpdate()
+    void FixedUpdate()
     {
         rb.linearVelocityX = dir.x * playerSpeed * Time.deltaTime;
     }
 
-  public void OnMove(InputValue value)
+    void OnMove(InputValue value)
     {
         var v = value.Get<Vector2>();
 
         dir.x = v.x;
     }
 
-    public void OnJump(InputValue value)
+    void OnJump(InputValue value)
     {
         if (value.isPressed && isGrounded())
         {
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(feet.position,Vector2.down,.1f,LayerMask.GetMask("Default"));
+        RaycastHit2D hit = Physics2D.Raycast(feet.position, Vector2.down, .1f, LayerMask.GetMask("Default"));
         return hit;
     }
 }
