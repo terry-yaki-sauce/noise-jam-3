@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Open Pause Menu",
+                    "type": "Button",
+                    "id": "70806839-9149-40f5-82db-fe6e9cbddad3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -327,6 +336,28 @@
                     "action": "Open Note Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f345d0a3-2559-4f29-83d6-3a833c74e24d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Open Pause Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7be132a-8aa1-482a-88a8-17ff006bbedb",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Open Pause Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -356,7 +387,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "5cb94a86-0209-406f-a053-9253b1b8d0c2",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -420,6 +451,15 @@
                     "type": "PassThrough",
                     "id": "933be4ca-d793-4544-ac17-338529f0e7cf",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Resume Game",
+                    "type": "Button",
+                    "id": "9f7e58f1-c345-42df-94b1-e5e39c51f9a0",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -843,6 +883,28 @@
                     "action": "TrackedDeviceOrientation",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90553020-fa35-468e-93f6-9a2010dd8aac",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Resume Game",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4195b00b-32af-4be9-86c8-00c3fc01881b",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Resume Game",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -850,6 +912,15 @@
             "name": "Note Menu",
             "id": "9b844d0a-fb8b-414a-8d35-71445ed78a54",
             "actions": [
+                {
+                    "name": "Open Pause Menu",
+                    "type": "Button",
+                    "id": "dbad08cc-f4b6-436b-8149-f6d198f8af04",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
                 {
                     "name": "Close Note Menu",
                     "type": "Button",
@@ -896,19 +967,30 @@
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Close Note Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "04b8f5dd-f260-48f3-a322-d5d657731920",
+                    "id": "0c055126-cd33-4d86-876a-a23d55f26bb7",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Close Note Menu",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Open Pause Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bcbed5e5-0db0-4785-b6f5-5078d9066695",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Open Pause Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
