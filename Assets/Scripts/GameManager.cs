@@ -1,11 +1,15 @@
+using Dialogue;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    public const int TITLE_INDEX = 0;
+
     [SerializeField] private int targetFrameRate = 120;
 
-    public const int TITLE_INDEX = 0;
+
+    public InteractActivator targetInteractActivator;
     
     protected override void Awake()
     {
@@ -17,7 +21,6 @@ public class GameManager : Singleton<GameManager>
         Application.targetFrameRate = targetFrameRate;
         QualitySettings.vSyncCount = 0;
 #endif
-
     }
 
     public void LoadNextLevel() => LoadLevel(SceneManager.GetActiveScene().buildIndex + 1 %

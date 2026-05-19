@@ -19,4 +19,6 @@ public class PauseMenu : Singleton<PauseMenu>
         Time.timeScale = 1;
         gameObject.SetActive(false);
     }
+
+    public void ReturnToTitle() => GameManager.instance.ReturnToTitle();
 }
