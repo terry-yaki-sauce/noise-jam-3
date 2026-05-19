@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Dialogue
 {
-  public class TriggerActivator : CutsceneActivator
+  public class TriggerActivator : DialogueActivator
   {
     private bool triggered = false;
 

@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public const int TITLE_INDEX = 0;
+    public Player player;
 
     [SerializeField] private int targetFrameRate = 120;
-
-
-    public InteractActivator targetInteractActivator;
     
     protected override void Awake()
     {
@@ -23,18 +21,25 @@ public class GameManager : Singleton<GameManager>
 #endif
     }
 
-    public void LoadNextLevel() => LoadLevel(SceneManager.GetActiveScene().buildIndex + 1 %
+    void Start()
+    {
+        //failsafe
+        if (!player)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
+
+    public static void LoadNextLevel() => LoadLevel(SceneManager.GetActiveScene().buildIndex + 1 %
             SceneManager.sceneCountInBuildSettings);
 
-    public void ReturnToTitle() => LoadLevel(TITLE_INDEX);
+    public static void ReturnToTitle() => LoadLevel(TITLE_INDEX);
 
-    public void LoadLevel(int index)
+    public static void LoadLevel(int index)
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(index);
     }
 
-    public void QuitGame()
+    public static void QuitGame()
     {
         Application.Quit();
         #if UNITY_EDITOR

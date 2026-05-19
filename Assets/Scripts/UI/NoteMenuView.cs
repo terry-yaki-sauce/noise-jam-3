@@ -18,14 +18,14 @@ public class NoteMenuView : Singleton<NoteMenuView>
         gameObject.SetActive(false);
     }
     
-    public void Show()
+    public static void Show()
     {
-        gameObject.SetActive(true);
+        instance.gameObject.SetActive(true);
     }
 
-    public void Hide()
+    public static void Hide()
     {
-        gameObject.SetActive(false);
-        noteDisplay.ResetNotes();
+        instance.gameObject.SetActive(false);
+        instance.noteDisplay.ResetNotes();
     }
 }

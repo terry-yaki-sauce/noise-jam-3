@@ -11,6 +11,7 @@ public class PlayerNoteControl : MonoBehaviour
     private int noteIndex = 0;
     private NoteValue [] notes;
 
+    // TODO: closingSequence is visual and should be in the NoteMenuView or NoteDisplay
     private Coroutine closingSequence;
 
     void Start()
@@ -21,7 +22,7 @@ public class PlayerNoteControl : MonoBehaviour
 
     void OnOpenNoteMenu()
     {
-        NoteMenuView.instance.Show();
+        NoteMenuView.Show();
         playerInput.SwitchCurrentActionMap("Note Menu");
     }
 
@@ -34,7 +35,7 @@ public class PlayerNoteControl : MonoBehaviour
             StopCoroutine(closingSequence);
             closingSequence = null;
         }
-        NoteMenuView.instance.Hide();
+        NoteMenuView.Hide();
         playerInput.SwitchCurrentActionMap("Player");
     }
 
@@ -83,7 +84,7 @@ public class PlayerNoteControl : MonoBehaviour
         yield return StartCoroutine(NoteMenuView.instance.NoteDisplay.ShowSuccess());
 
         clearNotes();
-        NoteMenuView.instance.Hide();
+        NoteMenuView.Hide();
         playerInput.SwitchCurrentActionMap("Player");
     }
 }

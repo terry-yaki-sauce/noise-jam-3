@@ -8,17 +8,17 @@ public class PauseMenu : Singleton<PauseMenu>
         gameObject.SetActive(false);
     }
     
-    public void Show()
+    public static void Show()
     {
         Time.timeScale = 0;
-        gameObject.SetActive(true);
+        instance.gameObject.SetActive(true);
     }
 
-    public void Hide()
+    public static void Hide()
     {
         Time.timeScale = 1;
-        gameObject.SetActive(false);
+        instance.gameObject.SetActive(false);
     }
 
-    public void ReturnToTitle() => GameManager.instance.ReturnToTitle();
+    public static void ReturnToTitle() => GameManager.ReturnToTitle();
 }
