@@ -9,7 +9,7 @@ namespace Interaction
 
   public interface IFocusable
   {
-    void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
       GameObject collisionObject = collision.gameObject;
       if (collisionObject.tag != "Player") return;
@@ -18,7 +18,7 @@ namespace Interaction
       player.focusedTarget = this;
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    public void OnTriggerExit2D(Collider2D collision)
     {
       GameObject collisionObject = collision.gameObject;
       if (collisionObject.tag != "Player") return;
