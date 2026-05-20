@@ -1,20 +1,25 @@
 using System;
 using System.Threading.Tasks;
+using Dialogue;
 using DimensionSwapping;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     public const int TITLE_INDEX = 0;
-    public Player player;
+    private Player player;
+    public static Player Player {get => instance.player;}
 
     [SerializeField] private int targetFrameRate = 120;
 
-    public event Action swappedDimension;
+    public event Action SwappedDimension;
     private Dimension activeDimension = Dimension.Heaven;
     public static Dimension ActiveDimension { get => instance.activeDimension; }
+
+    public event Action<PlayerInput> ControlsChanged;
 
     protected override void Awake()
     {
@@ -26,13 +31,6 @@ public class GameManager : Singleton<GameManager>
         Application.targetFrameRate = targetFrameRate;
         QualitySettings.vSyncCount = 0;
 #endif
-    }
-
-    void Start()
-    {
-        //failsafe
-        if (!player)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     public static void LoadNextScene() => LoadScene(SceneManager.GetActiveScene().buildIndex + 1 %
@@ -66,10 +64,25 @@ public class GameManager : Singleton<GameManager>
 #endif
     }
 
+    public static void SetPlayer(Player player) => instance.SetPlayerHelper(player);
+    private void SetPlayerHelper(Player _player)
+    {
+        player = _player;
+    }
+
     public static void SwapDimension() => instance.SwapDimensionHelper();
     private void SwapDimensionHelper()
     {
         activeDimension = (Dimension )(((int) activeDimension + 1) % DimensionConfig.NUM_DIMENSIONS);
-        swappedDimension.Invoke();
+        SwappedDimension?.Invoke();
+    }
+
+    public static void RefreshKeybindUIs()
+    {
+        // we do all these stupid checks because i fucking hate Unity
+        if (!instance) return;
+        if (!Player) return;
+        if (!Player.PlayerInput) return;
+        instance?.ControlsChanged.Invoke(Player?.PlayerInput);
     }
 }

@@ -22,12 +22,12 @@ namespace DimensionSwapping
 
     void OnEnable()
     {
-      GameManager.instance.swappedDimension += SetActivity;
+      GameManager.instance.SwappedDimension += SetActivity;
     }
 
     void OnDisable()
     {
-      GameManager.instance.swappedDimension -= SetActivity;
+      GameManager.instance.SwappedDimension -= SetActivity;
     }
 
     void SetActivity()

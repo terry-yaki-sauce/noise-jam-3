@@ -45,5 +45,18 @@ namespace Util
       }
       return keyBind;
     }
+
+    public static string GetKeybind(PlayerInput playerInput, InputAction action)
+    {
+      string keyBind = "";
+      ReadOnlyArray<InputBinding> bindings = action.bindings;
+      InputBinding mask = InputBinding.MaskByGroup(playerInput.currentControlScheme);
+      for (int i = 0; i < bindings.Count; i++)
+      {
+        if (mask.Matches(bindings[i]))
+          return bindings[i].ToDisplayString();
+      }
+      return keyBind;
+    }
   }
 }

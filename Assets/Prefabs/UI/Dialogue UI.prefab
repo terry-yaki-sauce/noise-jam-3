@@ -97,8 +97,8 @@ MonoBehaviour:
   NPCNamePlateText: {fileID: 1716247156717562036}
   playerNamePlateBox: {fileID: 7794025024249236419}
   NPCNamePlateBox: {fileID: 3678935177822257549}
-  NextKeybindText: {fileID: 6372426558471939098}
   characterFrequency: 100
+  textSkipLeniency: 0.02
 --- !u!1 &3581723413657947488
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +750,7 @@ GameObject:
   - component: {fileID: 6858658674586747396}
   - component: {fileID: 7084956282190664893}
   - component: {fileID: 6372426558471939098}
+  - component: {fileID: 7700156472651064243}
   m_Layer: 5
   m_Name: NextShortcut
   m_TagString: Untagged
@@ -876,3 +877,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7700156472651064243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703938731412254330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65599ba7351fc0d4e90277eca91bc70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeybindPrompt
+  textMesh: {fileID: 6372426558471939098}
+  action: {fileID: -3155389457696819650, guid: 39f9c294a2d871041b83d9112e8cea13, type: 3}
+  format: 'Next - [{0}]'

@@ -16,7 +16,6 @@ namespace Dialogue
     [SerializeField] private TextMeshProUGUI NPCNamePlateText;
     [SerializeField] private GameObject playerNamePlateBox;
     [SerializeField] private GameObject NPCNamePlateBox;
-    [SerializeField] private TextMeshProUGUI NextKeybindText;
 
     [Header("Animated Text Configuration")]
     [SerializeField] private float characterFrequency;
@@ -26,7 +25,6 @@ namespace Dialogue
     void Start()
     {
       gameObject.SetActive(false);
-      SetNextKeybindHelper();
     }
 
     public static void StartDialogue(DialogueLines dialogueLines)
@@ -43,7 +41,7 @@ namespace Dialogue
       instance.dialogueIndex = 0;
 
       instance.Show();
-      GameManager.instance.player.PlayerInput.SwitchCurrentActionMap("Dialogue");
+      GameManager.Player.PlayerInput.SwitchCurrentActionMap("Dialogue");
       instance.ShowLine();
     }
 
@@ -119,7 +117,7 @@ namespace Dialogue
 
     private void EndDialogue()
     {
-      GameManager.instance.player.PlayerInput.SwitchCurrentActionMap("Player");
+      GameManager.Player.PlayerInput.SwitchCurrentActionMap("Player");
       Hide();
     }
 
@@ -135,13 +133,6 @@ namespace Dialogue
       playerNamePlateText.text = "";
       NPCNamePlateText.text = "";
       instance.gameObject.SetActive(false);
-    }
-
-    public static void SetNextKeybind() => instance.SetNextKeybindHelper();
-    private void SetNextKeybindHelper()
-    {
-      string nextKeybind = GameUtils.GetKeybind(GameManager.instance?.player.PlayerInput, "Dialogue/Next");
-      NextKeybindText.text = $"Next [{nextKeybind}]";
     }
   }
 }

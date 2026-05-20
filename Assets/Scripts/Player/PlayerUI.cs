@@ -46,8 +46,7 @@ public class PlayerUI : PlayerSystem
 
     private void OnControlsChanged()
     {
-        if (DialogueManager.instance)
-            DialogueManager.SetNextKeybind();
+        GameManager.RefreshKeybindUIs();
     }
 
     private void OnInteract()

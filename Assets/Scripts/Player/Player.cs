@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         if (GameManager.instance)
-            GameManager.instance.player = this;
+            GameManager.SetPlayer(this);
         else
             Debug.LogWarning("No Game Manager instance found.");
     }

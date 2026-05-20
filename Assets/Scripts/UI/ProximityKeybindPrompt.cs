@@ -4,44 +4,39 @@ using UnityEngine.InputSystem;
 using Util;
 
 [RequireComponent(typeof(Collider2D))]
-public class ProximityKeybindPrompt : MonoBehaviour, IPromptable
+public class ProximityKeybindPrompt : KeybindPrompt, IPromptable
 {
-  [SerializeField] private TextMeshProUGUI keyBindPrompt;
-  [SerializeField] private string keyBindName = "Player/Interact";
-  private bool subscribed = false;
-  
-
-  void OnEnable()
+  protected override void OnEnable()
   {
-    Player player = GameManager.instance.player;
+    Player player = GameManager.Player;
     if (player)
     {
-      player.PlayerInput.onControlsChanged += onControlsChanged;
-      subscribed = true;
+      GameManager.instance.ControlsChanged += OnControlsChanged;
       player.interacted += HidePrompt;
+      subscribed = true;
     }
   }
 
-  void OnDisable()
+  protected override void OnDisable()
   {
-    Player player = GameManager.instance.player;
+    Player player = GameManager.Player;
     if (player)
     {
-      player.PlayerInput.onControlsChanged -= onControlsChanged;
+      GameManager.instance.ControlsChanged -= OnControlsChanged;
       player.interacted -= HidePrompt;
     }
     subscribed = false;
   }
 
-  void Start()
+  protected override void Start()
   {
-    ChangePrompt(GameUtils.GetKeybind(GameManager.instance.player.PlayerInput, keyBindName));
+    ChangePrompt(GameUtils.GetKeybind(GameManager.Player.PlayerInput, action));
     HidePrompt();
     if (!subscribed)
     {
-      GameManager.instance.player.PlayerInput.onControlsChanged += onControlsChanged;
+      GameManager.Player.PlayerInput.onControlsChanged += OnControlsChanged;
       subscribed = true;
-      GameManager.instance.player.interacted += HidePrompt;
+      GameManager.Player.interacted += HidePrompt;
     }
 
     GetComponent<Collider2D>().isTrigger = true; //failsafe
@@ -59,28 +54,7 @@ public class ProximityKeybindPrompt : MonoBehaviour, IPromptable
   {
     GameObject collisionObject = collision.gameObject;
     if (collisionObject.tag != "Player") return;
-    Player player = collisionObject.GetComponent<Player>();
 
-    keyBindPrompt.gameObject.SetActive(false);
-  }
-
-  public void ChangePrompt(string text)
-  {
-    keyBindPrompt.text = $"[{text}]";
-  }
-
-  public void ShowPrompt()
-  {
-    keyBindPrompt.gameObject.SetActive(true);
-  }
-
-  public void HidePrompt()
-  {
-    keyBindPrompt.gameObject.SetActive(false);
-  }
-
-  private void onControlsChanged(PlayerInput input)
-  {
-    ChangePrompt(GameUtils.GetKeybind(input, keyBindName));
+    HidePrompt();
   }
 }
