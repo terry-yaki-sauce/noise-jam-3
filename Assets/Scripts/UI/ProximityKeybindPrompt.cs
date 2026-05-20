@@ -39,7 +39,6 @@ public class ProximityKeybindPrompt : MonoBehaviour, IPromptable
     HidePrompt();
     if (!subscribed)
     {
-      Debug.Log("Not Subbed");
       GameManager.instance.player.PlayerInput.onControlsChanged += onControlsChanged;
       subscribed = true;
       GameManager.instance.player.interacted += HidePrompt;

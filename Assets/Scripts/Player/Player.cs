@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public PlayerInput PlayerInput { get; private set; }
     public InputAction DialogueNext { get; private set; }
     
-    [DoNotSerialize] public IInteractable interactionTarget;
+    [DoNotSerialize] public IFocusable focusedTarget;
     public Action interacted;
 
     void Awake()

@@ -555,6 +555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6015c724d96f37418fb138487f3957c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  scene: {fileID: 102900000, guid: 8c9cfa26abfee488c85f1582747f6a02, type: 3}
+  loadPoint: {x: 4.31, y: 1.26}
 --- !u!212 &762699492
 SpriteRenderer:
   serializedVersion: 2
@@ -623,7 +625,7 @@ Transform:
   m_GameObject: {fileID: 762699490}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.31, y: 1.69, z: -1}
+  m_LocalPosition: {x: 4.31, y: 1.69, z: 0}
   m_LocalScale: {x: 2.9629, y: 4.7719, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1971,7 +1973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6059882097362888343, guid: fa57e2841a20b854f88d55c4443660d6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.83
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6059882097362888343, guid: fa57e2841a20b854f88d55c4443660d6, type: 3}
       propertyPath: m_LocalPosition.y

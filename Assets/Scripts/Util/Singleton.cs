@@ -11,7 +11,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
       if (instance != this)
       {
         string typename = typeof(T).Name;
-        Debug.Log($"Duplicate Singleton of type [{typename}] found on object [{gameObject}]");
+        // Debug.Log($"Duplicate Singleton of type [{typename}] found on object [{gameObject}]");
         Destroy(gameObject);
       }
     }

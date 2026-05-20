@@ -1,5 +1,7 @@
 using System;
+using System.Threading.Tasks;
 using Dialogue;
+using Interaction;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -50,10 +52,23 @@ public class PlayerUI : PlayerSystem
 
     private void OnInteract()
     {
-        if (player.interactionTarget != null)
-        {
-            player.interactionTarget.Interact();
-            player.interacted.Invoke();
-        }
+        IFocusable target = player.focusedTarget;
+
+        if (target == null) return;
+        if (target is not IInteractable) return;
+
+        (target as IInteractable).Interact();
+        player.interacted.Invoke();
+    }
+
+    private async Task OnEnterDoor()
+    {
+        IFocusable target = player.focusedTarget;
+
+        if (target == null) return;
+        if (target is not WalkthroughDoor) return;
+
+        player.interacted.Invoke();
+        await (target as WalkthroughDoor).Enter();
     }
 }
