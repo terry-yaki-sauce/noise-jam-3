@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Dialogue;
+using DimensionSwapping;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +11,10 @@ public class GameManager : Singleton<GameManager>
     public Player player;
 
     [SerializeField] private int targetFrameRate = 120;
+
+    public event Action swappedDimension;
+    private Dimension activeDimension = Dimension.Heaven;
+    public static Dimension ActiveDimension { get => instance.activeDimension; }
 
     protected override void Awake()
     {
@@ -42,7 +46,7 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(index);
     }
 
-    public static async Task LoadScene(SceneAsset scene, Vector2 loadPoint) => await instance.LoadSceneHelper(scene,loadPoint);
+    public static async Task LoadScene(SceneAsset scene, Vector2 loadPoint) => await instance.LoadSceneHelper(scene, loadPoint);
     public async Task LoadSceneHelper(SceneAsset scene, Vector2 loadPoint)
     {
         var sceneLoad = SceneManager.LoadSceneAsync(scene.name);
@@ -58,7 +62,14 @@ public class GameManager : Singleton<GameManager>
     {
         Application.Quit();
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #endif
+    }
+
+    public static void SwapDimension() => instance.SwapDimensionHelper();
+    private void SwapDimensionHelper()
+    {
+        activeDimension = (Dimension )(((int) activeDimension + 1) % DimensionConfig.NUM_DIMENSIONS);
+        swappedDimension.Invoke();
     }
 }

@@ -27,20 +27,25 @@ public class NoteDisplay : MonoBehaviour
 
         // unique properties to change for each note type
         Color color = Color.clear;
+        string text = "";
 
         // select properties based on value param
         switch (value)
         {
             case NoteValue.Note1:
                 color = Color.black;
+                text = "1";
                 break;
             case NoteValue.Note2:
                 color = Color.gray;
+                text = "2";
                 break;
         }
 
         // set the next note
-        notes[index].image.color = color;
+        Note note = notes[index];
+        note.image.color = color;
+        note.textMesh.text = text;
     }
 
     /// <summary>
@@ -57,11 +62,15 @@ public class NoteDisplay : MonoBehaviour
     /// <summary>
     /// indicate to the player that a note combination was valid
     /// </summary>
-    public IEnumerator ShowSuccess()
+    public IEnumerator ShowSuccess(bool success = true)
     {
         foreach (Note n in notes)
         {
-            n.image.color = Color.green;
+            n.Clear();
+            if (success)
+                n.image.color = Color.green;
+            else
+                n.image.color = Color.red;
         }
 
         yield return new WaitForSeconds(finishSongWaitTime);

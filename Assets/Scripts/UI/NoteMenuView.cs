@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading.Tasks;
 using NoteSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,23 +11,43 @@ using UnityEngine.UI;
 public class NoteMenuView : Singleton<NoteMenuView>
 {
 
-    [SerializeField] private Image menu;
     [SerializeField] private NoteDisplay noteDisplay;
     public NoteDisplay NoteDisplay {get => noteDisplay;}
+    
+    private Coroutine closingSequence;
 
     void Start()
     {
         gameObject.SetActive(false);
     }
     
-    public static void Show()
+    public static void Show() => instance.ShowHelper();
+    public void ShowHelper()
     {
         instance.gameObject.SetActive(true);
     }
 
-    public static void Hide()
+    public static void Hide() => instance.HideHelper();
+    public void HideHelper()
     {
-        instance.gameObject.SetActive(false);
-        instance.noteDisplay.ResetNotes();
+        if (closingSequence != null)
+        {
+            StopCoroutine(closingSequence);
+            closingSequence = null;
+        }
+        gameObject.SetActive(false);
+        noteDisplay.ResetNotes();
     }
+
+    public static IEnumerator CloseMenuWithNoteCombo(bool success = true)
+    {
+        yield return instance.CloseMenuWithNoteComboHelper(success);
+    }
+    public IEnumerator CloseMenuWithNoteComboHelper(bool success)
+    {
+        closingSequence = StartCoroutine(NoteDisplay.ShowSuccess(success));
+        yield return closingSequence;
+        Hide();
+    }
+
 }

@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
+using System.Linq;
 using NoteSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerNoteControl : MonoBehaviour
+public class PlayerNoteControl : PlayerSystem
 {
     PlayerInput playerInput;
 
-    [SerializeField] private int numNotes = 3; // run this by other coders before changing this
+    [SerializeField] private int numNotes = 3;
     private int noteIndex = 0;
-    private NoteValue [] notes;
+    private NoteValue[] notes;
 
-    // TODO: closingSequence is visual and should be in the NoteMenuView or NoteDisplay
-    private Coroutine closingSequence;
+    private static readonly NoteValue[] DIMENSION_SWAP_COMBO = { NoteValue.Note1, NoteValue.Note1, NoteValue.Note2 };
 
     void Start()
     {
@@ -28,13 +29,8 @@ public class PlayerNoteControl : MonoBehaviour
 
     void OnCloseNoteMenu()
     {
-        clearNotes();
+        ClearNotes();
 
-        if (closingSequence != null)
-        {
-            StopCoroutine(closingSequence);
-            closingSequence = null;
-        }
         NoteMenuView.Hide();
         playerInput.SwitchCurrentActionMap("Player");
     }
@@ -46,45 +42,57 @@ public class PlayerNoteControl : MonoBehaviour
 
     void AddNote(NoteValue value)
     {
-        if(noteIndex >= numNotes) return; 
+        if (noteIndex >= numNotes) return;
 
         // set the next note
         notes[noteIndex] = value;
-        NoteMenuView.instance.NoteDisplay.SetNote(value,noteIndex);
+        NoteMenuView.instance.NoteDisplay.SetNote(value, noteIndex);
         noteIndex++;
 
 
         // once we've played all the notes, check for a valid combo
         if (noteIndex >= numNotes)
         {
-            tryNoteCombo();
+            StartCoroutine(TryNoteCombo());
         }
     }
 
-    void clearNotes()
+    void ClearNotes()
     {
         noteIndex = 0;
         notes = new NoteValue[numNotes];
     }
 
-    void tryNoteCombo()
+    IEnumerator TryNoteCombo()
     {
-        // TODO: create actual logic here
-
+        IEnumerator enumerator = null;
         // if the note are valid...
-        // set a timeout and give visual feedback
-        closingSequence = StartCoroutine(CloseMenuWithNoteCombo());
+        if (CheckEqual(notes, DIMENSION_SWAP_COMBO))
+        {
+            // set a timeout and give visual feedback
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
+            GameManager.SwapDimension();
+        }
+        else
+        {
+            // ... also set a timeout and give visual feedback?
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: false);
+        }
 
-        // else...
-        // ... also set a timeout and give visual feedback?
+        yield return StartCoroutine(enumerator);
+        ClearNotes();
+        playerInput.SwitchCurrentActionMap("Player");
+
     }
 
-    IEnumerator CloseMenuWithNoteCombo()
+    private static bool CheckEqual(NoteValue[] n1, NoteValue[] n2)
     {
-        yield return StartCoroutine(NoteMenuView.instance.NoteDisplay.ShowSuccess());
+        if (n1.Length != n2.Length) return false;
 
-        clearNotes();
-        NoteMenuView.Hide();
-        playerInput.SwitchCurrentActionMap("Player");
+        for (int i = 0; i < n1.Length; i++)
+        {
+            if (n1[i] != n2[i]) return false;
+        }
+        return true;
     }
 }
