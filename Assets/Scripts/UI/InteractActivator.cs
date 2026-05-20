@@ -55,7 +55,6 @@ namespace Dialogue
       ShowPrompt();
 
       player.interactionTarget = this;
-      Debug.Log("Updated target");
     }
 
     void OnTriggerExit2D(Collider2D collision)

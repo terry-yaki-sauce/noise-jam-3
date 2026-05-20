@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
 
-        // DontDestroyOnLoad(gameObject); // might need later, but this causes problems with some buttons/references
+        DontDestroyOnLoad(gameObject); // might need later, but this causes problems with some buttons/references
 
 #if UNITY_EDITOR
         Application.targetFrameRate = targetFrameRate;
