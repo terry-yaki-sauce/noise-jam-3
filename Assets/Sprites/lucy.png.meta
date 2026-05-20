@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: ec233f4efac51f14b91227cf1700198d
+guid: 51bce5862a5b5cf4fa95b00379c0a525
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8204742529035133809
-    second: lucy-white_0
+      213: 8312933390044699808
+    second: lucy_0
   - first:
-      213: 7509493729174280775
-    second: lucy-white_1
+      213: -8556755255318798218
+    second: lucy_1
   - first:
-      213: 2808887485594298620
-    second: lucy-white_2
+      213: 4908464669708863008
+    second: lucy_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lucy-white_0
+      name: lucy_0
       rect:
         serializedVersion: 2
-        x: 1228
-        y: 4138
-        width: 445
-        height: 201
+        x: 1213
+        y: 3622
+        width: 488
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 173edac0cd91dd170800000000000000
-      internalID: 8204742529035133809
+      spriteID: 0ac191bdfd87d5370800000000000000
+      internalID: 8312933390044699808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lucy-white_1
+      name: lucy_1
       rect:
         serializedVersion: 2
-        x: 291
-        y: 686
-        width: 1742
-        height: 3415
+        x: 273
+        y: 173
+        width: 1815
+        height: 3438
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 74ad47a72c4173860800000000000000
-      internalID: 7509493729174280775
+      spriteID: 67024c05e6c404980800000000000000
+      internalID: -8556755255318798218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lucy-white_2
+      name: lucy_2
       rect:
         serializedVersion: 2
-        x: 1915
-        y: 3304
-        width: 447
-        height: 397
+        x: 1901
+        y: 2802
+        width: 483
+        height: 414
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf863e8394c2bf620800000000000000
-      internalID: 2808887485594298620
+      spriteID: 0264d866c9e5e1440800000000000000
+      internalID: 4908464669708863008
       vertices: []
       indices: 
       edges: []
@@ -198,9 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lucy-white_0: 8204742529035133809
-      lucy-white_1: 7509493729174280775
-      lucy-white_2: 2808887485594298620
+      lucy_0: 8312933390044699808
+      lucy_1: -8556755255318798218
+      lucy_2: 4908464669708863008
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

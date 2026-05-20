@@ -31,6 +31,8 @@ namespace Dialogue
 
     public static void StartDialogue(DialogueLines dialogueLines)
     {
+      if(instance == null) return;
+
       if (dialogueLines.DialogueNodes.Count == 0)
       {
         Debug.LogWarning("Empty dialogue passed to CutsceneManager");

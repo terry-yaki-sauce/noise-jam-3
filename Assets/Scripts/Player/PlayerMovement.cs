@@ -1,28 +1,36 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : PlayerSystem
 {
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerJumpImpulse;
     [SerializeField] private Transform feet;
-
+    
     private Vector2 dir = Vector2.zero;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-        Debug.DrawLine(feet.position, feet.position + Vector3.down * 1f, Color.red);
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
     {
+        // sprite animation
+        if(dir.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if(dir.x < 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
         rb.linearVelocityX = dir.x * playerSpeed * Time.deltaTime;
     }
 
