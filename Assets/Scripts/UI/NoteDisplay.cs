@@ -32,11 +32,11 @@ public class NoteDisplay : MonoBehaviour
         // select properties based on value param
         switch (value)
         {
-            case NoteValue.Note1:
+            case NoteValue.G:
                 color = Color.black;
                 text = "1";
                 break;
-            case NoteValue.Note2:
+            case NoteValue.ASharp:
                 color = Color.gray;
                 text = "2";
                 break;

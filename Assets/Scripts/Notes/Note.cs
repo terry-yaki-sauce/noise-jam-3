@@ -9,14 +9,14 @@ namespace NoteSystem
     public enum NoteValue
     {
         Hidden,
-        Note1,
-        Note2,
-        Note3,
-        Note4,
+        G,
+        ASharp,
+        C,
+        F,
         Note5
     }
     /// <summary>
-    /// Simple data holding script for notes. Let <code>NoteDisplay<code/> handle the modification of these values.
+    /// Simple data holding script for notes in the UI. Let <code>NoteDisplay<code/> handle the modification of these values.
     /// </summary>
     public class Note : MonoBehaviour
     {

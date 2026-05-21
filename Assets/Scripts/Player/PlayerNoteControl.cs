@@ -13,7 +13,7 @@ public class PlayerNoteControl : PlayerSystem
     private int noteIndex = 0;
     private NoteValue[] notes;
 
-    private static readonly NoteValue[] DIMENSION_SWAP_COMBO = { NoteValue.Note1, NoteValue.Note1, NoteValue.Note2 };
+    private static readonly NoteValue[] DIMENSION_SWAP_COMBO = { NoteValue.G, NoteValue.G, NoteValue.ASharp };
 
     void Start()
     {
@@ -36,9 +36,9 @@ public class PlayerNoteControl : PlayerSystem
     }
 
     // there is probably a more elegant way to do this using the input actions map, but im way too lazy rn to read those docs so whatever
-    void OnNote1() => AddNote(NoteValue.Note1);
+    void OnNote1() => AddNote(NoteValue.G);
 
-    void OnNote2() => AddNote(NoteValue.Note2);
+    void OnNote2() => AddNote(NoteValue.ASharp);
 
     void AddNote(NoteValue value)
     {
@@ -47,6 +47,7 @@ public class PlayerNoteControl : PlayerSystem
         // set the next note
         notes[noteIndex] = value;
         NoteMenuView.instance.NoteDisplay.SetNote(value, noteIndex);
+        NoteAudioPlayer.PlayNote(value);
         noteIndex++;
 
 

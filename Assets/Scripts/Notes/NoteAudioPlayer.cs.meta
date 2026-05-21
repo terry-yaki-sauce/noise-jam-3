@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8f03174716a134648b19563a48e9cfd7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - G_clip: {fileID: 8300000, guid: 34b69b8de110c8a418b979ffdb4d9170, type: 3}
+  - ASharp_clip: {fileID: 8300000, guid: 38bfbe5d930f1814f9767e490c698cbb, type: 3}
+  - C_clip: {instanceID: 0}
+  - F_clip: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
