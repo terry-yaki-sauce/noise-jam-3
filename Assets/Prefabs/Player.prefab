@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8738872341605619155}
   - component: {fileID: 6844253887364015080}
   - component: {fileID: 1946170434658091353}
-  - component: {fileID: 2695074526073991904}
+  - component: {fileID: 1555399501674025696}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3f462610dd5034d8b8f63766ba3d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
---- !u!61 &2695074526073991904
+--- !u!61 &1555399501674025696
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,17 +242,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.011649609, y: -0.15917563}
+  m_Offset: {x: 0.01371932, y: -0.13314974}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.637, y: 4.3553033}
+    oldSize: {x: 2.1975, y: 3.6294193}
     newSize: {x: 26.37, y: 43.553032}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.1207113, y: 3.6762815}
+  m_Size: {x: 1.7859213, y: 3.1115773}
   m_EdgeRadius: 0
 --- !u!1 &2364880303167306463
 GameObject:
