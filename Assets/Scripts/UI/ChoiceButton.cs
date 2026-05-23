@@ -22,7 +22,6 @@ namespace Dialogue
 
     public void Select()
     {
-      Debug.Log($"Selecting {gameObject.name}");
       DialogueManager.SelectChoice(buttonIndex);
     }
   }
