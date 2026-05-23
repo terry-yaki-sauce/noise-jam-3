@@ -22,12 +22,16 @@ namespace Dialogue
 
     [SerializeField] private Character characterToShow;
     public Character CharacterToShow { get => characterToShow; }
+
+    [SerializeField] private int jumpIndex = -1;
+    public int JumpIndex { get => jumpIndex; }
   }
 
   [System.Serializable]
   public class DialogueChoiceNode : DialogueNode
   {
     [SerializeField] private List<Choice> choices;
+    public List<Choice> Choices { get => choices; }
   }
 
   [System.Serializable]
@@ -48,14 +52,34 @@ namespace Dialogue
 
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(DialogueLines),true)]
+[CustomEditor(typeof(DialogueLines), true)]
 public class DialogueLinesEditor : Editor
 {
   public override void OnInspectorGUI()
   {
-    DrawDefaultInspector();
+    serializedObject.Update();
+    DrawPropertiesExcluding(serializedObject, "dialogueNodes");
 
-    DialogueLines myTarget = (DialogueLines) target;
+    DialogueLines myTarget = (DialogueLines)target;
+
+    var list = serializedObject.FindProperty("dialogueNodes");
+    list.isExpanded = EditorGUILayout.Foldout(
+        list.isExpanded,
+        $"My List ({list.arraySize})",
+        true
+    );
+    EditorGUI.indentLevel += 1;
+    if (list.isExpanded)
+    {
+      EditorGUI.indentLevel += 1;
+      for (int i = 0; i < list.arraySize; i++)
+      {
+        EditorGUILayout.PropertyField(list.GetArrayElementAtIndex(i), new GUIContent($"{i}"), true);
+      }
+      EditorGUI.indentLevel -= 1;
+    }
+    EditorGUI.indentLevel -= 1;
+    serializedObject.ApplyModifiedProperties();
 
     if (GUILayout.Button("Add Regular Node"))
     {

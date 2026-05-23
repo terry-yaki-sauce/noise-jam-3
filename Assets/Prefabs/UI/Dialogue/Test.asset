@@ -15,21 +15,44 @@ MonoBehaviour:
   dialogueNodes:
   - rid: 1264014484077543632
   - rid: 1264014484077543633
+  - rid: 1264014497403371601
+  - rid: 1264014497403371602
+  - rid: 1264014497403371603
   references:
     version: 2
     RefIds:
     - rid: 1264014484077543632
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
-        text: 
+        text: phallic reference
         characterToShow: 0
+        jumpIndex: -1
     - rid: 1264014484077543633
       type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
-        text: 
-        characterToShow: 0
+        text: '*laughter*'
+        characterToShow: 1
+        jumpIndex: -1
         choices:
-        - text: 
-          jumpIndex: 0
-        - text: 
-          jumpIndex: 0
+        - text: 80085
+          jumpIndex: 3
+        - text: 8==D
+          jumpIndex: 2
+    - rid: 1264014497403371601
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Thats a penis
+        characterToShow: 1
+        jumpIndex: 4
+    - rid: 1264014497403371602
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: BOOBS
+        characterToShow: 1
+        jumpIndex: -1
+    - rid: 1264014497403371603
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: funny
+        characterToShow: 0
+        jumpIndex: -1

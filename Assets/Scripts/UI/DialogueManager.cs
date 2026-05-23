@@ -1,6 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using Util;
 
 namespace Dialogue
@@ -8,6 +11,7 @@ namespace Dialogue
   public class DialogueManager : Singleton<DialogueManager>
   {
     private DialogueLines currentLines;
+    private DialogueNode currentNode;
     private int dialogueIndex;
 
     [Header("UI Object References")]
@@ -16,6 +20,7 @@ namespace Dialogue
     [SerializeField] private TextMeshProUGUI NPCNamePlateText;
     [SerializeField] private GameObject playerNamePlateBox;
     [SerializeField] private GameObject NPCNamePlateBox;
+    [SerializeField] private List<ChoiceButton> choiceButtons;
 
     [Header("Animated Text Configuration")]
     [SerializeField] private float characterFrequency;
@@ -25,11 +30,16 @@ namespace Dialogue
     void Start()
     {
       gameObject.SetActive(false);
+      // may need to moved to an OnEnable script
+      for (int i = 0; i < choiceButtons.Count; i++)
+      {
+        choiceButtons[i].gameObject.SetActive(false);
+      }
     }
 
     public static void StartDialogue(DialogueLines dialogueLines)
     {
-      if(instance == null) return;
+      if (instance == null) return;
 
       if (dialogueLines.DialogueNodes.Count == 0)
       {
@@ -57,15 +67,30 @@ namespace Dialogue
         StopCoroutine(textScrollRoutine);
         textScrollRoutine = null;
         textBox.maxVisibleCharacters = textBox.text.Length;
+
+        if (currentNode is DialogueChoiceNode)
+        {
+          DialogueChoiceNode choiceNode = currentNode as DialogueChoiceNode;
+          // WARNING that the number of choices should always be less than the total number of UI choice boxes
+          for (int i = 0; i < choiceNode.Choices.Count; i++)
+          {
+            var choiceButton = choiceButtons[i];
+            choiceButton.gameObject.SetActive(true);
+          }
+        }
+
       }
-      else if (dialogueIndex >= currentLines.DialogueNodes.Count - 1)
+      else if (currentNode is DialogueChoiceNode)
+      {
+        // don't auto advance when the player needs to make a choice
+      }
+      else if (dialogueIndex >= currentLines.DialogueNodes.Count)
       {
         EndDialogue();
       }
       else
       {
         // otherwise, continue to the next text box
-        dialogueIndex += 1;
         ShowLine();
       }
     }
@@ -75,11 +100,11 @@ namespace Dialogue
     /// </summary>
     private void ShowLine()
     {
-      DialogueNode node = currentLines.DialogueNodes[dialogueIndex];
+      currentNode = currentLines.DialogueNodes[dialogueIndex];
 
-      textBox.text = node.Text;
+      textBox.text = currentNode.Text;
 
-      switch (node.CharacterToShow)
+      switch (currentNode.CharacterToShow)
       {
         case Character.Lucy:
           playerNamePlateText.text = "Lucy";
@@ -98,9 +123,29 @@ namespace Dialogue
           break;
       }
 
+      if (currentNode is DialogueChoiceNode)
+      {
+        DialogueChoiceNode choiceNode = currentNode as DialogueChoiceNode;
+        // WARNING that the number of choices should always be less than the total number of UI choice boxes
+        for (int i = 0; i < choiceNode.Choices.Count; i++)
+        {
+          ChoiceButton choiceButton = choiceButtons[i];
+          Choice choice = choiceNode.Choices[i];
+          choiceButton.SetText(choice.text);
+        }
+      }
+
+      // always hide the text Boxes, only show once the animation ends or is canceled early
+      for (int i = 0; i < choiceButtons.Count; i++)
+      {
+        choiceButtons[i].gameObject.SetActive(false);
+      }
+
       if (textScrollRoutine != null)
         StopCoroutine(textScrollRoutine);
       textScrollRoutine = StartCoroutine(instance.TextScroll());
+
+      dialogueIndex = (currentNode.JumpIndex < 0) ? dialogueIndex + 1: currentNode.JumpIndex;
     }
 
     private IEnumerator TextScroll()
@@ -113,6 +158,17 @@ namespace Dialogue
       }
       yield return new WaitForSeconds(textSkipLeniency); // give people a little time in case they mess up and press the next button too fast
       textScrollRoutine = null;
+
+      if (currentNode is DialogueChoiceNode)
+      {
+        DialogueChoiceNode choiceNode = currentNode as DialogueChoiceNode;
+        // WARNING that the number of choices should always be less than the total number of UI choice boxes
+        for (int i = 0; i < choiceNode.Choices.Count; i++)
+        {
+          var choiceButton = choiceButtons[i];
+          choiceButton.gameObject.SetActive(true);
+        }
+      }
     }
 
     private void EndDialogue()
@@ -133,6 +189,22 @@ namespace Dialogue
       playerNamePlateText.text = "";
       NPCNamePlateText.text = "";
       instance.gameObject.SetActive(false);
+    }
+
+    public static void SelectChoice(int buttonIndex) => instance.SelectChoiceHelper(buttonIndex);
+    private void SelectChoiceHelper(int buttonIndex)
+    {
+      if (currentNode is not DialogueChoiceNode) return;
+
+      var choiceNode = currentNode as DialogueChoiceNode;
+
+      if(buttonIndex > choiceNode.Choices.Count || buttonIndex < 0)
+      {
+        Debug.LogWarning($"choice Index out of visialbe button choices (Got {buttonIndex})");
+        return;
+      }
+      dialogueIndex = choiceNode.Choices[buttonIndex].jumpIndex;
+      ShowLine();
     }
   }
 }

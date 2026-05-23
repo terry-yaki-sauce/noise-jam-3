@@ -13,7 +13,21 @@ MonoBehaviour:
   m_Name: Test 2
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
   dialogueNodes:
-  - text: This is Test 2
-    characterToShow: 0
-  - text: Now you know this is different
-    characterToShow: 1
+  - rid: 1264014497403371591
+  - rid: 1264014497403371592
+  references:
+    version: 2
+    RefIds:
+    - rid: 1264014497403371591
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: A
+        characterToShow: 0
+    - rid: 1264014497403371592
+      type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: B
+        characterToShow: 0
+        choices:
+        - text: Yes
+          jumpIndex: 1
