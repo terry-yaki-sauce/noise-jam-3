@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Dialogue;
 using DimensionSwapping;
 using UnityEditor;
 using UnityEngine;
@@ -11,7 +10,7 @@ public class GameManager : Singleton<GameManager>
 {
     public const int TITLE_INDEX = 0;
     private Player player;
-    public static Player Player {get => instance.player;}
+    public static Player Player { get => instance.player; }
 
     [SerializeField] private int targetFrameRate = 120;
 
@@ -34,7 +33,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public static void LoadNextScene() => LoadScene(SceneManager.GetActiveScene().buildIndex + 1 %
-            SceneManager.sceneCountInBuildSettings);
+              SceneManager.sceneCountInBuildSettings);
 
     public static void ReturnToTitle() => LoadScene(TITLE_INDEX);
 
@@ -73,7 +72,7 @@ public class GameManager : Singleton<GameManager>
     public static void SwapDimension() => instance.SwapDimensionHelper();
     private void SwapDimensionHelper()
     {
-        activeDimension = (Dimension )(((int) activeDimension + 1) % DimensionConfig.NUM_DIMENSIONS);
+        activeDimension = (Dimension)(((int)activeDimension + 1) % DimensionConfig.NUM_DIMENSIONS);
         SwappedDimension?.Invoke();
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Dialogue;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem.Utilities;
 
@@ -10,14 +11,14 @@ namespace Dialogue
   [CreateAssetMenu(fileName = "DialogueLines", menuName = "Scriptable Objects/DialogueLines")]
   public class DialogueLines : ScriptableObject
   {
-    [SerializeReference] private List<DialogueNode> dialogueNodes;
-    public List<DialogueNode> DialogueNodes { get => dialogueNodes; }
+    [SerializeReference] private List<DialogueNode> lines = new List<DialogueNode>();
+    public List<DialogueNode> Lines { get => lines; }
   }
 
   [System.Serializable]
   public class DialogueNode
   {
-    [SerializeField] private string text;
+    [SerializeField,TextArea(3,10)] private string text;
     public string Text { get => text; }
 
     [SerializeField] private Character characterToShow;
@@ -44,7 +45,8 @@ namespace Dialogue
   public enum Character
   {
     Lucy,
-    NPC
+    NPC,
+    System
   }
 
 
@@ -58,14 +60,14 @@ public class DialogueLinesEditor : Editor
   public override void OnInspectorGUI()
   {
     serializedObject.Update();
-    DrawPropertiesExcluding(serializedObject, "dialogueNodes");
+    // DrawPropertiesExcluding(serializedObject, "dialogueNodes");
 
-    DialogueLines myTarget = (DialogueLines)target;
 
-    var list = serializedObject.FindProperty("dialogueNodes");
+    // reorderableList.DoLayoutList();
+    var list = serializedObject.FindProperty("lines");
     list.isExpanded = EditorGUILayout.Foldout(
         list.isExpanded,
-        $"My List ({list.arraySize})",
+        $"Lines ({list.arraySize})",
         true
     );
     EditorGUI.indentLevel += 1;
@@ -81,13 +83,18 @@ public class DialogueLinesEditor : Editor
     EditorGUI.indentLevel -= 1;
     serializedObject.ApplyModifiedProperties();
 
+    DialogueLines myTarget = (DialogueLines)target;
     if (GUILayout.Button("Add Regular Node"))
     {
-      myTarget.DialogueNodes.Add(new DialogueNode());
+      myTarget.Lines.Add(new DialogueNode());
     }
     if (GUILayout.Button("Add Choice Node"))
     {
-      myTarget.DialogueNodes.Add(new DialogueChoiceNode());
+      myTarget.Lines.Add(new DialogueChoiceNode());
+    }
+    if (GUILayout.Button("Remove Last Node"))
+    {
+      myTarget.Lines.RemoveAt(myTarget.Lines.Count-1);
     }
   }
 }

@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
+  m_Name: ChoiceBoxes
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  lines:
+  - rid: 1264014519372087443
+  - rid: 1264014519372087446
+  - rid: 1264014519372087447
+  - rid: 1264014519372087448
+  - rid: 1264014519372087449
+  - rid: 1264014519372087450
+  - rid: 1264014519372087451
+  - rid: 1264014519372087452
+  - rid: 1264014519372087462
+  references:
+    version: 2
+    RefIds:
+    - rid: 1264014519372087443
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: You can create a choice node rather than a regular node from the inspector.
+        characterToShow: 2
+        jumpIndex: -1
+    - rid: 1264014519372087446
+      type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: This allows you to create responses to dialogue with different jump
+          indices. These nodes do not use the jump index. Instead, They us a list
+          of <b>Choice</b> objects to define string responses and jump indices.
+        characterToShow: 2
+        jumpIndex: -1
+        choices:
+        - text: I don't get it, can you repeat?
+          jumpIndex: 1
+        - text: I see.
+          jumpIndex: 2
+    - rid: 1264014519372087447
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: This is why regular nodes have a jump index. So that you can create
+          "tree-like" dialogue around your choices.
+        characterToShow: 2
+        jumpIndex: -1
+    - rid: 1264014519372087448
+      type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Try clicking on one of the choices here.
+        characterToShow: 2
+        jumpIndex: -1
+        choices:
+        - text: 1
+          jumpIndex: 4
+        - text: 2
+          jumpIndex: 5
+    - rid: 1264014519372087449
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: I choose option 1.
+        characterToShow: 0
+        jumpIndex: 6
+    - rid: 1264014519372087450
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: I choose option 2.
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 1264014519372087451
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Note in this conversation object (find it in the inspector),  that
+          regardless of which option you chose, this text node appeared next.
+        characterToShow: 2
+        jumpIndex: -1
+    - rid: 1264014519372087452
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'ONE FINAL IMPORTANT DETAIL: setting the jump index to beyond the last
+          index (so that INCLUDES trying to set it to the Length of the list)  will
+          end the dialogue immediately.'
+        characterToShow: 2
+        jumpIndex: -1
+    - rid: 1264014519372087462
+      type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: See how this last choice node will try to jump beyond the end of the
+          list, immediately ending the conversation.
+        characterToShow: 2
+        jumpIndex: -1
+        choices:
+        - text: End the Dialogue
+          jumpIndex: 9
+        - text: Start Over
+          jumpIndex: 0

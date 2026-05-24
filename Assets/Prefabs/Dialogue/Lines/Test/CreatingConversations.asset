@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
+  m_Name: CreatingConversations
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  lines:
+  - rid: 1264014519372087426
+  - rid: 1264014519372087427
+  - rid: 1264014519372087428
+  - rid: 1264014519372087431
+  - rid: 1264014519372087432
+  - rid: 1264014519372087433
+  references:
+    version: 2
+    RefIds:
+    - rid: 1264014519372087426
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: You can create your own cutscenes by creating a <b>Dialogue Lines</b>
+          Scriptable Object in the context menu of the file exploerer.
+        characterToShow: 2
+        jumpIndex: -1
+    - rid: 1264014519372087427
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Each node you add has a field for text. Note that <b>certain</b> <i>tags</i>
+          can be used to change the word styling.
+        characterToShow: 2
+        jumpIndex: -1
+    - rid: 1264014519372087428
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'There is also a <b>Character</b> enum field to indicate who is speakling.
+
+
+          NOTE:
+          you MUST define an option in the <b>ShowLine</b> function of the <b>DialogueManager</b>.
+          This is so the UI knows what text to show on the UI.'
+        characterToShow: 2
+        jumpIndex: -1
+    - rid: 1264014519372087431
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Then, there is a jump index. This indicates which line to show next.
+          Negative (default) values simply progress to the next one.
+        characterToShow: 2
+        jumpIndex: 5
+    - rid: 1264014519372087432
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: CANNOT BE REACHED
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 1264014519372087433
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Meanwhile, Non-negative values will jump to the speciried index. Inspect
+          this <b>Dialogue Lines</b> object to see that one of the lines was skipped.
+        characterToShow: 2
+        jumpIndex: -1

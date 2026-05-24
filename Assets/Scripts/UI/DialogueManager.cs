@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using Util;
 
 namespace Dialogue
 {
@@ -41,7 +38,7 @@ namespace Dialogue
     {
       if (instance == null) return;
 
-      if (dialogueLines.DialogueNodes.Count == 0)
+      if (dialogueLines.Lines.Count == 0)
       {
         Debug.LogWarning("Empty dialogue passed to CutsceneManager");
         return;
@@ -84,7 +81,7 @@ namespace Dialogue
       {
         // don't auto advance when the player needs to make a choice
       }
-      else if (dialogueIndex >= currentLines.DialogueNodes.Count)
+      else if (dialogueIndex >= currentLines.Lines.Count)
       {
         EndDialogue();
       }
@@ -100,7 +97,12 @@ namespace Dialogue
     /// </summary>
     private void ShowLine()
     {
-      currentNode = currentLines.DialogueNodes[dialogueIndex];
+      if (dialogueIndex >= currentLines.Lines.Count)
+      {
+        EndDialogue();
+        return;
+      }
+      currentNode = currentLines.Lines[dialogueIndex];
 
       textBox.text = currentNode.Text;
 
@@ -111,16 +113,23 @@ namespace Dialogue
           playerNamePlateBox.SetActive(true);
           NPCNamePlateBox.SetActive(false);
           break;
+        case Character.System:
+          NPCNamePlateText.text = "System";
+          break;
         case Character.NPC:
           NPCNamePlateText.text = "NPC";
-          playerNamePlateBox.SetActive(false);
-          NPCNamePlateBox.SetActive(true);
           break;
         default:
           Debug.LogWarning("No Character Plate Found!");
           playerNamePlateBox.SetActive(false);
           NPCNamePlateBox.SetActive(false);
           break;
+      }
+
+      if (currentNode.CharacterToShow != Character.Lucy)
+      {
+        playerNamePlateBox.SetActive(false);
+        NPCNamePlateBox.SetActive(true);
       }
 
       if (currentNode is DialogueChoiceNode)
@@ -145,7 +154,7 @@ namespace Dialogue
         StopCoroutine(textScrollRoutine);
       textScrollRoutine = StartCoroutine(instance.TextScroll());
 
-      dialogueIndex = (currentNode.JumpIndex < 0) ? dialogueIndex + 1: currentNode.JumpIndex;
+      dialogueIndex = (currentNode.JumpIndex < 0) ? dialogueIndex + 1 : currentNode.JumpIndex;
     }
 
     private IEnumerator TextScroll()
@@ -180,6 +189,8 @@ namespace Dialogue
     private void Show()
     {
       instance.gameObject.SetActive(true);
+      Cursor.lockState = CursorLockMode.None;
+      Cursor.visible = true;
     }
 
     private void Hide()
@@ -189,6 +200,8 @@ namespace Dialogue
       playerNamePlateText.text = "";
       NPCNamePlateText.text = "";
       instance.gameObject.SetActive(false);
+      Cursor.lockState = CursorLockMode.Locked;
+      Cursor.visible = false;
     }
 
     public static void SelectChoice(int buttonIndex) => instance.SelectChoiceHelper(buttonIndex);
@@ -198,12 +211,13 @@ namespace Dialogue
 
       var choiceNode = currentNode as DialogueChoiceNode;
 
-      if(buttonIndex > choiceNode.Choices.Count || buttonIndex < 0)
+      if (buttonIndex > choiceNode.Choices.Count || buttonIndex < 0)
       {
-        Debug.LogWarning($"choice Index out of visialbe button choices (Got {buttonIndex})");
+        Debug.LogWarning($"choice Index out of visible button choices (Got {buttonIndex})");
         return;
       }
-      dialogueIndex = choiceNode.Choices[buttonIndex].jumpIndex;
+      int jumpIndex = choiceNode.Choices[buttonIndex].jumpIndex;
+      dialogueIndex = (jumpIndex < 0) ? dialogueIndex + 1 : jumpIndex;
       ShowLine();
     }
   }
