@@ -12,8 +12,11 @@ public class PlayerNoteControl : PlayerSystem
     [SerializeField] private int numNotes = 3;
     private int noteIndex = 0;
     private NoteValue[] notes;
+    
+    private string targetActionMap = "Player";
 
     private static readonly NoteValue[] DIMENSION_SWAP_COMBO = { NoteValue.G, NoteValue.G, NoteValue.ASharp };
+    private static readonly NoteValue[] MODIFY_GRID_COMBO = { NoteValue.G, NoteValue.C, NoteValue.ASharp };
 
     void Start()
     {
@@ -32,7 +35,12 @@ public class PlayerNoteControl : PlayerSystem
         ClearNotes();
 
         NoteMenuView.Hide();
-        playerInput.SwitchCurrentActionMap("Player");
+        playerInput.SwitchCurrentActionMap(targetActionMap);
+        // nice little hack cuz im lazy. this should called via some sort event invocation
+        if (targetActionMap == "Grid")
+        {
+            GridManager.Show();
+        }
     }
 
     // there is probably a more elegant way to do this using the input actions map, but im way too lazy rn to read those docs so whatever
@@ -68,12 +76,19 @@ public class PlayerNoteControl : PlayerSystem
     IEnumerator TryNoteCombo()
     {
         IEnumerator enumerator = null;
+        targetActionMap = "Player";
         // if the note are valid...
         if (CheckEqual(notes, DIMENSION_SWAP_COMBO))
         {
             // set a timeout and give visual feedback
             enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
             GameManager.SwapDimension();
+        }
+        else if (CheckEqual(notes, MODIFY_GRID_COMBO))
+        {
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
+            // instead of the default player input, we need the grid control
+            targetActionMap = "Grid";
         }
         else
         {
@@ -83,8 +98,13 @@ public class PlayerNoteControl : PlayerSystem
 
         yield return StartCoroutine(enumerator);
         ClearNotes();
-        playerInput.SwitchCurrentActionMap("Player");
-
+        playerInput.SwitchCurrentActionMap(targetActionMap);
+        if (targetActionMap == "Grid")
+        {
+            GridManager.Show();
+        }
+        // reset the action map
+        targetActionMap = "Player";
     }
 
     private static bool CheckEqual(NoteValue[] n1, NoteValue[] n2)
