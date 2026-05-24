@@ -1064,6 +1064,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Note 3",
+                    "type": "Button",
+                    "id": "4c01ab9b-dd7b-490c-add3-2fec158c36a2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Note 4",
+                    "type": "Button",
+                    "id": "4f72b3ec-4ed2-4448-b3b3-2bf2df84ac33",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1119,6 +1137,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Note 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d328028b-7cd0-4084-a2fd-5e78c6f44f70",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Note 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b0a2a7a-397c-4e15-be2d-c2a60be765dd",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Note 4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

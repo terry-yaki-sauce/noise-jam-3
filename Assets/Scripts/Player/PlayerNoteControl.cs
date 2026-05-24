@@ -37,8 +37,9 @@ public class PlayerNoteControl : PlayerSystem
 
     // there is probably a more elegant way to do this using the input actions map, but im way too lazy rn to read those docs so whatever
     void OnNote1() => AddNote(NoteValue.G);
-
     void OnNote2() => AddNote(NoteValue.ASharp);
+    void OnNote3() => AddNote(NoteValue.C);
+    void OnNote4() => AddNote(NoteValue.F);
 
     void AddNote(NoteValue value)
     {

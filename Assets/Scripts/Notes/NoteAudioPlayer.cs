@@ -17,6 +17,7 @@ public class NoteAudioPlayer : Singleton<NoteAudioPlayer>
   {
     base.Awake();
     audioSource = GetComponent<AudioSource>();
+    DontDestroyOnLoad(gameObject);
   }
 
   public static void PlayNote(NoteValue value) => instance.PlayNoteHelper(value);
