@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb132998a4a603f47adf8b3a4283f821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoteMenuView
-  menu: {fileID: 0}
   noteDisplay: {fileID: 9169998541363273228}
+  menuSFX: {fileID: 0}
 --- !u!1 &6065112700487311079
 GameObject:
   m_ObjectHideFlags: 0

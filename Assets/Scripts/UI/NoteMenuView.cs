@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Threading.Tasks;
+using Audio;
 using NoteSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,10 @@ public class NoteMenuView : Singleton<NoteMenuView>
     
     private Coroutine closingSequence;
 
+    [SerializeField] private MenuSFX menuSFX;
+    [SerializeField] private AudioClip openClip;
+    [SerializeField] private AudioClip closeCLip;
+
     void Start()
     {
         gameObject.SetActive(false);
@@ -25,6 +30,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
     public void ShowHelper()
     {
         instance.gameObject.SetActive(true);
+        menuSFX.PlaySound(openClip);
     }
 
     public static void Hide() => instance.HideHelper();
@@ -37,6 +43,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
         }
         gameObject.SetActive(false);
         noteDisplay.ResetNotes();
+        menuSFX.PlaySound(closeCLip);
     }
 
     public static IEnumerator CloseMenuWithNoteCombo(bool success = true)
