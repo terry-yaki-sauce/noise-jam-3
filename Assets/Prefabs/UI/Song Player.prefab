@@ -91,6 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NoteMenuView
   noteDisplay: {fileID: 9169998541363273228}
   menuSFX: {fileID: 0}
+  openClip: {fileID: 8300000, guid: 78f80e39475839340945496aa462f1a0, type: 3}
+  closeCLip: {fileID: 8300000, guid: a63f89623b5ac23459a5c7feb0ec8d3d, type: 3}
 --- !u!1 &6065112700487311079
 GameObject:
   m_ObjectHideFlags: 0

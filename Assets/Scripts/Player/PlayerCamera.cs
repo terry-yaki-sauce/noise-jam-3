@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerCamera : PlayerSystem
 {
     private CameraBounds bounds;
+    [SerializeField] private Transform cameraFollowPoint;
 
     void Start()
     {
@@ -21,9 +22,9 @@ public class PlayerCamera : PlayerSystem
         float topBound = bounds.Top - halfHeight;
         float bottomBound = bounds.Bottom - halfHeight;
 
-        float x = transform.position.x;
+        float x = cameraFollowPoint.position.x;
         x = Mathf.Clamp(x,leftBound,rightBound);
-        float y = transform.position.y;
+        float y = cameraFollowPoint.position.y;
         y = Mathf.Clamp(y,bottomBound,topBound);
         float z = cameraTransform.position.z;
         cameraTransform.position = new Vector3(x, y, z);
