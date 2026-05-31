@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
+  m_Name: 6. Lucy In Bathroom 2
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  lines:
+  - rid: 8840176461771964501
+  - rid: 8840176461771964502
+  - rid: 8840176461771964503
+  - rid: 8840176461771964504
+  - rid: 8840176461771964505
+  - rid: 8840176461771964506
+  references:
+    version: 2
+    RefIds:
+    - rid: 8840176461771964501
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: The... realms?
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964502
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'Make the dissonant harmonize and unite the worlds as one.
+
+'
+        characterToShow: 3
+        jumpIndex: -1
+    - rid: 8840176461771964503
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: You are not the chosen, but merely a puppet to the whims of Powers
+          you could not control.
+        characterToShow: 3
+        jumpIndex: -1
+    - rid: 8840176461771964504
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "You\u2019re not making any sense.\r\n"
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964505
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'Good luck, I trust you will know who to trust.
+
+'
+        characterToShow: 3
+        jumpIndex: -1
+    - rid: 8840176461771964506
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'May your instincts guide you away from what you may initially seek.
+
+'
+        characterToShow: 3
+        jumpIndex: -1

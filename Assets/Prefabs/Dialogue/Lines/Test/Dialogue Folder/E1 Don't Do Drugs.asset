@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
+  m_Name: E1 Don't Do Drugs
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  lines:
+  - rid: 8840176461771964513
+  - rid: 8840176461771964514
+  - rid: 8840176461771964515
+  - rid: 8840176461771964516
+  references:
+    version: 2
+    RefIds:
+    - rid: 8840176461771964513
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "\u2026 Hello? Lucy, what\u2019s up?\r\n"
+        characterToShow: 6
+        jumpIndex: -1
+    - rid: 8840176461771964514
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "I just got overwhelmed today, sorry. I couldn\u2019t really stay at
+          the club.\r\n"
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964515
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'Oh no worries! Go take care of yourself, girl.
+
+'
+        characterToShow: 6
+        jumpIndex: -1
+    - rid: 8840176461771964516
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "We\u2019ll make sure to come back with a lot of stories!\r\n"
+        characterToShow: 6
+        jumpIndex: -1

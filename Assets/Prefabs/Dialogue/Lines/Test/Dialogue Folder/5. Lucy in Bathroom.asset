@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
+  m_Name: 5. Lucy in Bathroom
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  lines:
+  - rid: 8840176461771964496
+  - rid: 8840176461771964497
+  - rid: 8840176461771964498
+  - rid: 8840176461771964499
+  - rid: 8840176461771964500
+  references:
+    version: 2
+    RefIds:
+    - rid: 8840176461771964496
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "\u2026 What the-"
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964497
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'Be not afraid.
+
+          I have come to lend you my aid.
+
+'
+        characterToShow: 3
+        jumpIndex: -1
+    - rid: 8840176461771964498
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "\u2026 "
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964499
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Okay?
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964500
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Use this instrument to guide you across the realities before you.
+        characterToShow: 3
+        jumpIndex: -1

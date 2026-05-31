@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
+  m_Name: 1. Opening Sequence
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  lines:
+  - rid: 8840176461771964487
+  - rid: 8840176461771964488
+  - rid: 8840176461771964489
+  - rid: 8840176461771964490
+  references:
+    version: 2
+    RefIds:
+    - rid: 8840176461771964487
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "Hey Lucy! I just wanted to see if you were still down to hang out
+          at the club.\r\nThe other girls and I will be here partying.\r\nI know
+          you\u2019re still reeling from that fight with your dad, but maybe this
+          will cheer you up!\r\n"
+        characterToShow: 6
+        jumpIndex: -1
+    - rid: 8840176461771964488
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "\u2026 "
+        characterToShow: 6
+        jumpIndex: -1
+    - rid: 8840176461771964489
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "Oh? \r\n\r\n"
+        characterToShow: 6
+        jumpIndex: -1
+    - rid: 8840176461771964490
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Perfect! See you in a couple of hours!
+        characterToShow: 6
+        jumpIndex: -1

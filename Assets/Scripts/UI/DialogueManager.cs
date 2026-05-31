@@ -108,22 +108,46 @@ namespace Dialogue
 
       switch (currentNode.CharacterToShow)
       {
-        case Character.Lucy:
-          playerNamePlateText.text = "Lucy";
-          playerNamePlateBox.SetActive(true);
-          NPCNamePlateBox.SetActive(false);
-          break;
-        case Character.System:
-          NPCNamePlateText.text = "System";
-          break;
+            case Character.Lucy:
+                playerNamePlateText.text = "Lucy";
+                playerNamePlateBox.SetActive(true);
+                NPCNamePlateBox.SetActive(false);
+                break;
+            case Character.System:
+                NPCNamePlateText.text = "System";
+                playerNamePlateBox.SetActive(false);
+                NPCNamePlateBox.SetActive(false);
+                break;
         case Character.NPC:
-          NPCNamePlateText.text = "NPC";
-          break;
-        default:
-          Debug.LogWarning("No Character Plate Found!");
+                NPCNamePlateText.text = "NPC";
+                playerNamePlateBox.SetActive(false);
+                NPCNamePlateBox.SetActive(true);
+                break;
+        case Character.Gabe:
+          NPCNamePlateText.text = "Gabe";
           playerNamePlateBox.SetActive(false);
-          NPCNamePlateBox.SetActive(false);
+          NPCNamePlateBox.SetActive(true);
           break;
+        case Character.Amy:
+           NPCNamePlateText.text = "Amy";            
+           playerNamePlateBox.SetActive(false);
+           NPCNamePlateBox.SetActive(true);
+           break;
+        case Character.DJ:
+            NPCNamePlateText.text = "DJ";
+            playerNamePlateBox.SetActive(false);
+            NPCNamePlateBox.SetActive(true);
+            break;
+        case Character.Stranger:
+             NPCNamePlateText.text = "Stranger";
+             playerNamePlateBox.SetActive(false);
+             NPCNamePlateBox.SetActive(true);
+             break;
+         default:
+              Debug.LogWarning("No Character Plate Found!");
+              playerNamePlateBox.SetActive(false);
+              NPCNamePlateBox.SetActive(false);
+              break;
       }
 
       if (currentNode.CharacterToShow != Character.Lucy)

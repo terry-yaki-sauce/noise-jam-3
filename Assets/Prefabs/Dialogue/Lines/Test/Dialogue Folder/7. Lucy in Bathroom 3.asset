@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
+  m_Name: 7. Lucy in Bathroom 3
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  lines:
+  - rid: 8840176461771964508
+  - rid: 8840176461771964509
+  references:
+    version: 2
+    RefIds:
+    - rid: 8840176461771964508
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "\u2026 strange. Well, if it will help me get out of the restroom,
+          I\u2019ll use it.\r\n"
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964509
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Here goes nothing.
+        characterToShow: 0
+        jumpIndex: -1

@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
+  m_Name: E2.1 Gabe Interaction 1
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  lines:
+  - rid: 8840176461771964517
+  - rid: 8840176461771964518
+  - rid: 8840176461771964519
+  - rid: 8840176461771964520
+  - rid: 8840176461771964521
+  - rid: 8840176461771964524
+  - rid: 8840176461771964525
+  - rid: 8840176461771964526
+  - rid: 8840176461771964527
+  references:
+    version: 2
+    RefIds:
+    - rid: 8840176461771964517
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "Oh, hey there, Lucy! You\u2019re not looking so hot right now.\r\n"
+        characterToShow: 5
+        jumpIndex: -1
+    - rid: 8840176461771964518
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "I\u2026 could be doing better right now.\r\n"
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964519
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "Everything\u2019s been distorted, and I don\u2019t even know if I\u2019m
+          in reality right now.\r\n"
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964520
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "Here, let me help you. I\u2019ll guide you to the exit.\r\n"
+        characterToShow: 5
+        jumpIndex: -1
+    - rid: 8840176461771964521
+      type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Go with Gabe?
+        characterToShow: 2
+        jumpIndex: -1
+        choices:
+        - text: Yes
+          jumpIndex: 5
+        - text: No
+          jumpIndex: 6
+    - rid: 8840176461771964524
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: ' Alright, take me to the exit.'
+        characterToShow: 0
+        jumpIndex: 7
+    - rid: 8840176461771964525
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "No, I\u2019ll find it myself"
+        characterToShow: 0
+        jumpIndex: 8
+    - rid: 8840176461771964526
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Perfect! Let's go
+        characterToShow: 0
+        jumpIndex: 99
+    - rid: 8840176461771964527
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Alright. Suit yourself.
+        characterToShow: 0
+        jumpIndex: -1

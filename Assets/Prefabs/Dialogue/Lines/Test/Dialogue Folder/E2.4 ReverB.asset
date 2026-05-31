@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
+  m_Name: E2.4 ReverB
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  lines:
+  - rid: 8840176461771964529
+  - rid: 8840176461771964532
+  - rid: 8840176461771964533
+  - rid: 8840176461771964534
+  - rid: 8840176461771964535
+  references:
+    version: 2
+    RefIds:
+    - rid: 8840176461771964529
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "I\u2019d like to leave.\r\n"
+        characterToShow: 0
+        jumpIndex: -1
+    - rid: 8840176461771964532
+      type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'Is that your final choice? Guided by a hand that does not belong to
+          a friend?
+
+'
+        characterToShow: 4
+        jumpIndex: -1
+        choices:
+        - text: Yes
+          jumpIndex: 2
+        - text: No
+          jumpIndex: 3
+    - rid: 8840176461771964533
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'If it is truly your choice, then step out to the light.
+
+'
+        characterToShow: 4
+        jumpIndex: 99
+    - rid: 8840176461771964534
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'Then I urge you to step back into the darkness that you call your
+          own.
+
+'
+        characterToShow: 4
+        jumpIndex: -1
+    - rid: 8840176461771964535
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Do not fear the herald, for I will make sure he no longer hinders your
+          progress.
+        characterToShow: 4
+        jumpIndex: -1

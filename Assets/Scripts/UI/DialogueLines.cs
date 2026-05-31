@@ -46,7 +46,13 @@ namespace Dialogue
   {
     Lucy,
     NPC,
-    System
+    System,
+    Stranger,
+    ReverB,
+    Gabe,
+    Amy, 
+    DJ
+
   }
 
 
