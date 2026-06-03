@@ -17,6 +17,6 @@ public class GridCursor : MonoBehaviour
   public void SetPosition(Vector2Int newPosition)
   {
     gridPosition = new Vector3Int(newPosition.x,newPosition.y);
-    transform.position = grid.CellToWorld(gridPosition);
+    transform.position = grid.GetCellCenterWorld(gridPosition);
   }
 }

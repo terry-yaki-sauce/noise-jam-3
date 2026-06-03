@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class GridManager : Singleton<GridManager>
@@ -5,13 +6,17 @@ public class GridManager : Singleton<GridManager>
   [SerializeField] private GridCursor cursor;
   [SerializeField] private Grid grid;
 
-  [SerializeField] private int width,height;
+  [SerializeField] private Transform topLeft, bottomRight;
+  private int leftBound { get => grid.WorldToCell(topLeft.position).x; }
+  private int topBound { get => grid.WorldToCell(topLeft.position).y; }
+  private int rightBound { get => grid.WorldToCell(bottomRight.position).x; }
+  private int bottomBound { get => grid.WorldToCell(bottomRight.position).y; }
   [SerializeField] private GridCell gridCellPrefab;
 
   void Start()
   {
     Vector3Int cell = grid.WorldToCell(cursor.transform.position);
-    cursor.SetPosition(new(cell.x,cell.y));
+    cursor.SetPosition(new(cell.x, cell.y));
     cursor.gameObject.SetActive(false);
   }
 
@@ -34,17 +39,17 @@ public class GridManager : Singleton<GridManager>
   public static void ActivateCursor() => instance.ActivateCursorHelper();
   private void ActivateCursorHelper()
   {
-    
+
   }
 
   private void TryPickUpObject()
   {
-    
+
   }
 
   private void TryReleaseObject()
   {
-    
+
   }
 
   /// <summary>
@@ -55,12 +60,37 @@ public class GridManager : Singleton<GridManager>
   private void MoveCursorHelper(Vector2Int dir)
   {
     Vector3Int position3d = grid.WorldToCell(cursor.transform.position);
-    Vector2Int position = new(position3d.x,position3d.y);
-    // Clamp the position to be within the grid. Keep in mind the grid may not be rectangular.
-    
+
+    // check for any obstacles that prevent movement
+
+
+    // Clamp the position to be within the grid boundary
+    int x = Math.Clamp(position3d.x + dir.x, leftBound, rightBound);
+    int y = Math.Clamp(position3d.y + dir.y, bottomBound, topBound);
+
+    // Clamp the position within the camera bounds
+    Camera camera = Camera.main;
+    float halfHeight = camera.orthographicSize;
+    float halfWidth = camera.aspect * halfHeight;
+
+    Vector3 cameraPosition = camera.transform.position;
+    float cameraX = cameraPosition.x;
+    float cameraY = cameraPosition.y;
+    float cameraLeftBound = (cameraX - halfWidth);
+    float cameraRightBound = (cameraX + halfWidth);
+    float cameraTopBound = (cameraY + halfHeight);
+    float cameraBottomBound = (cameraY - halfHeight);
+    Vector3Int cameraTopLeft = grid.WorldToCell(new(cameraLeftBound,cameraTopBound));
+    Vector3Int cameraBottomRight = grid.WorldToCell(new(cameraRightBound,cameraBottomBound));
+
+    x = Math.Clamp(x, cameraTopLeft.x, cameraBottomRight.x);
+    y = Math.Clamp(y, cameraBottomRight.y, cameraTopLeft.y);
+
+    Vector2Int newPosition = new(x, y);
+
     // make sure to check whether moving the piece is legal too. It may be prudent to always normalize dir, and force it be in one of the cardinal directions only
 
-    SetCursor(position + dir);
+    SetCursor(newPosition);
   }
   /// <summary>
   /// Set the raw position of the Grid cursor. Does not check the legality of the movement.
