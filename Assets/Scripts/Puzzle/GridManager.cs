@@ -1,6 +1,6 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 public class GridManager : Singleton<GridManager>
 {
   [SerializeField] private GridCursor cursor;
@@ -13,11 +13,34 @@ public class GridManager : Singleton<GridManager>
   private int bottomBound { get => grid.WorldToCell(bottomRight.position).y; }
   [SerializeField] private GridCell gridCellPrefab;
 
+  private GridObject selectedObject;
+  private Transform selectedTransform;
+  private GridCell[][] cells;
+
+  protected override void Awake()
+  {
+    base.Awake();
+
+    Vector3Int cursorCell = grid.WorldToCell(cursor.transform.position);
+    cursor.SetPosition(new(cursorCell.x, cursorCell.y));
+    cursor.gameObject.SetActive(false);
+
+    cells = new GridCell[rightBound - leftBound + 1][];
+    for (int i = 0; i < cells.Length; i++)
+    {
+      cells[i] = new GridCell[topBound - bottomBound + 1];
+      for (int j = 0; j < cells[i].Length; j++)
+      {
+        GridCell cell = Instantiate(gridCellPrefab, gameObject.transform);
+        cell.transform.position = grid.GetCellCenterWorld(new(leftBound + i, bottomBound + j));
+        cells[i][j] = cell;
+      }
+    }
+  }
+
   void Start()
   {
-    Vector3Int cell = grid.WorldToCell(cursor.transform.position);
-    cursor.SetPosition(new(cell.x, cell.y));
-    cursor.gameObject.SetActive(false);
+
   }
 
   public static void Show() => instance.ShowHelper();
@@ -39,15 +62,27 @@ public class GridManager : Singleton<GridManager>
   public static void ActivateCursor() => instance.ActivateCursorHelper();
   private void ActivateCursorHelper()
   {
-
+    Debug.Log("here");
+    GridCell cursorCell = GetCell(cursor.GridPosition);
+    if (cursorCell.IsOccupied())
+    {
+      TryPickUpObject(cursorCell);
+    }
   }
 
-  private void TryPickUpObject()
+  private void TryPickUpObject(GridCell cursorCell)
   {
+    Debug.Log("here 2");
+    selectedObject = cursorCell.occupyingObject;
+    selectedTransform = cursorCell.occupyingTransform;
 
+    foreach (Transform t in selectedObject.Shape)
+    {
+      t.SetParent(selectedTransform);
+    }
   }
 
-  private void TryReleaseObject()
+  private void TryReleaseObject(GridCell cursorCell)
   {
 
   }
@@ -80,8 +115,8 @@ public class GridManager : Singleton<GridManager>
     float cameraRightBound = (cameraX + halfWidth);
     float cameraTopBound = (cameraY + halfHeight);
     float cameraBottomBound = (cameraY - halfHeight);
-    Vector3Int cameraTopLeft = grid.WorldToCell(new(cameraLeftBound,cameraTopBound));
-    Vector3Int cameraBottomRight = grid.WorldToCell(new(cameraRightBound,cameraBottomBound));
+    Vector3Int cameraTopLeft = grid.WorldToCell(new(cameraLeftBound, cameraTopBound));
+    Vector3Int cameraBottomRight = grid.WorldToCell(new(cameraRightBound, cameraBottomBound));
 
     x = Math.Clamp(x, cameraTopLeft.x, cameraBottomRight.x);
     y = Math.Clamp(y, cameraBottomRight.y, cameraTopLeft.y);
@@ -100,6 +135,66 @@ public class GridManager : Singleton<GridManager>
   private void SetCursorHelper(Vector2Int position)
   {
     cursor.SetPosition(position);
+
     // drag the object along with it
+    if (IsHoldingObject)
+    {
+      selectedTransform.position = cursor.transform.position;
+    }
   }
+
+  /// <summary>
+  /// Level Start Utility. Adds a grid object to its current cell location
+  /// </summary>
+  /// <param name="gridObject"></param>
+  public static void AddGridObject(GridObject gridObject) => instance.AddGridObjectHelper(gridObject);
+  private void AddGridObjectHelper(GridObject gridObject)
+  {
+    // visually render object in cell center (fixes weird offsets on load)
+    Vector3Int gridPos = grid.WorldToCell(gridObject.transform.position);
+    gridObject.transform.position = grid.GetCellCenterWorld(gridPos);
+
+    // logically define object location
+    foreach (Transform t in gridObject.Shape)
+    {
+      Vector3Int cellCoord = grid.WorldToCell(t.position);
+      SetCellObject(gridObject, t, cellCoord);
+    }
+
+  }
+
+  /// <summary>
+  /// Automatically translate a position on the grid and return the cell at its corresponding index
+  /// </summary>
+  /// <param name="position"></param>
+  /// <returns></returns>
+  private GridCell GetCell(Vector3Int position)
+  {
+    return cells[position.x - leftBound][position.y + topBound];
+  }
+
+  private GridCell GetCell(int x, int y)
+  {
+    return cells[x - leftBound][y - topBound];
+  }
+
+  private void SetCellObject(GridObject gridObject, Transform goTransform, Vector3Int position)
+  {
+    Debug.Log($"{position.x} {position.y}");
+    Debug.Log($"{position.x - leftBound} {position.y + topBound}");
+    GridCell cell = cells[position.x - leftBound][position.y + topBound];
+    cell.occupyingObject = gridObject;
+    cell.occupyingTransform = goTransform;
+  }
+
+  private void SetCellObject(GridObject gridObject, Transform goTransform, int x, int y)
+  {
+    // Debug.Log($"No Translate {x},{y}");
+    // Debug.Log($"Translate {x - leftBound},{y + topBound}");
+    GridCell cell = cells[x - leftBound][y + topBound];
+    cell.occupyingObject = gridObject;
+    cell.occupyingTransform = goTransform;
+  }
+
+  private bool IsHoldingObject => selectedObject != null;
 }

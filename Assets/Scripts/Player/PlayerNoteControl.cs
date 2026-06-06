@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using DimensionSwapping;
 using NoteSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,11 @@ public class PlayerNoteControl : PlayerSystem
     private string targetActionMap = "Player";
 
     private static readonly NoteValue[] DIMENSION_SWAP_COMBO = { NoteValue.G, NoteValue.G, NoteValue.ASharp };
+    // 1 2 4
+    private static readonly NoteValue[] DIMENSION_SWAP_HEAVEN = { NoteValue.G, NoteValue.ASharp, NoteValue.F };
+    // 4 3 2
+    private static readonly NoteValue[] DIMENSION_SWAP_HELL = { NoteValue.F, NoteValue.C, NoteValue.ASharp };
+    // 1 3 2
     private static readonly NoteValue[] MODIFY_GRID_COMBO = { NoteValue.G, NoteValue.C, NoteValue.ASharp };
 
     void Start()
@@ -83,6 +89,16 @@ public class PlayerNoteControl : PlayerSystem
             // set a timeout and give visual feedback
             enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
             GameManager.SwapDimension();
+        }
+        else if (CheckEqual(notes, DIMENSION_SWAP_HEAVEN))
+        {
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
+            GameManager.SwapDimension(Dimension.Heaven);
+        }
+        else if (CheckEqual(notes, DIMENSION_SWAP_HELL))
+        {
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
+            GameManager.SwapDimension(Dimension.Hell);
         }
         else if (CheckEqual(notes, MODIFY_GRID_COMBO))
         {

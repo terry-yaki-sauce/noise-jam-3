@@ -7,7 +7,7 @@ public class GridCursor : MonoBehaviour
 
     [SerializeField] private Grid grid;
     private Vector3Int gridPosition;
-    public Vector3 GridPosition {get => gridPosition;}
+    public Vector3Int GridPosition {get => gridPosition;}
 
   void Awake()
   {

@@ -1235,6 +1235,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Activate Cursor",
+                    "type": "Button",
+                    "id": "8f1062d9-87be-491d-b459-adf97d01b2da",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1433,6 +1442,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Close Grid Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae03af06-0201-47ce-b521-56353d29e8ec",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Activate Cursor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

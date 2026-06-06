@@ -16,4 +16,6 @@ public class PlayerGridControl : PlayerSystem
     GridManager.Hide();
     player.PlayerInput.SwitchCurrentActionMap("Player");
   }
+
+  void OnActivateCursor() => GridManager.ActivateCursor();
 }

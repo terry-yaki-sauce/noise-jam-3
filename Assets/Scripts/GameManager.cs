@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private int targetFrameRate = 120;
 
-    public event Action SwappedDimension;
+    public event Action<Dimension> SwappedDimension;
     private Dimension activeDimension = Dimension.Heaven;
     public static Dimension ActiveDimension { get => instance.activeDimension; }
 
@@ -73,7 +73,15 @@ public class GameManager : Singleton<GameManager>
     private void SwapDimensionHelper()
     {
         activeDimension = (Dimension)(((int)activeDimension + 1) % DimensionConfig.NUM_DIMENSIONS);
-        SwappedDimension?.Invoke();
+        SwappedDimension?.Invoke(activeDimension);
+    }
+
+
+    public static void SwapDimension(Dimension dimension) => instance.SwapDimensionHelper(dimension);
+    private void SwapDimensionHelper(Dimension dimension)
+    {
+        activeDimension = dimension;
+        SwappedDimension?.Invoke(activeDimension);
     }
 
     public static void RefreshKeybindUIs()

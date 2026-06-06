@@ -17,7 +17,7 @@ namespace DimensionSwapping
 
     void Start()
     {
-      SetActivity();
+      SetActivity(GameManager.ActiveDimension);
     }
 
     void OnEnable()
@@ -30,7 +30,7 @@ namespace DimensionSwapping
       GameManager.instance.SwappedDimension -= SetActivity;
     }
 
-    void SetActivity()
+    void SetActivity(Dimension dimension)
     {
       bool active = activeDimension == GameManager.ActiveDimension;
       spriteRenderer.enabled = active;
