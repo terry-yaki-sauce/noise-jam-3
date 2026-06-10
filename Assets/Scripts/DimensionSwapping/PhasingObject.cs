@@ -2,10 +2,8 @@ using UnityEngine;
 
 namespace DimensionSwapping
 {
-  public class PhasingObject : MonoBehaviour
+  public class PhasingObject : Phaser
   {
-    [SerializeField] private Dimension activeDimension;
-
     private SpriteRenderer spriteRenderer;
     private new Collider2D collider;
 
@@ -15,22 +13,7 @@ namespace DimensionSwapping
       collider = GetComponent<Collider2D>();
     }
 
-    void Start()
-    {
-      SetActivity(GameManager.ActiveDimension);
-    }
-
-    void OnEnable()
-    {
-      GameManager.instance.SwappedDimension += SetActivity;
-    }
-
-    void OnDisable()
-    {
-      GameManager.instance.SwappedDimension -= SetActivity;
-    }
-
-    void SetActivity(Dimension dimension)
+    protected override void SetActivity(Dimension dimension)
     {
       bool active = activeDimension == GameManager.ActiveDimension;
       spriteRenderer.enabled = active;

@@ -3,26 +3,31 @@ using System.Collections;
 using System.Linq;
 using DimensionSwapping;
 using NoteSystem;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerNoteControl : PlayerSystem
 {
-    PlayerInput playerInput;
+    private PlayerInput playerInput;
 
     [SerializeField] private int numNotes = 3;
     private int noteIndex = 0;
     private NoteValue[] notes;
-    
+
     private string targetActionMap = "Player";
 
     private static readonly NoteValue[] DIMENSION_SWAP_COMBO = { NoteValue.G, NoteValue.G, NoteValue.ASharp };
+
     // 1 2 4
     private static readonly NoteValue[] DIMENSION_SWAP_HEAVEN = { NoteValue.G, NoteValue.ASharp, NoteValue.F };
     // 4 3 2
     private static readonly NoteValue[] DIMENSION_SWAP_HELL = { NoteValue.F, NoteValue.C, NoteValue.ASharp };
     // 1 3 2
     private static readonly NoteValue[] MODIFY_GRID_COMBO = { NoteValue.G, NoteValue.C, NoteValue.ASharp };
+    // 444
+    private static readonly NoteValue[] RESET_LEVEL_COMBO = { NoteValue.F, NoteValue.F, NoteValue.F };
 
     void Start()
     {
@@ -32,6 +37,7 @@ public class PlayerNoteControl : PlayerSystem
 
     void OnOpenNoteMenu()
     {
+        targetActionMap = playerInput.currentActionMap.name;
         NoteMenuView.Show();
         playerInput.SwitchCurrentActionMap("Note Menu");
     }
@@ -47,6 +53,7 @@ public class PlayerNoteControl : PlayerSystem
         {
             GridManager.Show();
         }
+        Debug.Log(playerInput.currentActionMap.name);
     }
 
     // there is probably a more elegant way to do this using the input actions map, but im way too lazy rn to read those docs so whatever
@@ -82,7 +89,7 @@ public class PlayerNoteControl : PlayerSystem
     IEnumerator TryNoteCombo()
     {
         IEnumerator enumerator = null;
-        targetActionMap = "Player";
+        // targetActionMap = playerInput.currentActionMap.name;
         // if the note are valid...
         if (CheckEqual(notes, DIMENSION_SWAP_COMBO))
         {
@@ -106,6 +113,12 @@ public class PlayerNoteControl : PlayerSystem
             // instead of the default player input, we need the grid control
             targetActionMap = "Grid";
         }
+        else if (CheckEqual(notes,RESET_LEVEL_COMBO))
+        {
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         else
         {
             // ... also set a timeout and give visual feedback?
@@ -121,6 +134,7 @@ public class PlayerNoteControl : PlayerSystem
         }
         // reset the action map
         targetActionMap = "Player";
+        Debug.Log(playerInput.currentActionMap.name);
     }
 
     private static bool CheckEqual(NoteValue[] n1, NoteValue[] n2)

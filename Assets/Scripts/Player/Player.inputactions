@@ -357,30 +357,8 @@
                 },
                 {
                     "name": "",
-                    "id": "7e72b16e-2600-491f-b4a3-086a0c383509",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "991a0b4f-230a-4d29-958c-e74491725a26",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bd961b6f-e76e-4e7d-a81e-68274ddf9617",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -413,7 +391,7 @@
                 {
                     "name": "",
                     "id": "f6a8201f-e73c-4158-8588-616513c9328c",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -1030,15 +1008,6 @@
             "id": "9b844d0a-fb8b-414a-8d35-71445ed78a54",
             "actions": [
                 {
-                    "name": "Open Pause Menu",
-                    "type": "Button",
-                    "id": "dbad08cc-f4b6-436b-8149-f6d198f8af04",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Close Note Menu",
                     "type": "Button",
                     "id": "348d301a-55e9-4572-bfa9-ed20da8e376f",
@@ -1099,7 +1068,7 @@
                 {
                     "name": "",
                     "id": "cad8b0c1-1ce8-4009-b522-59bf5560a3f8",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -1109,23 +1078,23 @@
                 },
                 {
                     "name": "",
-                    "id": "0c055126-cd33-4d86-876a-a23d55f26bb7",
-                    "path": "<Keyboard>/escape",
+                    "id": "4d05477b-df45-4070-8c39-a639c6e6df5e",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Open Pause Menu",
+                    "groups": ";Gamepad",
+                    "action": "Close Note Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "bcbed5e5-0db0-4785-b6f5-5078d9066695",
-                    "path": "<Gamepad>/start",
+                    "id": "45c7a6f6-995c-4352-aac5-427451538e9d",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Open Pause Menu",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Close Note Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1182,7 +1151,7 @@
                 {
                     "name": "",
                     "id": "6f039ea0-302a-4cbd-b267-632c9a304722",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -1228,6 +1197,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Open Note Menu",
+                    "type": "Button",
+                    "id": "cb967af6-0915-4e11-a188-57061f615b55",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Close Grid Menu",
                     "type": "Button",
                     "id": "b2b00386-b381-419d-b215-de7786cfc1e2",
@@ -1244,6 +1222,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RotateHeldObject",
+                    "type": "Value",
+                    "id": "3df53c38-9cf9-426d-9d60-cb3298acb0d7",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -1436,6 +1423,17 @@
                 },
                 {
                     "name": "",
+                    "id": "3bde7e52-a348-42b1-a9fa-ff4eb22b7ed9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Open Note Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8e91a967-18b9-4159-b0fb-358c14ed06d9",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -1448,13 +1446,46 @@
                 {
                     "name": "",
                     "id": "ae03af06-0201-47ce-b521-56353d29e8ec",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Activate Cursor",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "c7382e69-46f4-4097-9105-55e91e98357a",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateHeldObject",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "a03bf508-80f1-48d5-a85b-0ed90873a5a0",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "RotateHeldObject",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "e3951667-dede-488b-84bd-dd7426e03dd7",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "RotateHeldObject",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
