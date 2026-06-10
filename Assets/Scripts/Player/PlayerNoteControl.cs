@@ -53,7 +53,6 @@ public class PlayerNoteControl : PlayerSystem
         {
             GridManager.Show();
         }
-        Debug.Log(playerInput.currentActionMap.name);
     }
 
     // there is probably a more elegant way to do this using the input actions map, but im way too lazy rn to read those docs so whatever
@@ -134,7 +133,6 @@ public class PlayerNoteControl : PlayerSystem
         }
         // reset the action map
         targetActionMap = "Player";
-        Debug.Log(playerInput.currentActionMap.name);
     }
 
     private static bool CheckEqual(NoteValue[] n1, NoteValue[] n2)

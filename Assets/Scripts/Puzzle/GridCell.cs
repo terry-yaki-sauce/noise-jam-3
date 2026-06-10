@@ -6,6 +6,9 @@ public class GridCell : MonoBehaviour
   private GridObject heavenObject, hellObject;
   private Transform heavenTransform, hellTransform;
 
+  public GridObject HeavenObject => heavenObject;
+  public GridObject HellObject => hellObject;
+
   public GridObject OccupyingObject
   {
     get

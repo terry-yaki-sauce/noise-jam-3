@@ -72,16 +72,40 @@ public class GameManager : Singleton<GameManager>
     public static void SwapDimension() => instance.SwapDimensionHelper();
     private void SwapDimensionHelper()
     {
+        // NOTE: may want to move this to PlayerNoteControl, if we want rejection feedback to be on the note page, but that is probably not desirable?
+        if (!GridManager.IsValidDimensionSwap())
+        {
+            // TODO: REJECTION FEEDBACK
+            Debug.Log("Swap failed due to impeding object");
+            return;
+        }
+
+        // success
         activeDimension = (Dimension)(((int)activeDimension + 1) % DimensionConfig.NUM_DIMENSIONS);
         SwappedDimension?.Invoke(activeDimension);
+        GridManager.CheckGoalHovered();
     }
 
 
     public static void SwapDimension(Dimension dimension) => instance.SwapDimensionHelper(dimension);
     private void SwapDimensionHelper(Dimension dimension)
     {
+        // if we didn't actually change dimensions...
+        if (activeDimension == dimension) return;
+
+
+        // NOTE: may want to move this to PlayerNoteControl, if we want rejection feedback to be on the note page, but that is probably not desirable?
+        if (!GridManager.IsValidDimensionSwap())
+        {
+            // TODO: REJECTION FEEDBACK
+            Debug.Log("Swap failed due to impeding object");
+            return;
+        }
+
+        // success
         activeDimension = dimension;
         SwappedDimension?.Invoke(activeDimension);
+        GridManager.CheckGoalHovered();
     }
 
     public static void RefreshKeybindUIs()

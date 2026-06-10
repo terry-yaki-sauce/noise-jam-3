@@ -1,10 +1,16 @@
 using System;
-using Unity.VisualScripting;
+using System.Collections.Generic;
+using DimensionSwapping;
 using UnityEngine;
 public class GridManager : Singleton<GridManager>
 {
   [SerializeField] private GridCursor cursor;
   [SerializeField] private Grid grid;
+
+  [SerializeField] private GridObject goalObject;
+  [SerializeField] private GoalPoint goal;
+  private readonly List<GridCell> goalCells = new();
+  private bool goalFlag = false;
 
   [SerializeField] private Transform topLeft, bottomRight;
   private int leftBound { get => grid.WorldToCell(topLeft.position).x; }
@@ -26,6 +32,7 @@ public class GridManager : Singleton<GridManager>
     cursor.SetPosition(new(cursorCell.x, cursorCell.y));
     cursor.gameObject.SetActive(false);
 
+    // instantiate grid cells
     cells = new GridCell[rightBound - leftBound + 1][];
     for (int i = 0; i < cells.Length; i++)
     {
@@ -36,6 +43,15 @@ public class GridManager : Singleton<GridManager>
         cell.transform.position = grid.GetCellCenterWorld(new(leftBound + i, bottomBound + j));
         cells[i][j] = cell;
       }
+    }
+
+    // configure goal point
+    foreach (Transform t in goal.Shape)
+    {
+      Vector3Int pos = grid.WorldToCell(t.position);
+      GridCell cell = GetCell(pos);
+
+      goalCells.Add(cell);
     }
   }
 
@@ -49,6 +65,8 @@ public class GridManager : Singleton<GridManager>
   public static void Hide() => instance.HideHelper();
   private void HideHelper()
   {
+    selectedObject = null;
+    selectedTransform = null;
     cursor.gameObject.SetActive(false);
   }
 
@@ -75,6 +93,11 @@ public class GridManager : Singleton<GridManager>
     {
       Debug.Log("no object in cell");
       // TODO: rejection feedback
+      return;
+    }
+
+    if (!cursorCell.OccupyingObject.IsMovable)
+    {
       return;
     }
 
@@ -119,6 +142,25 @@ public class GridManager : Singleton<GridManager>
     selectedTransform = null;
   }
 
+  public static bool IsValidDimensionSwap() => instance.IsValidDimensionSwapHelper();
+  private bool IsValidDimensionSwapHelper()
+  {
+    if (!selectedObject) return true;
+
+    foreach (Transform t in selectedObject.Shape)
+    {
+      var pos = grid.WorldToCell(t.position);
+      var cell = GetCell(pos);
+
+      // note we want to check the availability of the side we are about to switch to
+      var otherOccupant = GameManager.ActiveDimension == Dimension.Heaven ? cell.HellObject : cell.HeavenObject;
+
+      if (otherOccupant != null) return false;
+    }
+
+    return true;
+  }
+
   /// <summary>
   /// Move the Grid cursor in the direction of <c>dir</c>. Check boundaries and determine if the movement is legal
   /// </summary>
@@ -131,11 +173,11 @@ public class GridManager : Singleton<GridManager>
     Vector2Int desiredPosition = position2d + dir;
 
     // check for any obstacles that prevent movement
+
+    // make sure to check whether moving the piece is legal too. It may be prudent to always normalize dir, and force it be in one of the cardinal directions only
     if (selectedObject && !IsValidMovement(selectedObject, dir)) return;
 
     Vector2Int newPosition = ClampToCameraWorldBounds(desiredPosition);
-
-    // make sure to check whether moving the piece is legal too. It may be prudent to always normalize dir, and force it be in one of the cardinal directions only
 
     SetCursor(newPosition);
   }
@@ -213,6 +255,73 @@ public class GridManager : Singleton<GridManager>
     if (IsHoldingObject)
     {
       selectedTransform.position = cursor.transform.position;
+
+      CheckGoalHoveredHelper();
+    }
+  }
+
+  // can't really imagine a use case for this, but this should check whether the goal state is reached. realistically, CheckGoalHovered() should cover all bases first anyway
+  private void CheckGoalReached()
+  {
+    // either there is an object in the solution grid cells....
+    bool goalCellsFilled = true;
+    foreach (GridCell gc in goalCells)
+    {
+      GridObject occupant = (goal.Dimension == Dimension.Heaven) ? gc.HeavenObject : gc.HellObject;
+
+      if (occupant != goalObject)
+      {
+        goalCellsFilled = false;
+        break;
+      }
+    }
+
+    // if the solution state found then exited...
+    if (!goalCellsFilled && goalFlag)
+    {
+      goalFlag = false;
+      goal.goalEvent.Invoke(goalFlag);
+    }
+
+    // if the solution was just entered...
+    if (goalCellsFilled && !goalFlag)
+    {
+      goalFlag = true;
+      goal.goalEvent.Invoke(goalFlag);
+    }
+  }
+
+  public static void CheckGoalHovered() => instance.CheckGoalHoveredHelper();
+  /// <summary>
+  /// Check whether the goal point is being filled by the goal pieces.
+  /// </summary>
+  private void CheckGoalHoveredHelper()
+  {
+    if (selectedObject != goalObject) return;
+
+    bool isCorrectDimension = GameManager.ActiveDimension == goal.Dimension;
+
+    bool goalCellsFilled = true;
+    foreach (Transform t in selectedObject.Shape)
+    {
+      Vector3Int pos = grid.WorldToCell(t.position);
+      GridCell cell = GetCell(pos);
+
+      if (!goalCells.Contains(cell)) goalCellsFilled = false;
+    }
+
+    // if the solution state found then exited...
+    if ((!goalCellsFilled || !isCorrectDimension) && goalFlag)
+    {
+      goalFlag = false;
+      goal.goalEvent.Invoke(goalFlag);
+    }
+
+    // if the solution was just entered...
+    if (goalCellsFilled && isCorrectDimension && !goalFlag)
+    {
+      goalFlag = true;
+      goal.goalEvent.Invoke(goalFlag);
     }
   }
 
@@ -251,6 +360,7 @@ public class GridManager : Singleton<GridManager>
     return cells[position.x - leftBound][position.y + topBound];
   }
 
+  public static GridCell GetCellGlobal(Vector3Int position) => instance.GetCell(position.x, position.y);
   private GridCell GetCell(int x, int y)
   {
     return cells[x - leftBound][y - topBound];
@@ -277,7 +387,7 @@ public class GridManager : Singleton<GridManager>
     // Debug.Log($"{position.x} {position.y}");
     // Debug.Log($"Setting {gridObject.name} to index {position.x - leftBound} {position.y + topBound}");
     GridCell cell = cells[position.x - leftBound][position.y + topBound];
-    cell.InitializeGridObject(gridObject,goTransform);
+    cell.InitializeGridObject(gridObject, goTransform);
   }
 
   private void InitCellObject(GridObject gridObject, Transform goTransform, int x, int y)
@@ -285,7 +395,7 @@ public class GridManager : Singleton<GridManager>
     // Debug.Log($"No Translate {x},{y}");
     // Debug.Log($"Translate {x - leftBound},{y + topBound}");
     GridCell cell = cells[x - leftBound][y + topBound];
-    cell.InitializeGridObject(gridObject,goTransform);
+    cell.InitializeGridObject(gridObject, goTransform);
   }
 
   private bool IsHoldingObject => selectedObject != null;
