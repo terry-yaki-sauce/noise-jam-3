@@ -1,10 +1,11 @@
 using UnityEngine;
 using DimensionSwapping;
+using System.Collections.Generic;
 
-[RequireComponent(typeof(GridObject))]
+// [RequireComponent(typeof(GridObject))]
 public class GridPhaser : Phaser
 {
-  [SerializeField] private SpriteRenderer spriteRenderer;
+  [SerializeField] private List<SpriteRenderer> spriteRenderers;
   private GridObject gridObject;
 
   void Awake()
@@ -20,6 +21,7 @@ public class GridPhaser : Phaser
     }
 
     bool active = activeDimension == dimension;
-    spriteRenderer.enabled = active;
+    foreach(SpriteRenderer sp in spriteRenderers)
+      sp.enabled = active;
   }
 }
