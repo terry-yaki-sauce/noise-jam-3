@@ -65,8 +65,8 @@ public class GridManager : Singleton<GridManager>
   public static void Hide() => instance.HideHelper();
   private void HideHelper()
   {
-    selectedObject = null;
-    selectedTransform = null;
+    TryReleaseObject(GetCell(cursor.GridPosition));
+
     cursor.gameObject.SetActive(false);
   }
 
