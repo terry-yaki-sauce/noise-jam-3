@@ -24,6 +24,7 @@ namespace NoteSystem
         public NoteValue value = NoteValue.Hidden;
         [HideInInspector] public Image image;
         private Image[] images;
+        private float a;
         private float[] alphas;
         public TextMeshProUGUI textMesh;
 
@@ -32,6 +33,7 @@ namespace NoteSystem
             image = GetComponent<Image>();
             images = GetComponentsInChildren<Image>();
             alphas = new float[images.Length];
+            a = image.color.a;
             for (int i = 0; i < images.Length; i++)
             {
                 alphas[i] = images[i].color.a;
@@ -41,7 +43,13 @@ namespace NoteSystem
 
         public void Clear()
         {
-            image.color = Color.clear;
+            a = image.color.a;
+            for (int i = 0; i < images.Length; i++)
+            {
+                alphas[i] = images[i].color.a;
+            }
+
+            image.color = new(image.color.r, image.color.g, image.color.b, 0);
             foreach (Image i in images)
             {
                 i.color = new(i.color.r, i.color.g, i.color.b, 0);
@@ -51,6 +59,7 @@ namespace NoteSystem
 
         internal void Show()
         {
+            image.color = new(image.color.r, image.color.g, image.color.b, a);
             for (int i = 0; i < images.Length; i++)
             {
                 Image image = images[i];

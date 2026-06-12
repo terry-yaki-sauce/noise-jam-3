@@ -134,7 +134,7 @@ public class NoteDisplay : MonoBehaviour
             for (int j = 0; j < notes.Length; j++)
             {
                 Note n = notes[j];
-                originalColors[j] = n.image.color;
+                n.Show();
 
                 switch (success)
                 {
@@ -165,7 +165,7 @@ public class NoteDisplay : MonoBehaviour
         for (int j = 0; j < notes.Length; j++)
         {
             Note n = notes[j];
-            n.Clear();
+            n.Show();
 
             switch (success)
             {
