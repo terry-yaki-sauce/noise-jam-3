@@ -10,9 +10,10 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public PlayerInput PlayerInput { get; private set; }
-    public Animator Animator {get; private set;}
+    public Animator Animator { get; private set; }
     public InputAction DialogueNext { get; private set; }
-    
+    public PlayerCamera PlayerCamera { get; private set; }
+
     [DoNotSerialize] public IFocusable focusedTarget;
     public Action interacted;
 
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         PlayerInput = GetComponent<PlayerInput>();
+        PlayerCamera = GetComponent<PlayerCamera>();
         DialogueNext = PlayerInput.actions.FindAction("Dialogue/Next");
     }
 

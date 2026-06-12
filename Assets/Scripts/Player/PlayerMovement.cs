@@ -32,9 +32,8 @@ public class PlayerMovement : PlayerSystem
             spriteRenderer.flipX = false;
         }
 
+        player.Animator.SetFloat(SpeedHash, Mathf.Abs(rb.linearVelocityX));
         rb.linearVelocityX = dir.x * playerSpeed * Time.deltaTime;
-
-        player.Animator.SetFloat(SpeedHash, Mathf.Abs(dir.x));
     }
 
     void OnMove(InputValue value)
