@@ -29,6 +29,7 @@ MonoBehaviour:
           Scriptable Object in the context menu of the file exploerer.
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 8300000, guid: fcfce73104ead73408afeb57104b6fe6, type: 3}
     - rid: 1264014519372087427
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -36,6 +37,7 @@ MonoBehaviour:
           can be used to change the word styling.
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 8300000, guid: 755d0fe9b0b67c441b2051ec604cc269, type: 3}
     - rid: 1264014519372087428
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -47,6 +49,7 @@ MonoBehaviour:
           This is so the UI knows what text to show on the UI.'
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 8300000, guid: ba5c5cefbed1a5f41881f147adc9b4f3, type: 3}
     - rid: 1264014519372087431
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -54,12 +57,14 @@ MonoBehaviour:
           Negative (default) values simply progress to the next one.
         characterToShow: 2
         jumpIndex: 5
+        voice: {fileID: 8300000, guid: 7f426da7824c76449aaf762270cf480b, type: 3}
     - rid: 1264014519372087432
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: CANNOT BE REACHED
         characterToShow: 0
         jumpIndex: -1
+        voice: {fileID: 8300000, guid: fcfce73104ead73408afeb57104b6fe6, type: 3}
     - rid: 1264014519372087433
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -67,3 +72,4 @@ MonoBehaviour:
           this <b>Dialogue Lines</b> object to see that one of the lines was skipped.
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 8300000, guid: 7f426da7824c76449aaf762270cf480b, type: 3}

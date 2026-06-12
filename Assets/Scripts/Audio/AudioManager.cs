@@ -29,6 +29,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioClip heavenSwap;
     [SerializeField] private AudioClip hellSwap;
 
+    [Header("Extra")]
     [SerializeField] private float invalidVolume = .3f;
     [SerializeField] private List<AudioClip> invalid;
 

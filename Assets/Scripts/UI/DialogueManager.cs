@@ -24,6 +24,9 @@ namespace Dialogue
     [SerializeField] private float textSkipLeniency = .02f;
     private Coroutine textScrollRoutine;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource voiceAudioSource;
+
     void Start()
     {
       gameObject.SetActive(false);
@@ -179,6 +182,11 @@ namespace Dialogue
       textScrollRoutine = StartCoroutine(instance.TextScroll());
 
       dialogueIndex = (currentNode.JumpIndex < 0) ? dialogueIndex + 1 : currentNode.JumpIndex;
+
+      // Audio
+      voiceAudioSource.Stop();
+      voiceAudioSource.clip = currentNode.Voice;
+      if (voiceAudioSource.clip) voiceAudioSource.Play();
     }
 
     private IEnumerator TextScroll()

@@ -26,6 +26,9 @@ namespace Dialogue
 
     [SerializeField] private int jumpIndex = -1;
     public int JumpIndex { get => jumpIndex; }
+
+    [SerializeField] private AudioClip voice;
+    public AudioClip Voice => voice;
   }
 
   [System.Serializable]
