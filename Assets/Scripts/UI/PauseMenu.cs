@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Audio;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : Singleton<PauseMenu>
 {
@@ -13,6 +14,8 @@ public class PauseMenu : Singleton<PauseMenu>
     [SerializeField] private float buttonVolume = 1f;
     private System.Random rng = new();
 
+    [SerializeField] private GameObject firstSelected;
+
     void Start()
     {
         gameObject.SetActive(false);
@@ -21,6 +24,14 @@ public class PauseMenu : Singleton<PauseMenu>
     public static void Show() => instance.ShowHelper();
     private void ShowHelper()
     {
+        if (GameManager.Player.PlayerInput.currentControlScheme == "Gamepad")
+        {
+            EventSystem.current.SetSelectedGameObject(firstSelected); 
+        }else
+        {
+            EventSystem.current.SetSelectedGameObject(null); 
+        }
+
         Time.timeScale = 0;
         gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
@@ -36,6 +47,8 @@ public class PauseMenu : Singleton<PauseMenu>
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         AudioManager.PlaySFX(closeClip);
+        
+        EventSystem.current.SetSelectedGameObject(null); 
     }
 
     public static void ReturnToTitle() => GameManager.ReturnToTitle();

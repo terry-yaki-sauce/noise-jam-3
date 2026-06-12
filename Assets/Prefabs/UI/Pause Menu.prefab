@@ -90,7 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf69a6cb3f079d48b02e0a54cbb8574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
-  menuSFX: {fileID: 0}
   openClip: {fileID: 8300000, guid: d74ac2c165d3d8e48a16ac91737db9ec, type: 3}
   closeClip: {fileID: 8300000, guid: 2d42f149e9f90644a83d9a934e677dc3, type: 3}
   buttonClicks:
@@ -99,6 +98,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 076c2061a5bc77a41b703dd7849069d2, type: 3}
   - {fileID: 8300000, guid: ea30d00d0b40fec4286df35b7ef7f669, type: 3}
   buttonVolume: 1
+  firstSelected: {fileID: 790195155507290135}
 --- !u!1 &713502417205714225
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,9 +189,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 4956111991162854161}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -334,10 +334,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 3780966823747919434}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1

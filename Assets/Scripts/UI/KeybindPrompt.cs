@@ -50,6 +50,7 @@ public class KeybindPrompt : MonoBehaviour, IPromptable
 
   protected void OnControlsChanged(PlayerInput input)
   {
+    Debug.Log("changing control prompt");
     ChangePrompt(GameUtils.GetKeybind(input, action));
   }
 }

@@ -1,7 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NoteSystem;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Util;
 
 namespace NoteSystem
 {
@@ -29,6 +34,20 @@ public class NoteMenuView : Singleton<NoteMenuView>
     private int clipIndex;
 
     [SerializeField] private AudioClip failComboClip;
+
+    [Header("UI Tooltips")]
+    [SerializeField] private string notesFormat = "Notes - [{0}]";
+    [SerializeField] private List<InputActionReference> noteActions;
+    [SerializeField] private TextMeshProUGUI notesTMP;
+
+
+    [SerializeField] private string hideFormat = "Hide - [{0}]";
+    [SerializeField] private InputActionReference hideAction;
+    [SerializeField] private TextMeshProUGUI hideTMP;
+
+    [SerializeField] private string hintFormat = "Hint - [{0}]";
+    [SerializeField] private InputActionReference hintAction;
+    [SerializeField] private TextMeshProUGUI hintTMP;
 
     void Start()
     {
@@ -96,4 +115,44 @@ public class NoteMenuView : Singleton<NoteMenuView>
         Hide();
     }
 
+    public static void RefreshControls(PlayerInput input)
+    {
+        if (!input) return;
+
+        instance.ChangeTooltips(input);
+    }
+
+    private void ChangeTooltips(PlayerInput input)
+    {
+        if (input.currentControlScheme == "Gamepad")
+        {
+            notesTMP.text = string.Format(notesFormat, "D-pad");
+        }
+        else
+        {
+            string noteBinds = "";
+            int i;
+            InputActionReference action;
+            string bind;
+            for (i = 0; i < noteActions.Count - 1; i++)
+            {
+                action = noteActions[i];
+                bind = GameUtils.GetKeybind(input, action);
+
+                noteBinds += $"{bind}, ";
+            }
+            action = noteActions[i];
+            bind = GameUtils.GetKeybind(input, action);
+            noteBinds += $"{bind}";
+
+
+            notesTMP.text = string.Format(notesFormat, noteBinds[0], noteBinds[1], noteBinds[2], noteBinds[3]);
+        }
+
+        string hideBind = GameUtils.GetKeybind(input, hideAction);
+        hideTMP.text = string.Format(hideFormat, hideBind);
+
+        string hintBind = GameUtils.GetKeybind(input, hintAction);
+        hintTMP.text = string.Format(hintFormat, hintBind);
+    }
 }

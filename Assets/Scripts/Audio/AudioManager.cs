@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DimensionSwapping;
 using NoteSystem;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class AudioManager : Singleton<AudioManager>
     private System.Random rng = new();
 
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private List<AudioChorusFilter> chorusFilters;
+    [SerializeField] private List<AudioDistortionFilter> distortionFilters;
+    [SerializeField] private List<AudioEchoFilter> echoFilters;
 
     [SerializeField] private AudioSource heavenSource;
     [SerializeField] private AudioSource hellSource;
@@ -43,19 +47,6 @@ public class AudioManager : Singleton<AudioManager>
         base.Awake();
         DontDestroyOnLoad(gameObject);
         if (!musicSource) musicSource = GetComponent<AudioSource>();
-    }
-
-    void Start()
-    {
-        if (GameManager.instance)
-        {
-            heavenSource.mute = GameManager.ActiveDimension != Dimension.Heaven;
-        }
-        else
-        {
-            heavenSource.mute = false;
-        }
-        hellSource.mute = !hellSource.mute;
     }
 
     void Update()
@@ -165,6 +156,8 @@ public class AudioManager : Singleton<AudioManager>
 
         offSource.mute = true;
         liveSource.mute = false;
+
+        SetHellFilters(dimension);
     }
 
     public static void StartHeavenHellTrack(bool start = true) => instance?.StartHeavenHellTrackHelper(start);
@@ -177,6 +170,8 @@ public class AudioManager : Singleton<AudioManager>
         hellSource.Play();
         heavenSource.mute = GameManager.ActiveDimension != Dimension.Heaven;
         hellSource.mute = !heavenSource.mute;
+
+        SetHellFilters(GameManager.ActiveDimension);
     }
 
     public static void StopAllTracks() => instance?.StopAllTracksHelper();
@@ -198,5 +193,16 @@ public class AudioManager : Singleton<AudioManager>
         musicSource.Stop();
         if (clip) musicSource.clip = clip;
         musicSource.Play(); 
+    }
+
+    private void SetHellFilters(Dimension dimension)
+    {
+        bool enabled = Dimension.Hell == dimension;
+        foreach(AudioChorusFilter f in chorusFilters)
+            f.enabled = enabled;
+        foreach(AudioDistortionFilter f in distortionFilters)
+            f.enabled = enabled;
+        foreach(AudioEchoFilter f in echoFilters)
+            f.enabled = enabled;
     }
 }

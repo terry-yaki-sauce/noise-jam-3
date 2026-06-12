@@ -127,6 +127,8 @@ public class GameManager : Singleton<GameManager>
         if (!instance) return;
         if (!Player) return;
         if (!Player.PlayerInput) return;
-        instance?.ControlsChanged.Invoke(Player?.PlayerInput);
+        instance.ControlsChanged?.Invoke(Player.PlayerInput);
+
+        NoteMenuView.RefreshControls(Player.PlayerInput);
     }
 }

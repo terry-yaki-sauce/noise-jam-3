@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Dialogue
 {
@@ -55,6 +56,13 @@ namespace Dialogue
       instance.ShowLine();
     }
 
+    // hacky fix for controllers. prevents immediate navigation
+    private IEnumerator StallEventSystemSelection()
+    {
+      yield return null;
+      EventSystem.current.SetSelectedGameObject(choiceButtons[0].gameObject);
+    }
+
     /// <summary>
     /// Handles the player input to get the next dialogue
     /// </summary>
@@ -77,8 +85,16 @@ namespace Dialogue
             var choiceButton = choiceButtons[i];
             choiceButton.gameObject.SetActive(true);
           }
-        }
 
+          if (GameManager.Player.PlayerInput.currentControlScheme == "Gamepad")
+          {
+            StartCoroutine(StallEventSystemSelection());
+          }
+          else
+          {
+            EventSystem.current.SetSelectedGameObject(null);
+          }
+        }
       }
       else if (currentNode is DialogueChoiceNode)
       {
@@ -100,6 +116,7 @@ namespace Dialogue
     /// </summary>
     private void ShowLine()
     {
+      EventSystem.current.SetSelectedGameObject(null);
       if (dialogueIndex >= currentLines.Lines.Count)
       {
         EndDialogue();
@@ -111,46 +128,46 @@ namespace Dialogue
 
       switch (currentNode.CharacterToShow)
       {
-            case Character.Lucy:
-                playerNamePlateText.text = "Lucy";
-                playerNamePlateBox.SetActive(true);
-                NPCNamePlateBox.SetActive(false);
-                break;
-            case Character.System:
-                NPCNamePlateText.text = "System";
-                playerNamePlateBox.SetActive(false);
-                NPCNamePlateBox.SetActive(false);
-                break;
+        case Character.Lucy:
+          playerNamePlateText.text = "Lucy";
+          playerNamePlateBox.SetActive(true);
+          NPCNamePlateBox.SetActive(false);
+          break;
+        case Character.System:
+          NPCNamePlateText.text = "System";
+          playerNamePlateBox.SetActive(false);
+          NPCNamePlateBox.SetActive(false);
+          break;
         case Character.NPC:
-                NPCNamePlateText.text = "NPC";
-                playerNamePlateBox.SetActive(false);
-                NPCNamePlateBox.SetActive(true);
-                break;
+          NPCNamePlateText.text = "NPC";
+          playerNamePlateBox.SetActive(false);
+          NPCNamePlateBox.SetActive(true);
+          break;
         case Character.Gabe:
           NPCNamePlateText.text = "Gabe";
           playerNamePlateBox.SetActive(false);
           NPCNamePlateBox.SetActive(true);
           break;
         case Character.Amy:
-           NPCNamePlateText.text = "Amy";            
-           playerNamePlateBox.SetActive(false);
-           NPCNamePlateBox.SetActive(true);
-           break;
+          NPCNamePlateText.text = "Amy";
+          playerNamePlateBox.SetActive(false);
+          NPCNamePlateBox.SetActive(true);
+          break;
         case Character.DJ:
-            NPCNamePlateText.text = "DJ";
-            playerNamePlateBox.SetActive(false);
-            NPCNamePlateBox.SetActive(true);
-            break;
+          NPCNamePlateText.text = "DJ";
+          playerNamePlateBox.SetActive(false);
+          NPCNamePlateBox.SetActive(true);
+          break;
         case Character.Stranger:
-             NPCNamePlateText.text = "Stranger";
-             playerNamePlateBox.SetActive(false);
-             NPCNamePlateBox.SetActive(true);
-             break;
-         default:
-              Debug.LogWarning("No Character Plate Found!");
-              playerNamePlateBox.SetActive(false);
-              NPCNamePlateBox.SetActive(false);
-              break;
+          NPCNamePlateText.text = "Stranger";
+          playerNamePlateBox.SetActive(false);
+          NPCNamePlateBox.SetActive(true);
+          break;
+        default:
+          Debug.LogWarning("No Character Plate Found!");
+          playerNamePlateBox.SetActive(false);
+          NPCNamePlateBox.SetActive(false);
+          break;
       }
 
       if (currentNode.CharacterToShow != Character.Lucy)
@@ -209,6 +226,15 @@ namespace Dialogue
           var choiceButton = choiceButtons[i];
           choiceButton.gameObject.SetActive(true);
         }
+
+        if (GameManager.Player.PlayerInput.currentControlScheme == "Gamepad")
+        {
+          EventSystem.current.SetSelectedGameObject(choiceButtons[0].gameObject);
+        }
+        else
+        {
+          EventSystem.current.SetSelectedGameObject(null);
+        }
       }
     }
 
@@ -234,11 +260,15 @@ namespace Dialogue
       instance.gameObject.SetActive(false);
       Cursor.lockState = CursorLockMode.Locked;
       Cursor.visible = false;
+
+      EventSystem.current.SetSelectedGameObject(null);
     }
 
     public static void SelectChoice(int buttonIndex) => instance.SelectChoiceHelper(buttonIndex);
     private void SelectChoiceHelper(int buttonIndex)
     {
+      Debug.Log("Jumping");
+
       if (currentNode is not DialogueChoiceNode) return;
 
       var choiceNode = currentNode as DialogueChoiceNode;
