@@ -34,7 +34,7 @@ public class ProximityKeybindPrompt : KeybindPrompt, IPromptable
     HidePrompt();
     if (!subscribed)
     {
-      GameManager.Player.PlayerInput.onControlsChanged += OnControlsChanged;
+      GameManager.instance.ControlsChanged += OnControlsChanged;
       subscribed = true;
       GameManager.Player.interacted += HidePrompt;
     }

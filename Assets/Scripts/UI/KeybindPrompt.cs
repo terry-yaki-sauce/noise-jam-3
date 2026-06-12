@@ -28,7 +28,7 @@ public class KeybindPrompt : MonoBehaviour, IPromptable
     ChangePrompt(GameUtils.GetKeybind(GameManager.Player.PlayerInput, action));
     if (!subscribed)
     {
-      GameManager.Player.PlayerInput.onControlsChanged += OnControlsChanged;
+      GameManager.instance.ControlsChanged += OnControlsChanged;
       subscribed = true;
     }
   }
@@ -51,6 +51,7 @@ public class KeybindPrompt : MonoBehaviour, IPromptable
   protected void OnControlsChanged(PlayerInput input)
   {
     Debug.Log("changing control prompt");
+    Debug.Log(GameUtils.GetKeybind(input, action));
     ChangePrompt(GameUtils.GetKeybind(input, action));
   }
 }
