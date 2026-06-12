@@ -97,35 +97,35 @@ public class PlayerNoteControl : PlayerSystem
         if (CheckEqual(notes, DIMENSION_SWAP_COMBO))
         {
             // set a timeout and give visual feedback
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess);
             GameManager.SwapDimension();
         }
         else if (CheckEqual(notes, DIMENSION_SWAP_HEAVEN))
         {
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
-            GameManager.SwapDimension(Dimension.Heaven);
+            NoteStatus status = GameManager.SwapDimension(Dimension.Heaven);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status);
         }
         else if (CheckEqual(notes, DIMENSION_SWAP_HELL))
         {
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
-            GameManager.SwapDimension(Dimension.Hell);
+            NoteStatus status = GameManager.SwapDimension(Dimension.Hell);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status);
         }
         else if (CheckEqual(notes, MODIFY_GRID_COMBO) && GridManager.instance)
         {
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess);
             // instead of the default player input, we need the grid control
             targetActionMap = "Grid";
         }
         else if (CheckEqual(notes,RESET_LEVEL_COMBO))
         {
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess);
             
             GridManager.ResetPuzzle();
         }
         else
         {
             // ... also set a timeout and give visual feedback?
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: false);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.fail);
         }
 
         yield return StartCoroutine(enumerator);

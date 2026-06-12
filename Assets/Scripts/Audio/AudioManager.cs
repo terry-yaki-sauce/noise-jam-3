@@ -1,9 +1,14 @@
+using System;
 using System.Collections.Generic;
+using DimensionSwapping;
 using NoteSystem;
 using UnityEngine;
+using Util;
 
 public class AudioManager : Singleton<AudioManager>
 {
+    private System.Random rng = new();
+
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
 
@@ -18,7 +23,14 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioSource stepSource;
     [SerializeField] private List<AudioClip> footStepClips;
     // private int footstepIndex = 0;
-    private System.Random rng = new();
+
+    [Header("Dimension Swap")]
+    [SerializeField] private AudioSource dimensionSwapSource;
+    [SerializeField] private AudioClip heavenSwap;
+    [SerializeField] private AudioClip hellSwap;
+
+    [SerializeField] private float invalidVolume = .3f;
+    [SerializeField] private List<AudioClip> invalid;
 
     protected override void Awake()
     {
@@ -44,7 +56,27 @@ public class AudioManager : Singleton<AudioManager>
         instance?.sfxSource?.PlayOneShot(clip, volume);
     }
 
-    public static void PlayNote(NoteValue value, float volume = 1f) => instance.PlayNoteHelper(value,volume);
+    public static void SampleAndPlay(List<AudioClip> clips, float volume = 1f)
+    {
+        AudioClip clip = GameUtils.GetRandomElement(clips);
+        instance?.sfxSource?.PlayOneShot(clip, volume);
+    }
+
+    public static void PlaySFXfromSource(AudioSource source, AudioClip clip, float volume = 1f)
+    {
+        source.Stop();
+        source.clip = clip;
+        source.volume = volume;
+        source.Play();
+    }
+
+    public static void PlayInvalid()
+    {
+        if (!instance) return;
+        SampleAndPlay(instance.invalid,instance.invalidVolume);
+    }
+
+    public static void PlayNote(NoteValue value, float volume = 1f) => instance?.PlayNoteHelper(value, volume);
     private void PlayNoteHelper(NoteValue value, float volume = 1f)
     {
         AudioClip clip = null;
@@ -74,12 +106,22 @@ public class AudioManager : Singleton<AudioManager>
     public static void PlayFootstep() => instance.PlayFootstepHelper();
     private void PlayFootstepHelper()
     {
-        int k = rng.Next(0,footStepClips.Count);
+        int k = rng.Next(0, footStepClips.Count);
         AudioClip nextClip = footStepClips[k];
         // footstepIndex = (footstepIndex + 1) % footStepClips.Count;
 
         stepSource.Stop();
         stepSource.clip = nextClip;
         stepSource?.Play();
+    }
+
+    public static void PlayDimensionSwap(Dimension dimension) => instance?.PlayDimensionSwapHelper(dimension);
+    private void PlayDimensionSwapHelper(Dimension dimension)
+    {
+        AudioClip clip = dimension == Dimension.Heaven ? heavenSwap : hellSwap;
+        // TODO: add some fade-in? meh...
+        dimensionSwapSource.Stop();
+        dimensionSwapSource.clip = clip;
+        dimensionSwapSource.Play();
     }
 }

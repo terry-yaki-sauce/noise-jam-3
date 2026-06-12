@@ -1,8 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Audio;
+using NoteSystem;
 using UnityEngine;
 
+namespace NoteSystem
+{
+    public enum NoteStatus
+    {
+        sucess,
+        fail,
+        warn
+    }
+}
 /// <summary>
 /// Handles revealing the overall UI of the note playing menu. This includes any potential extra UI elements or effects
 /// </summary>
@@ -19,6 +28,8 @@ public class NoteMenuView : Singleton<NoteMenuView>
     private System.Random rng = new();
     private int clipIndex;
 
+    [SerializeField] private AudioClip failComboClip;
+
     void Start()
     {
         gameObject.SetActive(false);
@@ -30,7 +41,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
         instance.gameObject.SetActive(true);
         if (openClips.Count > 0)
         {
-            clipIndex = rng.Next(0,openClips.Count);
+            clipIndex = rng.Next(0, openClips.Count);
             AudioClip clip = openClips[clipIndex];
             AudioManager.PlaySFX(clip);
         }
@@ -65,7 +76,22 @@ public class NoteMenuView : Singleton<NoteMenuView>
     }
     public IEnumerator CloseMenuWithNoteComboHelper(bool success)
     {
+        if (!success)
+            AudioManager.PlaySFX(failComboClip);
         closingSequence = StartCoroutine(NoteDisplay.ShowSuccess(success));
+        yield return closingSequence;
+        Hide();
+    }
+
+    public static IEnumerator CloseMenuWithNoteCombo(NoteStatus status = NoteStatus.sucess)
+    {
+        yield return instance.CloseMenuWithNoteComboHelper(status);
+    }
+    public IEnumerator CloseMenuWithNoteComboHelper(NoteStatus status)
+    {
+        if (status == NoteStatus.fail)
+            AudioManager.PlaySFX(failComboClip);
+        closingSequence = StartCoroutine(NoteDisplay.ShowSuccess(status));
         yield return closingSequence;
         Hide();
     }

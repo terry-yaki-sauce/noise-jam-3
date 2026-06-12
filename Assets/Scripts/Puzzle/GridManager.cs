@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using DimensionSwapping;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 using UnityEngine.SceneManagement;
+using Util;
 public class GridManager : Singleton<GridManager>
 {
   [SerializeField] private GridCursor cursor;
@@ -29,6 +31,16 @@ public class GridManager : Singleton<GridManager>
   [SerializeField] private AudioClip puzzleOpen;
   [SerializeField] private AudioClip puzzleComplete;
   [SerializeField] private AudioClip puzzleReset;
+
+  [SerializeField] private AudioSource gridAudioSource;
+  [SerializeField] private float gridVolume = .5f;
+  [SerializeField] private List<AudioClip> cursorPlace;
+  [SerializeField] private List<AudioClip> cursorMove;
+  [SerializeField] private List<AudioClip> itemMove;
+  [SerializeField] private List<AudioClip> itemPlace;
+  [SerializeField] private List<AudioClip> itemPickup;
+  // [SerializeField] private float invalidVolume = .3f;
+  // [SerializeField] private List<AudioClip> invalid;
 
   protected override void Awake()
   {
@@ -110,12 +122,15 @@ public class GridManager : Singleton<GridManager>
     if (!cursorCell.IsOccupied)
     {
       Debug.Log("no object in cell");
-      // TODO: rejection feedback
+      // AudioManager.SampleAndPlay(invalid,invalidVolume);
+      AudioManager.SampleAndPlay(cursorPlace,gridVolume);
       return;
     }
 
     if (!cursorCell.OccupyingObject.IsMovable)
     {
+      // AudioManager.SampleAndPlay(invalid,invalidVolume);
+      AudioManager.PlayInvalid();
       return;
     }
 
@@ -138,10 +153,14 @@ public class GridManager : Singleton<GridManager>
     {
       t.SetParent(selectedTransform);
     }
+
+    AudioManager.SampleAndPlay(itemPickup,gridVolume);
   }
 
   private void TryReleaseObject(GridCell cursorCell)
   {
+    if (!selectedObject) return;
+
     // theoretically, it should be impossible to place an object in an invalid location since IsValidMovement is always checked
     // if (cellIndex.IsOccupied())
     // {
@@ -158,6 +177,8 @@ public class GridManager : Singleton<GridManager>
 
     selectedObject = null;
     selectedTransform = null;
+
+    AudioManager.SampleAndPlay(itemPlace,gridVolume);
   }
 
   public static bool IsValidDimensionSwap()
@@ -281,6 +302,10 @@ public class GridManager : Singleton<GridManager>
 
       CheckGoalHoveredHelper();
     }
+
+    // audio
+    AudioManager.SampleAndPlay(cursorMove,gridVolume);
+    if (IsHoldingObject) AudioManager.SampleAndPlay(itemMove,gridVolume);
   }
 
   // can't really imagine a use case for this, but this should check whether the goal state is reached. realistically, CheckGoalHovered() should cover all bases first anyway

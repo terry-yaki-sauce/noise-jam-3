@@ -76,4 +76,26 @@ public class NoteDisplay : MonoBehaviour
 
         yield return new WaitForSeconds(finishSongWaitTime);
     }
+
+    public IEnumerator ShowSuccess(NoteStatus success = NoteStatus.sucess)
+    {
+        foreach (Note n in notes)
+        {
+            n.Clear();
+            switch(success)
+            {
+                case NoteStatus.sucess:
+                    n.image.color = Color.green;
+                    break;
+                case NoteStatus.fail:
+                    n.image.color = Color.red;
+                    break;
+                case NoteStatus.warn:
+                    n.image.color = Color.yellow;
+                    break;
+            }
+        }
+
+        yield return new WaitForSeconds(finishSongWaitTime);
+    }
 }

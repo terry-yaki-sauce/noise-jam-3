@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using DimensionSwapping;
+using NoteSystem;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -77,21 +78,23 @@ public class GameManager : Singleton<GameManager>
         {
             // TODO: REJECTION FEEDBACK
             Debug.Log("Swap failed due to impeding object");
+            AudioManager.PlayInvalid();
             return;
         }
 
         // success
         activeDimension = (Dimension)(((int)activeDimension + 1) % DimensionConfig.NUM_DIMENSIONS);
         SwappedDimension?.Invoke(activeDimension);
+        AudioManager.PlayDimensionSwap(activeDimension);
         GridManager.CheckGoalHovered();
     }
 
 
-    public static void SwapDimension(Dimension dimension) => instance.SwapDimensionHelper(dimension);
-    private void SwapDimensionHelper(Dimension dimension)
+    public static NoteStatus SwapDimension(Dimension dimension) => instance.SwapDimensionHelper(dimension);
+    private NoteStatus SwapDimensionHelper(Dimension dimension)
     {
         // if we didn't actually change dimensions...
-        if (activeDimension == dimension) return;
+        if (activeDimension == dimension) return NoteStatus.warn;
 
 
         // NOTE: may want to move this to PlayerNoteControl, if we want rejection feedback to be on the note page, but that is probably not desirable?
@@ -99,13 +102,17 @@ public class GameManager : Singleton<GameManager>
         {
             // TODO: REJECTION FEEDBACK
             Debug.Log("Swap failed due to impeding object");
-            return;
+            AudioManager.PlayInvalid();
+            return NoteStatus.warn;
         }
 
         // success
         activeDimension = dimension;
         SwappedDimension?.Invoke(activeDimension);
+        AudioManager.PlayDimensionSwap(dimension);
         GridManager.CheckGoalHovered();
+
+        return NoteStatus.sucess;
     }
 
     public static void RefreshKeybindUIs()

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
@@ -57,6 +59,15 @@ namespace Util
           return bindings[i].ToDisplayString();
       }
       return keyBind;
+    }
+
+    private static System.Random rng = new();
+    public static T GetRandomElement<T>(List<T> values)
+    {
+      if (values == null || values.Count == 0) return default;
+
+      int k = rng.Next(0,values.Count);
+      return values[k];
     }
   }
 }
