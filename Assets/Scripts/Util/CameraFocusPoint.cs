@@ -8,6 +8,9 @@ namespace Util
         [SerializeField] private Transform focusTransform;
         public Vector3 position => focusTransform.position;
 
+        [SerializeField] private float cameraZoom = 1f;
+        public float CameraZoom => cameraZoom;
+
         void OnTriggerEnter2D(Collider2D collision)
         {
             GameObject collisionObject = collision.gameObject;

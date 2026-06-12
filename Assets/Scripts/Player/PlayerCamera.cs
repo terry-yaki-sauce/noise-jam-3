@@ -7,6 +7,8 @@ public class PlayerCamera : PlayerSystem
     [SerializeField] private Transform cameraFollowPoint;
     public CameraFocusPoint FocusPoint { get; private set; }
 
+    private const float DEFAULT_SIZE = 5.4f;
+
     void Start()
     {
         bounds = Camera.main.GetComponent<CameraBounds>();
@@ -23,6 +25,7 @@ public class PlayerCamera : PlayerSystem
             float y = FocusPoint.position.y;
             float z = cameraTransform.position.z;
             cameraTransform.position = new(x,y,z);
+            camera.orthographicSize = DEFAULT_SIZE / FocusPoint.CameraZoom;
         }
         else
         {
@@ -41,6 +44,7 @@ public class PlayerCamera : PlayerSystem
             y = Mathf.Clamp(y, bottomBound, topBound);
             float z = cameraTransform.position.z;
             cameraTransform.position = new Vector3(x, y, z);
+            camera.orthographicSize = DEFAULT_SIZE;
         }
 
 
