@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : PlayerSystem
 {
+  private static readonly int SecondsSinceLastMovementHash = Animator.StringToHash("secondsSinceLastMovement");
   private static readonly int SpeedHash = Animator.StringToHash("speed");
   [SerializeField] private float playerSpeed;
     [SerializeField] private float playerJumpImpulse;
@@ -13,6 +14,8 @@ public class PlayerMovement : PlayerSystem
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
 
+    private float secondsSinceLastMovement = 0;
+
     protected override void Awake()
     {
         base.Awake();
@@ -22,6 +25,14 @@ public class PlayerMovement : PlayerSystem
 
     void FixedUpdate()
     {
+        if (Mathf.Abs(dir.x) > 0)
+        {
+            secondsSinceLastMovement = 0;
+        } else
+        {
+            secondsSinceLastMovement += Time.fixedDeltaTime;
+        }
+
         // sprite animation
         if(dir.x > 0)
         {
@@ -33,6 +44,7 @@ public class PlayerMovement : PlayerSystem
         }
 
         player.Animator.SetFloat(SpeedHash, Mathf.Abs(rb.linearVelocityX));
+        player.Animator.SetFloat(SecondsSinceLastMovementHash,secondsSinceLastMovement);
         rb.linearVelocityX = dir.x * playerSpeed * Time.deltaTime;
     }
 
@@ -55,5 +67,10 @@ public class PlayerMovement : PlayerSystem
     {
         RaycastHit2D hit = Physics2D.Raycast(feet.position, Vector2.down, .1f, LayerMask.GetMask("Default"));
         return hit;
+    }
+
+    private void PlayFootStep()
+    {
+        AudioManager.PlayFootstep();
     }
 }

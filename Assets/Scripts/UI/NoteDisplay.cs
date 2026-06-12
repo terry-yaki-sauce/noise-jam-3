@@ -56,6 +56,7 @@ public class NoteDisplay : MonoBehaviour
         foreach (Note n in notes)
         {
             n.image.color = Color.clear;
+            n.textMesh.text = "";
         }
     }
 

@@ -90,9 +90,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoteMenuView
   noteDisplay: {fileID: 9169998541363273228}
-  menuSFX: {fileID: 0}
-  openClip: {fileID: 8300000, guid: 78f80e39475839340945496aa462f1a0, type: 3}
-  closeCLip: {fileID: 8300000, guid: a63f89623b5ac23459a5c7feb0ec8d3d, type: 3}
+  openClips:
+  - {fileID: 8300000, guid: 748c7fa0bcea64441abf128d533713bd, type: 3}
+  - {fileID: 8300000, guid: 1db31d693c5fd264f951531a9e1fa2c9, type: 3}
+  - {fileID: 8300000, guid: 3b48782d51f9fb342814a8868daf2c4c, type: 3}
+  - {fileID: 8300000, guid: d0755095fffa429449aae0029daff3de, type: 3}
+  closeClips:
+  - {fileID: 8300000, guid: 623e6fd28e2edc646a8c528ec219282e, type: 3}
+  - {fileID: 8300000, guid: 7ab05719fab20f740a520fbf2a46b17c, type: 3}
+  - {fileID: 8300000, guid: 9263e230efb6a544a9cac224b7dce905, type: 3}
+  - {fileID: 8300000, guid: 3febd83132ee0c34bb12a350a1b66d72, type: 3}
 --- !u!1 &6065112700487311079
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DimensionSwapping;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class GridManager : Singleton<GridManager>
 {
   [SerializeField] private GridCursor cursor;
@@ -11,6 +12,7 @@ public class GridManager : Singleton<GridManager>
   [SerializeField] private GoalPoint goal;
   private readonly List<GridCell> goalCells = new();
   private bool goalFlag = false;
+  public bool PuzzleComplete => goalFlag;
 
   [SerializeField] private Transform topLeft, bottomRight;
   private int leftBound { get => grid.WorldToCell(topLeft.position).x; }
@@ -23,6 +25,10 @@ public class GridManager : Singleton<GridManager>
   public static GridObject SelectedObject => instance.selectedObject;
   private Transform selectedTransform;
   private GridCell[][] cells;
+
+  [SerializeField] private AudioClip puzzleOpen;
+  [SerializeField] private AudioClip puzzleComplete;
+  [SerializeField] private AudioClip puzzleReset;
 
   protected override void Awake()
   {
@@ -61,9 +67,13 @@ public class GridManager : Singleton<GridManager>
   public static void Show() => instance?.ShowHelper();
   private void ShowHelper()
   {
-    // TODO: keep cursor bound to the screen using the camera bounds
+    Vector3Int originalPos = cursor.GridPosition;
+    var clampedPos = ClampToCameraWorldBounds(new(originalPos.x,originalPos.y));
 
     cursor?.gameObject.SetActive(true);
+    SetCursor(clampedPos);
+
+    AudioManager.PlaySFX(puzzleOpen);
   }
   public static void Hide() => instance?.HideHelper();
   private void HideHelper()
@@ -71,6 +81,11 @@ public class GridManager : Singleton<GridManager>
     TryReleaseObject(GetCell(cursor.GridPosition));
 
     cursor?.gameObject.SetActive(false);
+
+    if (goalFlag)
+    {
+      AudioManager.PlaySFX(puzzleComplete);
+    }
   }
 
   /// <summary>
@@ -332,6 +347,13 @@ public class GridManager : Singleton<GridManager>
       goalFlag = true;
       goal.goalEvent.Invoke(goalFlag);
     }
+  }
+
+  public static void ResetPuzzle() => instance.ResetPuzzleHelper();
+  private void ResetPuzzleHelper()
+  {
+    AudioManager.PlaySFX(puzzleReset);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
   }
 
   /// <summary>

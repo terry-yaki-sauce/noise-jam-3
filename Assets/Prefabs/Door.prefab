@@ -109,6 +109,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   scene: {fileID: 102900000, guid: 79faf21a9e52bb84e9d94d50c08696c0, type: 3}
   loadPoint: {x: 4.31, y: 1.26}
+  doorSFX:
+  - {fileID: 8300000, guid: e59309f5ca99df742a67af2b5feecd1c, type: 3}
+  - {fileID: 8300000, guid: e621377093133a34881d0b19d656ea9d, type: 3}
 --- !u!61 &25846374761191964
 BoxCollider2D:
   m_ObjectHideFlags: 0

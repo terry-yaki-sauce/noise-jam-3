@@ -49,6 +49,7 @@ public class PlayerNoteControl : PlayerSystem
         ClearNotes();
 
         NoteMenuView.Hide();
+        NoteMenuView.PlayClosingSFX();
         playerInput.SwitchCurrentActionMap(targetActionMap);
         // nice little hack cuz im lazy. this should called via some sort event invocation
         if (targetActionMap == "Grid")
@@ -71,7 +72,7 @@ public class PlayerNoteControl : PlayerSystem
         // set the next note
         notes[noteIndex] = value;
         NoteMenuView.instance.NoteDisplay.SetNote(value, noteIndex);
-        NoteAudioPlayer.PlayNote(value);
+        AudioManager.PlayNote(value);
         noteIndex++;
 
 
@@ -119,7 +120,7 @@ public class PlayerNoteControl : PlayerSystem
         {
             enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
             
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GridManager.ResetPuzzle();
         }
         else
         {
