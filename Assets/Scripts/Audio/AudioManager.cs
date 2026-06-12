@@ -10,6 +10,11 @@ public class AudioManager : Singleton<AudioManager>
     private System.Random rng = new();
 
     [SerializeField] private AudioSource musicSource;
+
+    [SerializeField] private AudioSource heavenSource;
+    [SerializeField] private AudioSource hellSource;
+    private bool startHeavenHellTrack = false;
+
     [SerializeField] private AudioSource sfxSource;
 
     [Header("Notes")]
@@ -38,6 +43,32 @@ public class AudioManager : Singleton<AudioManager>
         base.Awake();
         DontDestroyOnLoad(gameObject);
         if (!musicSource) musicSource = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
+        if (GameManager.instance)
+        {
+            heavenSource.mute = GameManager.ActiveDimension != Dimension.Heaven;
+        }
+        else
+        {
+            heavenSource.mute = false;
+        }
+        hellSource.mute = !hellSource.mute;
+    }
+
+    void Update()
+    {
+        // if either one stops, restart both
+        if (startHeavenHellTrack && !(heavenSource.isPlaying && hellSource.isPlaying))
+        {
+            heavenSource.Stop();
+            hellSource.Stop();
+
+            heavenSource.Play();
+            hellSource.Play();
+        }
     }
 
     public static void LoadSong(AudioClip audioClip)
@@ -74,7 +105,7 @@ public class AudioManager : Singleton<AudioManager>
     public static void PlayInvalid()
     {
         if (!instance) return;
-        SampleAndPlay(instance.invalid,instance.invalidVolume);
+        SampleAndPlay(instance.invalid, instance.invalidVolume);
     }
 
     public static void PlayNote(NoteValue value, float volume = 1f) => instance?.PlayNoteHelper(value, volume);
@@ -124,5 +155,48 @@ public class AudioManager : Singleton<AudioManager>
         dimensionSwapSource.Stop();
         dimensionSwapSource.clip = clip;
         dimensionSwapSource.Play();
+    }
+
+    public static void SwitchDimensionTracks(Dimension dimension) => instance?.SwitchDimensionsHelper(dimension);
+    private void SwitchDimensionsHelper(Dimension dimension)
+    {
+        AudioSource liveSource = dimension == Dimension.Heaven ? heavenSource : hellSource;
+        AudioSource offSource = dimension == Dimension.Heaven ? hellSource : heavenSource;
+
+        offSource.mute = true;
+        liveSource.mute = false;
+    }
+
+    public static void StartHeavenHellTrack(bool start = true) => instance?.StartHeavenHellTrackHelper(start);
+    private void StartHeavenHellTrackHelper(bool start)
+    {
+        musicSource.Stop();
+
+        startHeavenHellTrack = start;
+        heavenSource.Play();
+        hellSource.Play();
+        heavenSource.mute = GameManager.ActiveDimension != Dimension.Heaven;
+        hellSource.mute = !heavenSource.mute;
+    }
+
+    public static void StopAllTracks() => instance?.StopAllTracksHelper();
+    private void StopAllTracksHelper()
+    {
+        startHeavenHellTrack = false;
+        heavenSource.Stop();
+        hellSource.Stop();
+        musicSource.Stop();
+    }
+
+    public static void StartGenericTrack(AudioClip clip = null) => instance.StartGenericTrackHelper(clip);
+    private void StartGenericTrackHelper(AudioClip clip = null)
+    {
+        startHeavenHellTrack = false;
+        heavenSource.Stop();
+        hellSource.Stop();
+
+        musicSource.Stop();
+        if (clip) musicSource.clip = clip;
+        musicSource.Play(); 
     }
 }

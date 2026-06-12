@@ -36,7 +36,11 @@ public class GameManager : Singleton<GameManager>
     public static void LoadNextScene() => LoadScene(SceneManager.GetActiveScene().buildIndex + 1 %
               SceneManager.sceneCountInBuildSettings);
 
-    public static void ReturnToTitle() => LoadScene(TITLE_INDEX);
+    public static void ReturnToTitle()
+    {
+        AudioManager.StopAllTracks();
+        LoadScene(TITLE_INDEX);
+    } 
 
     public static void LoadScene(int index)
     {
@@ -86,6 +90,7 @@ public class GameManager : Singleton<GameManager>
         activeDimension = (Dimension)(((int)activeDimension + 1) % DimensionConfig.NUM_DIMENSIONS);
         SwappedDimension?.Invoke(activeDimension);
         AudioManager.PlayDimensionSwap(activeDimension);
+        AudioManager.SwitchDimensionTracks(activeDimension);
         GridManager.CheckGoalHovered();
     }
 
@@ -110,6 +115,7 @@ public class GameManager : Singleton<GameManager>
         activeDimension = dimension;
         SwappedDimension?.Invoke(activeDimension);
         AudioManager.PlayDimensionSwap(dimension);
+        AudioManager.SwitchDimensionTracks(dimension);
         GridManager.CheckGoalHovered();
 
         return NoteStatus.sucess;
