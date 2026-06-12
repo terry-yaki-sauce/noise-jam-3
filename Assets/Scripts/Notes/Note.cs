@@ -27,6 +27,7 @@ namespace NoteSystem
         private float a;
         private float[] alphas;
         public TextMeshProUGUI textMesh;
+        private bool cleared = false;
 
         void Awake()
         {
@@ -43,10 +44,13 @@ namespace NoteSystem
 
         public void Clear()
         {
-            a = image.color.a;
-            for (int i = 0; i < images.Length; i++)
+            if (!cleared)
             {
-                alphas[i] = images[i].color.a;
+                a = image.color.a;
+                for (int i = 0; i < images.Length; i++)
+                {
+                    alphas[i] = images[i].color.a;
+                }
             }
 
             image.color = new(image.color.r, image.color.g, image.color.b, 0);
@@ -55,6 +59,7 @@ namespace NoteSystem
                 i.color = new(i.color.r, i.color.g, i.color.b, 0);
             }
             textMesh.text = "";
+            cleared = true;
         }
 
         internal void Show()
@@ -66,6 +71,7 @@ namespace NoteSystem
                 image.color = new(image.color.r, image.color.g, image.color.b, alphas[i]);
             }
             textMesh.text = "";
+            cleared = false;
         }
     }
 

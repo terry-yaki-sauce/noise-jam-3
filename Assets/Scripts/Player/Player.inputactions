@@ -1087,6 +1087,17 @@
             "bindings": [
                 {
                     "name": "",
+                    "id": "ef45260f-3472-4b5f-8a42-22400f1bf32a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Note 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "662e9952-0384-4505-9024-00efafd9f4b8",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -1153,6 +1164,17 @@
                 },
                 {
                     "name": "",
+                    "id": "245e8980-9033-4423-8c11-7489a3216824",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Note 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7dc54d71-4107-449d-a637-07826a3f89af",
                     "path": "<Keyboard>/2",
                     "interactions": "",
@@ -1175,6 +1197,17 @@
                 },
                 {
                     "name": "",
+                    "id": "0f85ff96-8d29-41d8-88ff-284edeec3536",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Note 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d328028b-7cd0-4084-a2fd-5e78c6f44f70",
                     "path": "<Keyboard>/3",
                     "interactions": "",
@@ -1192,6 +1225,17 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Note 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b20e1a5-9500-4518-ad4a-9e803ec10cdd",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Note 4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
