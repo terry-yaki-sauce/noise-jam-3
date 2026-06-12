@@ -374,7 +374,7 @@ public class GridManager : Singleton<GridManager>
     }
   }
 
-  public static void ResetPuzzle() => instance.ResetPuzzleHelper();
+  public static void ResetPuzzle() => instance?.ResetPuzzleHelper();
   private void ResetPuzzleHelper()
   {
     AudioManager.PlaySFX(puzzleReset);

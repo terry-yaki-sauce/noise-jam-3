@@ -48,6 +48,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
     [SerializeField] private string hintFormat = "Hint - [{0}]";
     [SerializeField] private InputActionReference hintAction;
     [SerializeField] private TextMeshProUGUI hintTMP;
+    [SerializeField] private GameObject hintObject;
 
     void Start()
     {
@@ -64,6 +65,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
             AudioClip clip = openClips[clipIndex];
             AudioManager.PlaySFX(clip);
         }
+        hintObject.SetActive(false);
     }
 
     public static void Hide() => instance.HideHelper();
@@ -76,6 +78,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
         }
         gameObject.SetActive(false);
         noteDisplay.ResetNotes();
+        hintObject.SetActive(false);
     }
 
     public static void PlayClosingSFX() => instance.PlayClosingSFXHelper();
@@ -155,4 +158,9 @@ public class NoteMenuView : Singleton<NoteMenuView>
         string hintBind = GameUtils.GetKeybind(input, hintAction);
         hintTMP.text = string.Format(hintFormat, hintBind);
     }
+
+  internal static void ToggleSongHints()
+  {
+    instance.hintObject.SetActive(!instance.hintObject.activeSelf);
+  }
 }

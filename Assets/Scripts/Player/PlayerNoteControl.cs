@@ -59,6 +59,11 @@ public class PlayerNoteControl : PlayerSystem
         player.Animator.SetBool(PlayingInstrumentHash, false);
     }
 
+    void OnHint()
+    {
+        NoteMenuView.ToggleSongHints();
+    }
+
     // there is probably a more elegant way to do this using the input actions map, but im way too lazy rn to read those docs so whatever
     void OnNote1() => AddNote(NoteValue.G);
     void OnNote2() => AddNote(NoteValue.ASharp);

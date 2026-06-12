@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,19 +23,39 @@ namespace NoteSystem
     {
         public NoteValue value = NoteValue.Hidden;
         [HideInInspector] public Image image;
+        private Image[] images;
+        private float[] alphas;
         public TextMeshProUGUI textMesh;
 
-        void Start()
+        void Awake()
         {
             image = GetComponent<Image>();
+            images = GetComponentsInChildren<Image>();
+            alphas = new float[images.Length];
+            for (int i = 0; i < images.Length; i++)
+            {
+                alphas[i] = images[i].color.a;
+            }
             // because we only set the color to clear, this means that the notes will still take up space inside of the Grid Layout. You need to either delete the objects and instantiate as needed, or disable the gameObjects themselves for the Grid Layout to automatically space notes. This (probably) won't matter
-            image.color = Color.clear;
-            textMesh.text = "";
         }
 
         public void Clear()
         {
             image.color = Color.clear;
+            foreach (Image i in images)
+            {
+                i.color = new(i.color.r, i.color.g, i.color.b, 0);
+            }
+            textMesh.text = "";
+        }
+
+        internal void Show()
+        {
+            for (int i = 0; i < images.Length; i++)
+            {
+                Image image = images[i];
+                image.color = new(image.color.r, image.color.g, image.color.b, alphas[i]);
+            }
             textMesh.text = "";
         }
     }
