@@ -14,5 +14,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Heaven Hell Test.unity
     guid: 79faf21a9e52bb84e9d94d50c08696c0
+  - enabled: 1
+    path: Assets/Scenes/Level Rooms/Bathroom.unity
+    guid: 9208b30a524bfdf4788b2058022acb4b
+  - enabled: 1
+    path: Assets/Scenes/Level Rooms/2ndFloorBar.unity
+    guid: 035a14560a520a14cb81f7f3c7b0deec
+  - enabled: 1
+    path: Assets/Scenes/Level Rooms/Dance Floor.unity
+    guid: 52c44ef53bbce0749ade7afe32a1780e
+  - enabled: 1
+    path: Assets/Scenes/Level Rooms/Lounge.unity
+    guid: 436dda8d877e38d4c849935a62f7403d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

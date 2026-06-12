@@ -31,7 +31,8 @@ MonoBehaviour:
     - rid: 8840176461771964502
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
-        text: 'Make the dissonant harmonize and unite the worlds as one.
+        text: 'Watch your step as you walk through the different realities. Make
+          them reveal the path forward with the tools at your disposal.
 
 '
         characterToShow: 3
