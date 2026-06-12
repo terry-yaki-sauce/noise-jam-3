@@ -9,8 +9,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class Player : MonoBehaviour
 {
-    
     public PlayerInput PlayerInput { get; private set; }
+    public Animator Animator {get; private set;}
     public InputAction DialogueNext { get; private set; }
     
     [DoNotSerialize] public IFocusable focusedTarget;
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        Animator = GetComponent<Animator>();
         PlayerInput = GetComponent<PlayerInput>();
         DialogueNext = PlayerInput.actions.FindAction("Dialogue/Next");
     }

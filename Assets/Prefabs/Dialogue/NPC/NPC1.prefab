@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 4020440391927099363}
   - component: {fileID: -1136697448239997228}
   m_Layer: 0
-  m_Name: Interactable Dialogue
+  m_Name: NPC1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6715321481824193918, guid: 8e17f356d84aded458586cb4a2537750, type: 3}
+  m_Sprite: {fileID: 8224124334607301300, guid: ee9afa61cde1bab4f84fa5eec7046a9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -363,7 +363,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.355, y: 2.12}
+    oldSize: {x: 2.16, y: 4.46}
     newSize: {x: 1.355, y: 2.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

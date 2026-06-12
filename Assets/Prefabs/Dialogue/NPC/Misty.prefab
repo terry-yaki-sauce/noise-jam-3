@@ -229,9 +229,9 @@ GameObject:
   - component: {fileID: 5240907907042357121}
   - component: {fileID: 3933111328359379169}
   - component: {fileID: 4020440391927099363}
-  - component: {fileID: -1136697448239997228}
+  - component: {fileID: -4377979644919016772}
   m_Layer: 0
-  m_Name: Interactable Dialogue
+  m_Name: Misty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6715321481824193918, guid: 8e17f356d84aded458586cb4a2537750, type: 3}
+  m_Sprite: {fileID: -4514138452195961756, guid: 80267d14d2c958446b560d71fb21fa6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -363,7 +363,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.355, y: 2.12}
+    oldSize: {x: 3, y: 5.4}
     newSize: {x: 1.355, y: 2.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   textMesh: {fileID: 3003750856259684424}
   action: {fileID: -6321826045522962673, guid: 39f9c294a2d871041b83d9112e8cea13, type: 3}
   format: '[{0}]'
---- !u!95 &-1136697448239997228
+--- !u!95 &-4377979644919016772
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -396,7 +396,7 @@ Animator:
   m_GameObject: {fileID: 8483282195402420876}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a1a5293f375cd040bfe1fa6e208430a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

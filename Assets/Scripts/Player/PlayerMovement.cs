@@ -3,7 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : PlayerSystem
 {
-    [SerializeField] private float playerSpeed;
+  private static readonly int SpeedHash = Animator.StringToHash("speed");
+  [SerializeField] private float playerSpeed;
     [SerializeField] private float playerJumpImpulse;
     [SerializeField] private Transform feet;
     
@@ -32,6 +33,8 @@ public class PlayerMovement : PlayerSystem
         }
 
         rb.linearVelocityX = dir.x * playerSpeed * Time.deltaTime;
+
+        player.Animator.SetFloat(SpeedHash, Mathf.Abs(dir.x));
     }
 
     void OnMove(InputValue value)

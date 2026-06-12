@@ -10,7 +10,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerNoteControl : PlayerSystem
 {
-    private PlayerInput playerInput;
+  private static readonly int PlayingInstrumentHash = Animator.StringToHash("playingInstrument");
+  private PlayerInput playerInput;
 
     [SerializeField] private int numNotes = 3;
     private int noteIndex = 0;
@@ -40,6 +41,7 @@ public class PlayerNoteControl : PlayerSystem
         targetActionMap = playerInput.currentActionMap.name;
         NoteMenuView.Show();
         playerInput.SwitchCurrentActionMap("Note Menu");
+        player.Animator.SetBool(PlayingInstrumentHash, true);
     }
 
     void OnCloseNoteMenu()
@@ -53,6 +55,7 @@ public class PlayerNoteControl : PlayerSystem
         {
             GridManager.Show();
         }
+        player.Animator.SetBool(PlayingInstrumentHash, false);
     }
 
     // there is probably a more elegant way to do this using the input actions map, but im way too lazy rn to read those docs so whatever
@@ -127,6 +130,7 @@ public class PlayerNoteControl : PlayerSystem
         yield return StartCoroutine(enumerator);
         ClearNotes();
         playerInput.SwitchCurrentActionMap(targetActionMap);
+        player.Animator.SetBool(PlayingInstrumentHash, false);
         if (targetActionMap == "Grid")
         {
             GridManager.Show();

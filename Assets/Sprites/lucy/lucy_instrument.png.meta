@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6ee0e131b23fc2b4f81c0109be56517a
+guid: 0a45d64298ac76f48a5903cc8c1fe641
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4160116658709138437
-    second: lucy_walk_0
+      213: 1134642198413427549
+    second: lucy_instrument_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lucy_walk_0
+      name: lucy_instrument_0
       rect:
         serializedVersion: 2
-        x: 77
-        y: 43
-        width: 169
-        height: 459
+        x: 56
+        y: 34
+        width: 216
+        height: 463
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 50c0b825f04bbb930800000000000000
-      internalID: 4160116658709138437
+      spriteID: d53c99f511f0fbf00800000000000000
+      internalID: 1134642198413427549
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lucy_walk_0: 4160116658709138437
+      lucy_instrument_0: 1134642198413427549
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

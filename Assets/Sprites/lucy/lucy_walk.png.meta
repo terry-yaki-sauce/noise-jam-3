@@ -1,0 +1,652 @@
+fileFormatVersion: 2
+guid: 7c01887ab9f40294780bcf445648b7b7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4160116658709138437
+    second: lucy_walk_0
+  - first:
+      213: 6615328524224231716
+    second: lucy_walk_1
+  - first:
+      213: 8463841125865366314
+    second: lucy_walk_2
+  - first:
+      213: 7527331437615875182
+    second: lucy_walk_3
+  - first:
+      213: 4263068886810960500
+    second: lucy_walk_4
+  - first:
+      213: -4220052249980647315
+    second: lucy_walk_5
+  - first:
+      213: -7273573194335708757
+    second: lucy_walk_6
+  - first:
+      213: 4209161062626936523
+    second: lucy_walk_7
+  - first:
+      213: -5744521774903593264
+    second: lucy_walk_8
+  - first:
+      213: 2253664448779979499
+    second: lucy_walk_9
+  - first:
+      213: 2406668051448930431
+    second: lucy_walk_10
+  - first:
+      213: 4616874354040490687
+    second: lucy_walk_11
+  - first:
+      213: 4859842886785318126
+    second: lucy_walk_12
+  - first:
+      213: -5813656801815404799
+    second: lucy_walk_13
+  - first:
+      213: -3552074532210715203
+    second: lucy_walk_14
+  - first:
+      213: -978658953465906048
+    second: lucy_walk_15
+  - first:
+      213: -3052409008301062585
+    second: lucy_walk_16
+  - first:
+      213: 5493131068933851086
+    second: lucy_walk_17
+  - first:
+      213: 6558153119519414860
+    second: lucy_walk_18
+  - first:
+      213: 5704173611465409635
+    second: lucy_walk_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lucy_walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1620
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50c0b825f04bbb930800000000000000
+      internalID: 4160116658709138437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1620
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 429f4e64e3e5ecb50800000000000000
+      internalID: 6615328524224231716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1620
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a232c8e19aa957570800000000000000
+      internalID: 8463841125865366314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1620
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6489bd9f04767860800000000000000
+      internalID: 7527331437615875182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1620
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 472236bd096792b30800000000000000
+      internalID: 4263068886810960500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1080
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d68c05266dc5f65c0800000000000000
+      internalID: -4220052249980647315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1080
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba911df77b31f0b90800000000000000
+      internalID: -7273573194335708757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_7
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1080
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc6c8447fa1f96a30800000000000000
+      internalID: 4209161062626936523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_8
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1080
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d6ff5aa1eb5740b0800000000000000
+      internalID: -5744521774903593264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_9
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1080
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bea057030ef964f10800000000000000
+      internalID: 2253664448779979499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7025ea77d3366120800000000000000
+      internalID: 2406668051448930431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_11
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 540
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbac13583ce621040800000000000000
+      internalID: 4616874354040490687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_12
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 540
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eec3c036b51a17340800000000000000
+      internalID: 4859842886785318126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_13
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 540
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10f52c9d0fdb15fa0800000000000000
+      internalID: -5813656801815404799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_14
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 540
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db55edb580f74bec0800000000000000
+      internalID: -3552074532210715203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08cb862fdda1b62f0800000000000000
+      internalID: -978658953465906048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_16
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7464307ed2aa3a5d0800000000000000
+      internalID: -3052409008301062585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_17
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec7c6747a958b3c40800000000000000
+      internalID: 5493131068933851086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_18
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4a139ff38d330b50800000000000000
+      internalID: 6558153119519414860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lucy_walk_19
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 300
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3648d887dab492f40800000000000000
+      internalID: 5704173611465409635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0ce52e5552c8f9e4d8a71f3e86e38f57
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":4.0},"gridSpriteSize":{"x":300.0,"y":540.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      lucy_walk_0: 4160116658709138437
+      lucy_walk_1: 6615328524224231716
+      lucy_walk_10: 2406668051448930431
+      lucy_walk_11: 4616874354040490687
+      lucy_walk_12: 4859842886785318126
+      lucy_walk_13: -5813656801815404799
+      lucy_walk_14: -3552074532210715203
+      lucy_walk_15: -978658953465906048
+      lucy_walk_16: -3052409008301062585
+      lucy_walk_17: 5493131068933851086
+      lucy_walk_18: 6558153119519414860
+      lucy_walk_19: 5704173611465409635
+      lucy_walk_2: 8463841125865366314
+      lucy_walk_3: 7527331437615875182
+      lucy_walk_4: 4263068886810960500
+      lucy_walk_5: -4220052249980647315
+      lucy_walk_6: -7273573194335708757
+      lucy_walk_7: 4209161062626936523
+      lucy_walk_8: -5744521774903593264
+      lucy_walk_9: 2253664448779979499
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
