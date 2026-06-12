@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Threading.Tasks;
 using Audio;
-using NoteSystem;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 /// <summary>
 /// Handles revealing the overall UI of the note playing menu. This includes any potential extra UI elements or effects
@@ -17,7 +13,6 @@ public class NoteMenuView : Singleton<NoteMenuView>
     
     private Coroutine closingSequence;
 
-    [SerializeField] private MenuSFX menuSFX;
     [SerializeField] private AudioClip openClip;
     [SerializeField] private AudioClip closeCLip;
 
@@ -30,7 +25,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
     public void ShowHelper()
     {
         instance.gameObject.SetActive(true);
-        menuSFX.PlaySound(openClip);
+        AudioManager.PlaySFX(openClip);
     }
 
     public static void Hide() => instance.HideHelper();
@@ -43,7 +38,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
         }
         gameObject.SetActive(false);
         noteDisplay.ResetNotes();
-        menuSFX.PlaySound(closeCLip);
+        AudioManager.PlaySFX(closeCLip);
     }
 
     public static IEnumerator CloseMenuWithNoteCombo(bool success = true)
