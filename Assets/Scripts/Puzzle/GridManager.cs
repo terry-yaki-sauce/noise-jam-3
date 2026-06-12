@@ -46,34 +46,37 @@ public class GridManager : Singleton<GridManager>
     }
 
     // configure goal point
-    foreach (Transform t in goal.Shape)
+    if (goal)
     {
-      Vector3Int pos = grid.WorldToCell(t.position);
-      GridCell cell = GetCell(pos);
+      foreach (Transform t in goal.Shape)
+      {
+        Vector3Int pos = grid.WorldToCell(t.position);
+        GridCell cell = GetCell(pos);
 
-      goalCells.Add(cell);
+        goalCells.Add(cell);
+      }
     }
   }
 
-  public static void Show() => instance.ShowHelper();
+  public static void Show() => instance?.ShowHelper();
   private void ShowHelper()
   {
     // TODO: keep cursor bound to the screen using the camera bounds
 
-    cursor.gameObject.SetActive(true);
+    cursor?.gameObject.SetActive(true);
   }
-  public static void Hide() => instance.HideHelper();
+  public static void Hide() => instance?.HideHelper();
   private void HideHelper()
   {
     TryReleaseObject(GetCell(cursor.GridPosition));
 
-    cursor.gameObject.SetActive(false);
+    cursor?.gameObject.SetActive(false);
   }
 
   /// <summary>
   /// Called via player input. Checks where the cursor is located, and whether an object is selected or not
   /// </summary>
-  public static void ActivateCursor() => instance.ActivateCursorHelper();
+  public static void ActivateCursor() => instance?.ActivateCursorHelper();
   private void ActivateCursorHelper()
   {
     GridCell cursorCell = GetCell(cursor.GridPosition);
@@ -142,7 +145,12 @@ public class GridManager : Singleton<GridManager>
     selectedTransform = null;
   }
 
-  public static bool IsValidDimensionSwap() => instance.IsValidDimensionSwapHelper();
+  public static bool IsValidDimensionSwap()
+  {
+    if (instance)
+      return instance.IsValidDimensionSwapHelper();
+    else return true;
+  }
   private bool IsValidDimensionSwapHelper()
   {
     if (!selectedObject) return true;
@@ -165,7 +173,7 @@ public class GridManager : Singleton<GridManager>
   /// Move the Grid cursor in the direction of <c>dir</c>. Check boundaries and determine if the movement is legal
   /// </summary>
   /// <param name="dir"></param>
-  public static void MoveCursor(Vector2Int dir) => instance.MoveCursorHelper(dir);
+  public static void MoveCursor(Vector2Int dir) => instance?.MoveCursorHelper(dir);
   private void MoveCursorHelper(Vector2Int dir)
   {
     Vector3Int position3d = grid.WorldToCell(cursor.transform.position);
@@ -246,7 +254,7 @@ public class GridManager : Singleton<GridManager>
   /// Set the raw position of the Grid cursor. Does not check the legality of the movement.
   /// </summary>
   /// <param name="position"></param>
-  public static void SetCursor(Vector2Int position) => instance.SetCursorHelper(position);
+  public static void SetCursor(Vector2Int position) => instance?.SetCursorHelper(position);
   private void SetCursorHelper(Vector2Int position)
   {
     cursor.SetPosition(position);
@@ -291,12 +299,13 @@ public class GridManager : Singleton<GridManager>
     }
   }
 
-  public static void CheckGoalHovered() => instance.CheckGoalHoveredHelper();
+  public static void CheckGoalHovered() => instance?.CheckGoalHoveredHelper();
   /// <summary>
   /// Check whether the goal point is being filled by the goal pieces.
   /// </summary>
   private void CheckGoalHoveredHelper()
   {
+    if (!goalObject || !goal) return;
     if (selectedObject != goalObject) return;
 
     bool isCorrectDimension = GameManager.ActiveDimension == goal.Dimension;
@@ -329,7 +338,7 @@ public class GridManager : Singleton<GridManager>
   /// Level Start Utility. Adds a grid object to its current cell location
   /// </summary>
   /// <param name="gridObject"></param>
-  public static void AddGridObject(GridObject gridObject) => instance.AddGridObjectHelper(gridObject);
+  public static void AddGridObject(GridObject gridObject) => instance?.AddGridObjectHelper(gridObject);
   private void AddGridObjectHelper(GridObject gridObject)
   {
     // visually render object in cell center (fixes weird offsets on load)
@@ -360,7 +369,7 @@ public class GridManager : Singleton<GridManager>
     return cells[position.x - leftBound][position.y + topBound];
   }
 
-  public static GridCell GetCellGlobal(Vector3Int position) => instance.GetCell(position.x, position.y);
+  public static GridCell GetCellGlobal(Vector3Int position) => instance?.GetCell(position.x, position.y);
   private GridCell GetCell(int x, int y)
   {
     return cells[x - leftBound][y - topBound];

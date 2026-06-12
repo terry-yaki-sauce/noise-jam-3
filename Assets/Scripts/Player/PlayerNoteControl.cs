@@ -109,7 +109,7 @@ public class PlayerNoteControl : PlayerSystem
             enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
             GameManager.SwapDimension(Dimension.Hell);
         }
-        else if (CheckEqual(notes, MODIFY_GRID_COMBO))
+        else if (CheckEqual(notes, MODIFY_GRID_COMBO) && GridManager.instance)
         {
             enumerator = NoteMenuView.CloseMenuWithNoteCombo(success: true);
             // instead of the default player input, we need the grid control
