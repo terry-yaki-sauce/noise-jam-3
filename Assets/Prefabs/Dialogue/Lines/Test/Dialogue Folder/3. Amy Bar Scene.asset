@@ -24,9 +24,11 @@ MonoBehaviour:
         text: Lucy, hey! You made it! Come on, sit down with us.
         characterToShow: 6
         jumpIndex: -1
+        voice: {fileID: 0}
     - rid: 8840176461771964494
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: "Grab a drink! It\u2019ll be a good night to unwind."
-        characterToShow: 0
+        characterToShow: 6
         jumpIndex: -1
+        voice: {fileID: 0}

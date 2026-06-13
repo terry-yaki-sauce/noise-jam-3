@@ -3288,6 +3288,22 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3395311547412892912, guid: fa57e2841a20b854f88d55c4443660d6, type: 3}
+      propertyPath: m_Size.x
+      value: 2.1975
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395311547412892912, guid: fa57e2841a20b854f88d55c4443660d6, type: 3}
+      propertyPath: m_Size.y
+      value: 3.6294193
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395311547412892912, guid: fa57e2841a20b854f88d55c4443660d6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 51bce5862a5b5cf4fa95b00379c0a525, type: 3}
+    - target: {fileID: 3395311547412892912, guid: fa57e2841a20b854f88d55c4443660d6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6059882097362888343, guid: fa57e2841a20b854f88d55c4443660d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.79

@@ -18,15 +18,89 @@ MonoBehaviour:
   - rid: 8840176461771964498
   - rid: 8840176461771964499
   - rid: 8840176461771964500
+  - rid: 6700858461509386240
+  - rid: 6700858461509386241
+  - rid: 6700858461509386242
+  - rid: 6700858461509386243
+  - rid: 6700858461509386244
+  - rid: 6700858461509386245
+  - rid: 6700858461509386246
+  - rid: 6700858461509386247
   references:
     version: 2
     RefIds:
+    - rid: 6700858461509386240
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: The... realms?
+        characterToShow: 0
+        jumpIndex: -1
+        voice: {fileID: 0}
+    - rid: 6700858461509386241
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'Watch your step as you walk through the different realities. Make
+          them reveal the path forward with the tools at your disposal.
+
+'
+        characterToShow: 3
+        jumpIndex: -1
+        voice: {fileID: 0}
+    - rid: 6700858461509386242
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: You are not the chosen, but merely a puppet to the whims of Powers
+          you could not control.
+        characterToShow: 3
+        jumpIndex: -1
+        voice: {fileID: 0}
+    - rid: 6700858461509386243
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "You\u2019re not making any sense.\n"
+        characterToShow: 0
+        jumpIndex: -1
+        voice: {fileID: 0}
+    - rid: 6700858461509386244
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'Good luck, I trust you will know who to trust.
+
+'
+        characterToShow: 3
+        jumpIndex: -1
+        voice: {fileID: 0}
+    - rid: 6700858461509386245
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: 'May your instincts guide you away from what you may initially seek.
+
+'
+        characterToShow: 3
+        jumpIndex: -1
+        voice: {fileID: 0}
+    - rid: 6700858461509386246
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: "\u2026 strange. Well, if it will help me get out of the restroom,
+          I\u2019ll use it.\n"
+        characterToShow: 0
+        jumpIndex: -1
+        voice: {fileID: 0}
+    - rid: 6700858461509386247
+      type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
+      data:
+        text: Here goes nothing.
+        characterToShow: 0
+        jumpIndex: -1
+        voice: {fileID: 0}
     - rid: 8840176461771964496
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: "\u2026 What the-"
         characterToShow: 0
         jumpIndex: -1
+        voice: {fileID: 0}
     - rid: 8840176461771964497
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -37,21 +111,25 @@ MonoBehaviour:
 '
         characterToShow: 3
         jumpIndex: -1
+        voice: {fileID: 0}
     - rid: 8840176461771964498
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: "\u2026 "
         characterToShow: 0
         jumpIndex: -1
+        voice: {fileID: 0}
     - rid: 8840176461771964499
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: Okay?
         characterToShow: 0
         jumpIndex: -1
+        voice: {fileID: 0}
     - rid: 8840176461771964500
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: Use this instrument to guide you across the realities before you.
         characterToShow: 3
         jumpIndex: -1
+        voice: {fileID: 0}
