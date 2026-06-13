@@ -4750,10 +4750,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4098656952399182351, guid: df1337e194d853e48b9c04d386fa5ee3, type: 3}
-      propertyPath: solveSum
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8782411874716225348, guid: df1337e194d853e48b9c04d386fa5ee3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 269.0349

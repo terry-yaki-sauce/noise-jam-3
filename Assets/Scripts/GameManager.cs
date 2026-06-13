@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
 
     private bool [] solvedScenes;
     public static bool CurrenSceneSolved => instance.solvedScenes[SceneManager.GetActiveScene().buildIndex];
-    [SerializeField] private float solveSum = 4;
+    [SerializeField] private float solveSum = 3;
     public event Action<bool> GameCleared;
 
     protected override void Awake()
@@ -90,6 +90,7 @@ public class GameManager : Singleton<GameManager>
 
         AudioManager.StopAllTracks();
         LoadScene(TITLE_INDEX);
+        AudioManager.StartGenericTrack();
     }
 
     public static void SolveScene(int buildIndex) => instance.SolveSceneHelper(buildIndex);

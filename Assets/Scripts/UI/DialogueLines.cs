@@ -9,6 +9,9 @@ namespace Dialogue
   [CreateAssetMenu(fileName = "DialogueLines", menuName = "Scriptable Objects/DialogueLines")]
   public class DialogueLines : ScriptableObject
   {
+    [SerializeField] private UnityEvent finalCallback;
+    public UnityEvent FinalCallback => finalCallback;
+
     [SerializeReference] private List<DialogueNode> lines = new List<DialogueNode>();
     public List<DialogueNode> Lines { get => lines; }
   }

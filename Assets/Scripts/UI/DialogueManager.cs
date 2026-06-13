@@ -253,6 +253,7 @@ namespace Dialogue
     private void EndDialogue()
     {
       GameManager.Player.PlayerInput.SwitchCurrentActionMap("Player");
+      currentLines.FinalCallback.Invoke();
       Hide();
     }
 
