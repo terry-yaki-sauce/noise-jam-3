@@ -377,6 +377,7 @@ public class GridManager : Singleton<GridManager>
     {
       goalFlag = true;
       goal.goalEvent.Invoke(goalFlag);
+      GameManager.SolveScene(SceneManager.GetActiveScene().buildIndex);
     }
   }
 
@@ -412,6 +413,7 @@ public class GridManager : Singleton<GridManager>
     {
       goalFlag = true;
       goal.goalEvent.Invoke(goalFlag);
+      GameManager.SolveScene(SceneManager.GetActiveScene().buildIndex);
     }
   }
 

@@ -4,7 +4,7 @@ public class GoalEnabledObject : MonoBehaviour
 {
   void Start()
   {
-    gameObject.SetActive(false);
+    gameObject.SetActive(GameManager.CurrenSceneSolved);
   }
 
   public void SetState(bool isGoal)

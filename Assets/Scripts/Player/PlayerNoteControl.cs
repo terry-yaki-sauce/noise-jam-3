@@ -10,14 +10,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerNoteControl : PlayerSystem
 {
-  private static readonly int PlayingInstrumentHash = Animator.StringToHash("playingInstrument");
-  private PlayerInput playerInput;
+    private static readonly int PlayingInstrumentHash = Animator.StringToHash("playingInstrument");
+    private PlayerInput playerInput;
 
     [SerializeField] private int numNotes = 3;
     private int noteIndex = 0;
     private NoteValue[] notes;
 
-    private string targetActionMap = "Player";
+    [HideInInspector] public string targetActionMap = "Player";
 
     private static readonly NoteValue[] DIMENSION_SWAP_COMBO = { NoteValue.G, NoteValue.G, NoteValue.ASharp };
 
@@ -102,29 +102,36 @@ public class PlayerNoteControl : PlayerSystem
         if (CheckEqual(notes, DIMENSION_SWAP_COMBO))
         {
             // set a timeout and give visual feedback
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess,switchedDimensions: true);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess, switchedDimensions: true);
             GameManager.SwapDimension();
         }
         else if (CheckEqual(notes, DIMENSION_SWAP_HEAVEN))
         {
             NoteStatus status = GameManager.SwapDimension(Dimension.Heaven);
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status,switchedDimensions: true);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status, switchedDimensions: true);
         }
         else if (CheckEqual(notes, DIMENSION_SWAP_HELL))
         {
             NoteStatus status = GameManager.SwapDimension(Dimension.Hell);
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status,switchedDimensions: true);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status, switchedDimensions: true);
         }
         else if (CheckEqual(notes, MODIFY_GRID_COMBO) && GridManager.instance)
         {
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess);
-            // instead of the default player input, we need the grid control
-            targetActionMap = "Grid";
+            if (GameManager.CurrenSceneSolved)
+            {
+                enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.warn);
+            }
+            else
+            {
+                enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess);
+                // instead of the default player input, we need the grid control
+                targetActionMap = "Grid";
+            }
         }
-        else if (CheckEqual(notes,RESET_LEVEL_COMBO))
+        else if (CheckEqual(notes, RESET_LEVEL_COMBO))
         {
             enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess);
-            
+
             GridManager.ResetPuzzle();
         }
         else
@@ -135,6 +142,11 @@ public class PlayerNoteControl : PlayerSystem
 
         yield return StartCoroutine(enumerator);
         ClearNotes();
+
+        if (GameManager.CurrenSceneSolved)
+        {
+            targetActionMap = "Player";
+        }
         playerInput.SwitchCurrentActionMap(targetActionMap);
         player.Animator.SetBool(PlayingInstrumentHash, false);
         if (targetActionMap == "Grid")

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public InputAction DialogueNext { get; private set; }
     public PlayerCamera PlayerCamera { get; private set; }
     public PlayerUI UI {get; private set;}
+    public PlayerNoteControl noteControl {get; private set;}
 
     [DoNotSerialize] public IFocusable focusedTarget;
     public Action interacted;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
         PlayerInput = GetComponent<PlayerInput>();
         PlayerCamera = GetComponent<PlayerCamera>();
         UI = GetComponent<PlayerUI>();
+        noteControl = GetComponent<PlayerNoteControl>();
         DialogueNext = PlayerInput.actions.FindAction("Dialogue/Next");
     }
 

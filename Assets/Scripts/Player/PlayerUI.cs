@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using System.Timers;
 using Dialogue;
 using Interaction;
 using UnityEngine;
@@ -11,11 +12,19 @@ public class PlayerUI : PlayerSystem
     private PlayerInput playerInput;
     private string previousActionmap;
 
+    private float eplapsedTime = 0f;
+    [SerializeField] private float doorTimeout = .5f;
+
     protected override void Awake()
     {
         base.Awake();
         playerInput = GetComponent<PlayerInput>();
         previousActionmap = playerInput.defaultActionMap;
+    }
+
+    void Update()
+    {
+        eplapsedTime+=Time.deltaTime;
     }
 
     #region PauseMenu
@@ -60,14 +69,19 @@ public class PlayerUI : PlayerSystem
         player.interacted.Invoke();
     }
 
+    
     private async Task OnEnterDoor()
     {
+        // if we just opened a door, stop ourselves from instantly opening another (useful when spawning on a door)
+        if (eplapsedTime < doorTimeout) return;
+
         IFocusable target = player.focusedTarget;
 
         if (target == null) return;
         if (target is not WalkthroughDoor) return;
 
         player.interacted.Invoke();
+        eplapsedTime = 0f;
         await (target as WalkthroughDoor).Enter();
     }
 }

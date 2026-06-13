@@ -36,6 +36,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private bool invertEnabled = true;
     private ScriptableRendererFeature invertFeature;
 
+    private bool [] solvedScenes;
+    public static bool CurrenSceneSolved => instance.solvedScenes[SceneManager.GetActiveScene().buildIndex];
+    [SerializeField] private float solveSum = 4;
+    public event Action<bool> GameCleared;
+
     protected override void Awake()
     {
         base.Awake();
@@ -65,6 +70,12 @@ public class GameManager : Singleton<GameManager>
         {
             r.SetActive(activeDimension == Dimension.Hell && shadersEnabled);
         }
+
+        solvedScenes = new bool[SceneManager.sceneCountInBuildSettings];
+        for(int i = 0; i < solvedScenes.Length; i++)
+        {
+            solvedScenes[i] = false;
+        }
     }
 
     public static void LoadNextScene() => LoadScene(SceneManager.GetActiveScene().buildIndex + 1 %
@@ -72,8 +83,35 @@ public class GameManager : Singleton<GameManager>
 
     public static void ReturnToTitle()
     {
+        for(int i = 0; i < instance.solvedScenes.Length; i++)
+        {
+            instance.solvedScenes[i] = false;
+        }
+
         AudioManager.StopAllTracks();
         LoadScene(TITLE_INDEX);
+    }
+
+    public static void SolveScene(int buildIndex) => instance.SolveSceneHelper(buildIndex);
+    private void SolveSceneHelper(int buildIndex)
+    {
+        solvedScenes[buildIndex] = true;
+        GridManager.Hide();
+        player.PlayerInput.SwitchCurrentActionMap("Player");
+
+        if(IsFinalDoorUnlocked())
+            GameCleared?.Invoke(true);
+    }
+
+    public static bool IsFinalDoorUnlocked()
+    {
+        int solveCount = 0;
+        foreach(bool b in instance.solvedScenes)
+        {
+            if(b) solveCount++;
+        }
+        
+        return solveCount >= instance.solveSum;
     }
 
     public static void LoadScene(int index)
@@ -89,7 +127,9 @@ public class GameManager : Singleton<GameManager>
         var sceneLoad = SceneManager.LoadSceneAsync(scene.name);
         sceneLoad.completed += (operation) =>
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (!player) return;
+            player = playerObject.GetComponent<Player>();
             player.transform.position = loadPoint;
         };
         await sceneLoad;
@@ -102,7 +142,9 @@ public class GameManager : Singleton<GameManager>
         var sceneLoad = SceneManager.LoadSceneAsync(buildIndex);
         sceneLoad.completed += (operation) =>
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (!player) return;
+            player = playerObject.GetComponent<Player>();
             player.transform.position = loadPoint;
         };
         await sceneLoad;
