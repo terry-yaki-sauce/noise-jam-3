@@ -12,6 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
   m_Name: 0.0 DJ Interaction
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  finalCallback:
+    m_PersistentCalls:
+      m_Calls: []
+  finalCallbackContext:
+    m_PersistentCalls:
+      m_Calls: []
+  finalContext:
+    splashSprite: {fileID: 0}
+    isSplashSpriteActive: 0
+    tag: 
+    isTagObjectActive: 0
+    name: 
+    isNamedObjectActive: 0
   lines:
   - rid: 8840176461771964512
   references:
@@ -20,9 +33,39 @@ MonoBehaviour:
     - rid: 8840176461771964512
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
-        text: 'Does the music of the night spin circles inside of your head? Let
-          me aid your recovery of the tunes that you need.
-
-'
+        text: "Does the music of the night spin circles inside of your head? \n"
         characterToShow: 7
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 4098656952399182351, guid: df1337e194d853e48b9c04d386fa5ee3, type: 3}
+              m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+              m_MethodName: SetActiveByTag
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: UI Menus
+          isNamedObjectActive: 1

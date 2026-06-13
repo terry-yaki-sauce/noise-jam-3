@@ -15,6 +15,16 @@ MonoBehaviour:
   finalCallback:
     m_PersistentCalls:
       m_Calls: []
+  finalCallbackContext:
+    m_PersistentCalls:
+      m_Calls: []
+  finalContext:
+    splashSprite: {fileID: 0}
+    isSplashSpriteActive: 0
+    tag: 
+    isTagObjectActive: 0
+    name: 
+    isNamedObjectActive: 0
   lines:
   - rid: 8840176461771964496
   - rid: 8840176461771964497
@@ -46,7 +56,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 6700858461509386241
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -63,7 +86,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 6700858461509386242
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -78,7 +114,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 6700858461509386243
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -92,7 +141,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 6700858461509386244
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -108,7 +170,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 6700858461509386245
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -124,7 +199,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 6700858461509386246
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -139,7 +227,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 6700858461509386247
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -153,7 +254,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 6700858465685602374
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -161,7 +275,8 @@ MonoBehaviour:
           note options.
 
 
-          Press F to see what note combinations work.)'
+          With  the instrument up, press F to see what
+          note combinations work.)'
         characterToShow: 2
         jumpIndex: -1
         voice: {fileID: 0}
@@ -171,7 +286,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 8840176461771964496
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -185,7 +313,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 8840176461771964497
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -203,7 +344,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 8840176461771964498
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -217,7 +371,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 8840176461771964499
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -231,7 +398,20 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 8840176461771964500
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -245,4 +425,17 @@ MonoBehaviour:
         onEnd:
           m_PersistentCalls:
             m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
         sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
