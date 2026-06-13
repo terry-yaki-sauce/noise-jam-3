@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   targetFrameRate: 120
+  renderer2D: {fileID: 11400000, guid: 424799608f7334c24bf367e4bbfa7f9a, type: 2}

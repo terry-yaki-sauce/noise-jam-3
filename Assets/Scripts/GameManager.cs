@@ -5,6 +5,7 @@ using NoteSystem;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
@@ -21,6 +22,8 @@ public class GameManager : Singleton<GameManager>
 
     public event Action<PlayerInput> ControlsChanged;
 
+    [SerializeField] private Renderer2DData renderer2D;
+
     protected override void Awake()
     {
         base.Awake();
@@ -33,14 +36,22 @@ public class GameManager : Singleton<GameManager>
 #endif
     }
 
+    void Start()
+    {
+        foreach(ScriptableRendererFeature r in renderer2D.rendererFeatures)
+        {
+            r.SetActive(activeDimension == Dimension.Hell);
+        }
+    }
+
     public static void LoadNextScene() => LoadScene(SceneManager.GetActiveScene().buildIndex + 1 %
-              SceneManager.sceneCountInBuildSettings);
+                SceneManager.sceneCountInBuildSettings);
 
     public static void ReturnToTitle()
     {
         AudioManager.StopAllTracks();
         LoadScene(TITLE_INDEX);
-    } 
+    }
 
     public static void LoadScene(int index)
     {
@@ -117,6 +128,12 @@ public class GameManager : Singleton<GameManager>
         AudioManager.PlayDimensionSwap(dimension);
         AudioManager.SwitchDimensionTracks(dimension);
         GridManager.CheckGoalHovered();
+
+        // activate shaders
+        foreach (ScriptableRendererFeature r in renderer2D.rendererFeatures)
+        {
+            r.SetActive(dimension == Dimension.Hell);
+        }
 
         return NoteStatus.sucess;
     }
