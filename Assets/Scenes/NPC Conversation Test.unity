@@ -1807,6 +1807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4098656952399182351, guid: df1337e194d853e48b9c04d386fa5ee3, type: 3}
+      propertyPath: invertEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8782411874716225348, guid: df1337e194d853e48b9c04d386fa5ee3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 269.0349
@@ -2262,11 +2266,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1008433679702312775, guid: 05a777efd164e2c4cadd5fa59da7f3cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7.4007874
+      value: -7.400818
       objectReference: {fileID: 0}
     - target: {fileID: 1043735695265750410, guid: 05a777efd164e2c4cadd5fa59da7f3cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.5400238
+      value: 0.54003906
       objectReference: {fileID: 0}
     - target: {fileID: 1229782993504197206, guid: 05a777efd164e2c4cadd5fa59da7f3cf, type: 3}
       propertyPath: m_AnchorMax.y

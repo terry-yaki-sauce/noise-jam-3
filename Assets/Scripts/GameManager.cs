@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using DimensionSwapping;
 using NoteSystem;
@@ -23,6 +25,12 @@ public class GameManager : Singleton<GameManager>
     public event Action<PlayerInput> ControlsChanged;
 
     [SerializeField] private Renderer2DData renderer2D;
+    private readonly string[] toggleShaders = { "Chromatic Aberration", "Dither" };
+    private List<ScriptableRendererFeature> rendererFeatures = new();
+    [SerializeField] private bool shadersEnabled = true;
+    private readonly string invertShader = "Invert";
+    [SerializeField] private bool invertEnabled = true;
+    private ScriptableRendererFeature invertFeature;
 
     protected override void Awake()
     {
@@ -38,9 +46,20 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        foreach(ScriptableRendererFeature r in renderer2D.rendererFeatures)
+        foreach (ScriptableRendererFeature r in renderer2D.rendererFeatures)
         {
-            r.SetActive(activeDimension == Dimension.Hell);
+            if (toggleShaders.Contains(r.name)) rendererFeatures.Add(r);
+
+            if (r.name == invertShader)
+            {
+                invertFeature = r;
+                r.SetActive(false);
+            }
+        }
+
+        foreach (ScriptableRendererFeature r in rendererFeatures)
+        {
+            r.SetActive(activeDimension == Dimension.Hell && shadersEnabled);
         }
     }
 
@@ -130,9 +149,9 @@ public class GameManager : Singleton<GameManager>
         GridManager.CheckGoalHovered();
 
         // activate shaders
-        foreach (ScriptableRendererFeature r in renderer2D.rendererFeatures)
+        foreach (ScriptableRendererFeature r in rendererFeatures)
         {
-            r.SetActive(dimension == Dimension.Hell);
+            r.SetActive(dimension == Dimension.Hell && shadersEnabled);
         }
 
         return NoteStatus.sucess;
@@ -147,5 +166,12 @@ public class GameManager : Singleton<GameManager>
         instance.ControlsChanged.Invoke(Player.PlayerInput);
 
         NoteMenuView.RefreshControls(Player.PlayerInput);
+    }
+
+    public static void InvertColors(bool active)
+    {
+        if (!instance) return;
+        if (!instance.invertFeature) return;
+        instance.invertFeature.SetActive(active && instance.invertEnabled);
     }
 }

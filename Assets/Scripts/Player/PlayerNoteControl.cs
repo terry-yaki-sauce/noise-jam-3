@@ -102,18 +102,18 @@ public class PlayerNoteControl : PlayerSystem
         if (CheckEqual(notes, DIMENSION_SWAP_COMBO))
         {
             // set a timeout and give visual feedback
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(NoteStatus.sucess,switchedDimensions: true);
             GameManager.SwapDimension();
         }
         else if (CheckEqual(notes, DIMENSION_SWAP_HEAVEN))
         {
             NoteStatus status = GameManager.SwapDimension(Dimension.Heaven);
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status,switchedDimensions: true);
         }
         else if (CheckEqual(notes, DIMENSION_SWAP_HELL))
         {
             NoteStatus status = GameManager.SwapDimension(Dimension.Hell);
-            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status);
+            enumerator = NoteMenuView.CloseMenuWithNoteCombo(status,switchedDimensions: true);
         }
         else if (CheckEqual(notes, MODIFY_GRID_COMBO) && GridManager.instance)
         {

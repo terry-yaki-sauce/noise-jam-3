@@ -79,6 +79,9 @@ public class NoteMenuView : Singleton<NoteMenuView>
         gameObject.SetActive(false);
         noteDisplay.ResetNotes();
         hintObject.SetActive(false);
+
+        // shader
+        GameManager.InvertColors(false);
     }
 
     public static void PlayClosingSFX() => instance.PlayClosingSFXHelper();
@@ -105,15 +108,15 @@ public class NoteMenuView : Singleton<NoteMenuView>
         Hide();
     }
 
-    public static IEnumerator CloseMenuWithNoteCombo(NoteStatus status = NoteStatus.sucess)
+    public static IEnumerator CloseMenuWithNoteCombo(NoteStatus status = NoteStatus.sucess, bool switchedDimensions = false)
     {
-        yield return instance.CloseMenuWithNoteComboHelper(status);
+        yield return instance.CloseMenuWithNoteComboHelper(status,switchedDimensions);
     }
-    public IEnumerator CloseMenuWithNoteComboHelper(NoteStatus status)
+    public IEnumerator CloseMenuWithNoteComboHelper(NoteStatus status, bool switchedDimensions = false)
     {
         if (status == NoteStatus.fail)
             AudioManager.PlaySFX(failComboClip);
-        closingSequence = StartCoroutine(NoteDisplay.ShowSuccess(status));
+        closingSequence = StartCoroutine(NoteDisplay.ShowSuccess(status,switchedDimensions));
         yield return closingSequence;
         Hide();
     }

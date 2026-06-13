@@ -126,7 +126,7 @@ public class NoteDisplay : MonoBehaviour
         yield return new WaitForSeconds(finishSongWaitTime / 5);
     }
 
-    public IEnumerator ShowSuccess(NoteStatus success = NoteStatus.sucess)
+    public IEnumerator ShowSuccess(NoteStatus success = NoteStatus.sucess, bool switchedDimensions = false)
     {
         for (int i = 0; i < 2; i++)
         {
@@ -148,6 +148,7 @@ public class NoteDisplay : MonoBehaviour
                         n.image.color = Color.yellow;
                         break;
                 }
+                if (switchedDimensions && success == NoteStatus.sucess) GameManager.InvertColors(true);
             }
 
             yield return new WaitForSeconds(finishSongWaitTime / 5);
@@ -158,6 +159,7 @@ public class NoteDisplay : MonoBehaviour
                 // n.image.color = originalColors[j];
                 n.Clear();
             }
+            if (switchedDimensions && success == NoteStatus.sucess) GameManager.InvertColors(false);
 
             yield return new WaitForSeconds(finishSongWaitTime / 5);
         }
@@ -179,6 +181,7 @@ public class NoteDisplay : MonoBehaviour
                     n.image.color = Color.yellow;
                     break;
             }
+            if (switchedDimensions && success == NoteStatus.sucess) GameManager.InvertColors(true);
         }
 
         yield return new WaitForSeconds(finishSongWaitTime / 5);
