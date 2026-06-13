@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Dialogue
 {
@@ -19,6 +20,8 @@ namespace Dialogue
     [SerializeField] private GameObject playerNamePlateBox;
     [SerializeField] private GameObject NPCNamePlateBox;
     [SerializeField] private List<ChoiceButton> choiceButtons;
+    [SerializeField] private GameObject fullScreenBackground;
+    [SerializeField] private Image fullScreenSplash;
 
     [Header("Animated Text Configuration")]
     [SerializeField] private float characterFrequency;
@@ -36,6 +39,9 @@ namespace Dialogue
       {
         choiceButtons[i].gameObject.SetActive(false);
       }
+
+      fullScreenBackground.SetActive(false);
+      fullScreenSplash.enabled = false;
     }
 
     public static void StartDialogue(DialogueLines dialogueLines)
@@ -95,6 +101,8 @@ namespace Dialogue
             EventSystem.current.SetSelectedGameObject(null);
           }
         }
+
+        currentNode.OnEnd.Invoke(currentNode.Sprite, true);
       }
       else if (currentNode is DialogueChoiceNode)
       {
@@ -123,6 +131,8 @@ namespace Dialogue
         return;
       }
       currentNode = currentLines.Lines[dialogueIndex];
+
+      currentNode.OnStart.Invoke(currentNode.Sprite, true);
 
       textBox.text = currentNode.Text;
 
@@ -214,6 +224,8 @@ namespace Dialogue
         textBox.maxVisibleCharacters = i + 1;
         yield return new WaitForSeconds(1 / characterFrequency);
       }
+      currentNode.OnEnd.Invoke(currentNode.Sprite, true);
+
       yield return new WaitForSeconds(textSkipLeniency); // give people a little time in case they mess up and press the next button too fast
       textScrollRoutine = null;
 
@@ -282,5 +294,24 @@ namespace Dialogue
       dialogueIndex = (jumpIndex < 0) ? dialogueIndex + 1 : jumpIndex;
       ShowLine();
     }
+
+    public static void ShowSplash(Sprite sprite = null, bool active = true) => instance?.ShowSplashHelper(sprite, active);
+    private void ShowSplashHelper(Sprite sprite, bool active)
+    {
+      fullScreenBackground.SetActive(active);
+      fullScreenSplash.sprite = sprite;
+      fullScreenSplash.enabled = sprite != null && active;
+
+      if (sprite)
+      {
+        Vector3 size = sprite.bounds.size;
+        float aspect = size.y / size.x;
+        RectTransform rt = fullScreenSplash.rectTransform;
+        rt.sizeDelta = new(rt.sizeDelta.x, rt.sizeDelta.x * aspect);
+      }
+    }
+
+    public static void HideSplash() => instance?.HideSplashHelper();
+    private void HideSplashHelper() => ShowSplashHelper(null, false);
   }
 }

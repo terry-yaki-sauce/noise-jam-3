@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Dialogue;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Dialogue
 {
@@ -26,6 +27,15 @@ namespace Dialogue
 
     [SerializeField] private AudioClip voice;
     public AudioClip Voice => voice;
+
+
+    // simple script for passing in events
+    [SerializeField] private UnityEvent<Sprite,bool> onStart,onEnd;
+    public UnityEvent<Sprite,bool> OnStart => onStart;
+    public UnityEvent<Sprite,bool> OnEnd => onEnd;
+
+    [SerializeField] private Sprite sprite;
+    public Sprite Sprite => sprite;
   }
 
   [System.Serializable]
@@ -66,7 +76,7 @@ public class DialogueLinesEditor : Editor
   public override void OnInspectorGUI()
   {
     serializedObject.Update();
-    // DrawPropertiesExcluding(serializedObject, "dialogueNodes");
+    DrawPropertiesExcluding(serializedObject, "lines");
 
 
     // reorderableList.DoLayoutList();

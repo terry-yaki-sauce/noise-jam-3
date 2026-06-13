@@ -30,6 +30,25 @@ MonoBehaviour:
         characterToShow: 2
         jumpIndex: -1
         voice: {fileID: 8300000, guid: fcfce73104ead73408afeb57104b6fe6, type: 3}
+        onStart:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 3575451086542219156, guid: a768723cff457724fa4a842656341bf5, type: 3}
+              m_TargetAssemblyTypeName: Dialogue.DialogueManager, Assembly-CSharp
+              m_MethodName: ShowSplash
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 1264014519372087427
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -38,6 +57,13 @@ MonoBehaviour:
         characterToShow: 2
         jumpIndex: -1
         voice: {fileID: 8300000, guid: 755d0fe9b0b67c441b2051ec604cc269, type: 3}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 1264014519372087428
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -50,6 +76,13 @@ MonoBehaviour:
         characterToShow: 2
         jumpIndex: -1
         voice: {fileID: 8300000, guid: ba5c5cefbed1a5f41881f147adc9b4f3, type: 3}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 1264014519372087431
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -58,6 +91,13 @@ MonoBehaviour:
         characterToShow: 2
         jumpIndex: 5
         voice: {fileID: 8300000, guid: 7f426da7824c76449aaf762270cf480b, type: 3}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 1264014519372087432
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -65,6 +105,13 @@ MonoBehaviour:
         characterToShow: 0
         jumpIndex: -1
         voice: {fileID: 8300000, guid: fcfce73104ead73408afeb57104b6fe6, type: 3}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 1264014519372087433
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -73,3 +120,22 @@ MonoBehaviour:
         characterToShow: 2
         jumpIndex: -1
         voice: {fileID: 8300000, guid: 7f426da7824c76449aaf762270cf480b, type: 3}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 3575451086542219156, guid: a768723cff457724fa4a842656341bf5, type: 3}
+              m_TargetAssemblyTypeName: Dialogue.DialogueManager, Assembly-CSharp
+              m_MethodName: HideSplash
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+        sprite: {fileID: 0}
