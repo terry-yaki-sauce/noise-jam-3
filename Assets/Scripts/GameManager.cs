@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DimensionSwapping;
 using NoteSystem;
+using UI;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +24,9 @@ public class GameManager : Singleton<GameManager>
     public static Dimension ActiveDimension { get => instance.activeDimension; }
 
     public event Action<PlayerInput> ControlsChanged;
+    public event Action<UIMode> UIMenuChanged;
+    public event Action<UIMode,bool> UIMenuSetActive;
+    private Stack<UIMode> menuHistory = new();
 
     [SerializeField] private Renderer2DData renderer2D;
     private readonly string[] toggleShaders = { "Chromatic Aberration", "Dither" };
@@ -165,7 +169,8 @@ public class GameManager : Singleton<GameManager>
         if (!Player.PlayerInput) return;
         instance.ControlsChanged.Invoke(Player.PlayerInput);
 
-        NoteMenuView.RefreshControls(Player.PlayerInput);
+        // NoteMenuView.RefreshControls(Player.PlayerInput);
+        // GridManager.RefreshControls(Player.PlayerInput);
     }
 
     public static void InvertColors(bool active)
@@ -173,5 +178,34 @@ public class GameManager : Singleton<GameManager>
         if (!instance) return;
         if (!instance.invertFeature) return;
         instance.invertFeature.SetActive(active && instance.invertEnabled);
+    }
+
+    public static void ChangeUIMenu(UIMode mode) => instance?.ChangeUIMenuHelper(mode);
+    private void ChangeUIMenuHelper(UIMode mode)
+    {
+        menuHistory.Push(mode);
+        UIMenuChanged.Invoke(mode);
+    }
+
+    public static void CloseMenu() => instance?.CloseMenuHelper();
+    private void CloseMenuHelper()
+    {
+        if (menuHistory.Count <= 1)
+        {
+            menuHistory.Clear();
+            UIMenuChanged.Invoke(UIMode.None);
+        }
+        else
+        {
+            menuHistory.Pop();
+            UIMenuChanged.Invoke(menuHistory.Peek());
+        }
+
+    }
+
+    public static void ShowUIKeybinds(UIMode mode, bool active) => instance?.ShowUIKeybindsHelper(mode,active);
+    private void ShowUIKeybindsHelper(UIMode mode, bool active)
+    {
+        UIMenuSetActive.Invoke(mode,active);
     }
 }

@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   targetFrameRate: 120
   renderer2D: {fileID: 11400000, guid: 424799608f7334c24bf367e4bbfa7f9a, type: 2}
+  shadersEnabled: 1
+  invertEnabled: 0

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using DimensionSwapping;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Diagnostics;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Util;
 public class GridManager : Singleton<GridManager>
@@ -42,6 +44,26 @@ public class GridManager : Singleton<GridManager>
   // [SerializeField] private float invalidVolume = .3f;
   // [SerializeField] private List<AudioClip> invalid;
 
+  [Header("UI Tooltips")]
+  [SerializeField] Canvas keybindLegend;
+
+  [SerializeField] private string moveFormat = "Move - {0}";
+  [SerializeField] private InputActionReference moveAction;
+  [SerializeField] private TextMeshProUGUI moveTMP;
+
+
+  [SerializeField] private string pickupFormat = "Pickup/Place - [{0}]";
+  [SerializeField] private InputActionReference pickupAction;
+  [SerializeField] private TextMeshProUGUI pickupTMP;
+
+  [SerializeField] private string exitFormat = "Exit - [{0}]";
+  [SerializeField] private InputActionReference exitAction;
+  [SerializeField] private TextMeshProUGUI exitTMP;
+
+  [SerializeField] private string playSongFormat = "Play Song - [{0}]";
+  [SerializeField] private InputActionReference playSongAction;
+  [SerializeField] private TextMeshProUGUI playSongTMP;
+
   protected override void Awake()
   {
     base.Awake();
@@ -74,19 +96,26 @@ public class GridManager : Singleton<GridManager>
         goalCells.Add(cell);
       }
     }
+
+    // UI
+    // keybindLegend.gameObject.SetActive(false);
   }
 
   public static void Show() => instance?.ShowHelper();
   private void ShowHelper()
   {
     Vector3Int originalPos = cursor.GridPosition;
-    var clampedPos = ClampToCameraWorldBounds(new(originalPos.x,originalPos.y));
+    var clampedPos = ClampToCameraWorldBounds(new(originalPos.x, originalPos.y));
 
     cursor?.gameObject.SetActive(true);
     SetCursor(clampedPos);
 
     AudioManager.PlaySFX(puzzleOpen);
+
+    // keybindLegend.gameObject.SetActive(true);
+    GameManager.ShowUIKeybinds(UI.UIMode.Grid, true);
   }
+
   public static void Hide() => instance?.HideHelper();
   private void HideHelper()
   {
@@ -98,6 +127,9 @@ public class GridManager : Singleton<GridManager>
     {
       AudioManager.PlaySFX(puzzleComplete);
     }
+
+    // keybindLegend.gameObject.SetActive(false);
+    GameManager.ShowUIKeybinds(UI.UIMode.Grid, false);
   }
 
   /// <summary>
@@ -123,7 +155,7 @@ public class GridManager : Singleton<GridManager>
     {
       Debug.Log("no object in cell");
       // AudioManager.SampleAndPlay(invalid,invalidVolume);
-      AudioManager.SampleAndPlay(cursorPlace,gridVolume);
+      AudioManager.SampleAndPlay(cursorPlace, gridVolume);
       return;
     }
 
@@ -154,7 +186,7 @@ public class GridManager : Singleton<GridManager>
       t.SetParent(selectedTransform);
     }
 
-    AudioManager.SampleAndPlay(itemPickup,gridVolume);
+    AudioManager.SampleAndPlay(itemPickup, gridVolume);
   }
 
   private void TryReleaseObject(GridCell cursorCell)
@@ -178,7 +210,7 @@ public class GridManager : Singleton<GridManager>
     selectedObject = null;
     selectedTransform = null;
 
-    AudioManager.SampleAndPlay(itemPlace,gridVolume);
+    AudioManager.SampleAndPlay(itemPlace, gridVolume);
   }
 
   public static bool IsValidDimensionSwap()
@@ -219,7 +251,11 @@ public class GridManager : Singleton<GridManager>
     // check for any obstacles that prevent movement
 
     // make sure to check whether moving the piece is legal too. It may be prudent to always normalize dir, and force it be in one of the cardinal directions only
-    if (selectedObject && !IsValidMovement(selectedObject, dir)) return;
+    if (selectedObject && !IsValidMovement(selectedObject, dir))
+    {
+      AudioManager.PlayInvalid();
+      return;
+    }
 
     Vector2Int newPosition = ClampToCameraWorldBounds(desiredPosition);
 
@@ -304,8 +340,8 @@ public class GridManager : Singleton<GridManager>
     }
 
     // audio
-    AudioManager.SampleAndPlay(cursorMove,gridVolume);
-    if (IsHoldingObject) AudioManager.SampleAndPlay(itemMove,gridVolume);
+    AudioManager.SampleAndPlay(cursorMove, gridVolume);
+    if (IsHoldingObject) AudioManager.SampleAndPlay(itemMove, gridVolume);
   }
 
   // can't really imagine a use case for this, but this should check whether the goal state is reached. realistically, CheckGoalHovered() should cover all bases first anyway
@@ -455,4 +491,33 @@ public class GridManager : Singleton<GridManager>
   }
 
   private bool IsHoldingObject => selectedObject != null;
+
+  public static void RefreshControls(PlayerInput input)
+  {
+    if (!input) return;
+
+    instance.ChangeTooltips(input);
+  }
+
+  private void ChangeTooltips(PlayerInput input)
+  {
+    if (input.currentControlScheme == "Gamepad")
+    {
+      moveTMP.text = string.Format(moveFormat, "D-pad");
+    }
+    else
+    {
+      string moveBind = GameUtils.GetKeybind(input, moveAction);
+      moveTMP.text = string.Format(moveFormat, moveBind);
+    }
+
+    string pickupBind = GameUtils.GetKeybind(input, pickupAction);
+    pickupTMP.text = string.Format(pickupFormat, pickupBind);
+
+    string exitBind = GameUtils.GetKeybind(input, exitAction);
+    exitTMP.text = string.Format(exitFormat, exitBind);
+
+    string playSongBind = GameUtils.GetKeybind(input, playSongAction);
+    playSongTMP.text = string.Format(playSongFormat, playSongBind);
+  }
 }

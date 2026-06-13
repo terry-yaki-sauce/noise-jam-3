@@ -66,6 +66,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
             AudioManager.PlaySFX(clip);
         }
         hintObject.SetActive(false);
+        GameManager.ShowUIKeybinds(UI.UIMode.Note,true);
     }
 
     public static void Hide() => instance.HideHelper();
@@ -82,6 +83,7 @@ public class NoteMenuView : Singleton<NoteMenuView>
 
         // shader
         GameManager.InvertColors(false);
+        GameManager.ShowUIKeybinds(UI.UIMode.Note,false);
     }
 
     public static void PlayClosingSFX() => instance.PlayClosingSFXHelper();
