@@ -62,6 +62,9 @@ namespace Dialogue
     public string tag = "";
     public bool isTagObjectActive = false;
 
+    public string name = "";
+    public bool isNamedObjectActive = false;
+
     public DialogueContext(Sprite sp = null, bool isSpActive = false, string tag = "", bool isTagObjectActive = false)
     {
       splashSprite = sp;

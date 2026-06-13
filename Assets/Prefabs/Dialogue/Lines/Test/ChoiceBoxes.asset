@@ -23,6 +23,8 @@ MonoBehaviour:
     isSplashSpriteActive: 0
     tag: 
     isTagObjectActive: 0
+    name: 
+    isNamedObjectActive: 0
   lines:
   - rid: 1264014519372087443
   - rid: 1264014519372087446
@@ -54,7 +56,7 @@ MonoBehaviour:
             m_Calls:
             - m_Target: {fileID: 4098656952399182351, guid: df1337e194d853e48b9c04d386fa5ee3, type: 3}
               m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-              m_MethodName: SetActiveByName
+              m_MethodName: SetActiveByTag
               m_Mode: 0
               m_Arguments:
                 m_ObjectArgument: {fileID: 0}
@@ -73,6 +75,8 @@ MonoBehaviour:
           isSplashSpriteActive: 0
           tag: poop
           isTagObjectActive: 1
+          name: 
+          isNamedObjectActive: 0
     - rid: 1264014519372087446
       type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -100,6 +104,8 @@ MonoBehaviour:
           isSplashSpriteActive: 0
           tag: 
           isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
         choices:
         - text: I don't get it, can you repeat?
           jumpIndex: 1
@@ -131,6 +137,8 @@ MonoBehaviour:
           isSplashSpriteActive: 0
           tag: 
           isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 1264014519372087448
       type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -156,6 +164,8 @@ MonoBehaviour:
           isSplashSpriteActive: 0
           tag: 
           isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
         choices:
         - text: 1
           jumpIndex: 4
@@ -186,6 +196,8 @@ MonoBehaviour:
           isSplashSpriteActive: 0
           tag: 
           isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 1264014519372087450
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -211,6 +223,8 @@ MonoBehaviour:
           isSplashSpriteActive: 0
           tag: 
           isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 1264014519372087451
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -237,6 +251,8 @@ MonoBehaviour:
           isSplashSpriteActive: 0
           tag: 
           isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 1264014519372087452
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -264,6 +280,8 @@ MonoBehaviour:
           isSplashSpriteActive: 0
           tag: 
           isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
     - rid: 1264014519372087462
       type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -290,6 +308,8 @@ MonoBehaviour:
           isSplashSpriteActive: 0
           tag: 
           isTagObjectActive: 0
+          name: 
+          isNamedObjectActive: 0
         choices:
         - text: End the Dialogue
           jumpIndex: 9

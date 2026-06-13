@@ -267,7 +267,7 @@ public class GameManager : Singleton<GameManager>
         UIMenuSetActive.Invoke(mode, active);
     }
 
-    public static void SetActiveByName(DialogueContext context) => instance.SetActiveByTagHelper(context.tag, context.isTagObjectActive);
+    public static void SetActiveByTag(DialogueContext context) => instance.SetActiveByTagHelper(context.tag, context.isTagObjectActive);
     private void SetActiveByTagHelper(string tag, bool isObjectActive)
     {
         if (tag == null || tag.Length == 0) return;
@@ -276,7 +276,7 @@ public class GameManager : Singleton<GameManager>
         GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
         foreach (GameObject o in objs)
         {
-            if(o.TryGetComponent(out SpriteRenderer sr))
+            if (o.TryGetComponent(out SpriteRenderer sr))
             {
                 sr.enabled = isObjectActive;
             }
@@ -285,7 +285,37 @@ public class GameManager : Singleton<GameManager>
             {
                 s.enabled = isObjectActive;
             }
+
+            if (o.TryGetComponent(out Enabler e))
+            {
+                e.SetGameObjectsActive(isObjectActive);
+            }
         }
+    }
+
+    public static void SetActiveByName(DialogueContext context) => instance.SetActiveByNameHelper(context.name, context.isNamedObjectActive);
+    private void SetActiveByNameHelper(string name, bool isObjectActive)
+    {
+        if (name == null || name.Length == 0) return;
+
+        Debug.Log("here");
+        GameObject o = GameObject.Find(name);
+
+        if (o.TryGetComponent(out SpriteRenderer sr))
+        {
+            sr.enabled = isObjectActive;
+        }
+
+        foreach (SpriteRenderer s in o.GetComponentsInChildren<SpriteRenderer>())
+        {
+            s.enabled = isObjectActive;
+        }
+
+        if (o.TryGetComponent(out Enabler e))
+        {
+            e.SetGameObjectsActive(isObjectActive);
+        }
+
     }
 
 }
