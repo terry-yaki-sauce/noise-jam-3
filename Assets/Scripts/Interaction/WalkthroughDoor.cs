@@ -3,10 +3,14 @@ using System.Threading.Tasks;
 using Interaction;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WalkthroughDoor : MonoBehaviour, IFocusable
 {
+#if UNITY_EDITOR
     [SerializeField] private SceneAsset scene;
+#endif
+    [SerializeField] private int buildIndex; 
     [SerializeField] private Vector2 loadPoint;
 
     [SerializeField] private List<AudioClip> doorSFX;
@@ -21,6 +25,10 @@ public class WalkthroughDoor : MonoBehaviour, IFocusable
         int k = rng.Next(0,doorSFX.Count);
         AudioClip clip = doorSFX[k];
         AudioManager.PlaySFX(clip);
+#if UNITY_EDITOR
         await GameManager.LoadScene(scene, loadPoint);
+#else
+        await GameManager.LoadScene(buildIndex, loadPoint);
+#endif
     }
 }

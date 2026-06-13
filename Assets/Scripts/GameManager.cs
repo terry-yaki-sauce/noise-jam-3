@@ -82,10 +82,24 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(index);
     }
 
+#if UNITY_EDITOR
     public static async Task LoadScene(SceneAsset scene, Vector2 loadPoint) => await instance.LoadSceneHelper(scene, loadPoint);
     public async Task LoadSceneHelper(SceneAsset scene, Vector2 loadPoint)
     {
         var sceneLoad = SceneManager.LoadSceneAsync(scene.name);
+        sceneLoad.completed += (operation) =>
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            player.transform.position = loadPoint;
+        };
+        await sceneLoad;
+    }
+#endif
+
+    public static async Task LoadScene(int buildIndex, Vector2 loadPoint) => await instance.LoadSceneHelper(buildIndex, loadPoint);
+    public async Task LoadSceneHelper(int buildIndex, Vector2 loadPoint)
+    {
+        var sceneLoad = SceneManager.LoadSceneAsync(buildIndex);
         sceneLoad.completed += (operation) =>
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();

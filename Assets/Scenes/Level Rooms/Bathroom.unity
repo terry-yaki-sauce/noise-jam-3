@@ -686,6 +686,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 102900000, guid: 52c44ef53bbce0749ade7afe32a1780e, type: 3}
     - target: {fileID: 2308446314390478663, guid: f6c9aae117dcbec4984992a82e0f84e1, type: 3}
+      propertyPath: buildIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308446314390478663, guid: f6c9aae117dcbec4984992a82e0f84e1, type: 3}
       propertyPath: loadPoint.x
       value: -6.26
       objectReference: {fileID: 0}
