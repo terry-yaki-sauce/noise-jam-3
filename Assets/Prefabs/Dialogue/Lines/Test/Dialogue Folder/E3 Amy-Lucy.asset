@@ -12,6 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
   m_Name: E3 Amy-Lucy
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  finalCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   lines:
   - rid: 8840176461771964536
   - rid: 8840176461771964537
@@ -30,18 +45,42 @@ MonoBehaviour:
         text: "\u2026 \u2026 ..cy! Lucy!\r\n"
         characterToShow: 6
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 8840176461771964537
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: "I\u2019m not even sure what happened- wait wait-\r\n"
         characterToShow: 6
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 8840176461771964538
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: "Guys! She\u2019s showing some signs of life.\r\n"
         characterToShow: 6
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 8840176461771964539
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -50,18 +89,42 @@ MonoBehaviour:
 '
         characterToShow: 6
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 8840176461771964540
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: "What were we going to do without our fearless leader?? \r\n"
         characterToShow: 6
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 8840176461771964541
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: "\u2026\r\n"
         characterToShow: 6
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 8840176461771964542
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -69,6 +132,14 @@ MonoBehaviour:
           but we\u2019ll be here to support you.\r\n"
         characterToShow: 6
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
     - rid: 8840176461771964543
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -78,3 +149,11 @@ MonoBehaviour:
           In the Arms of a Friend'
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}

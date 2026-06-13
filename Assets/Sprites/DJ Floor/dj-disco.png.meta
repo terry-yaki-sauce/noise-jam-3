@@ -1,0 +1,702 @@
+fileFormatVersion: 2
+guid: 79ef3a9f8b52cc24cbace557e910cfd0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1936869457958800819
+    second: dj-disco_0
+  - first:
+      213: -7948438625201958208
+    second: dj-disco_1
+  - first:
+      213: 7775912186743998777
+    second: dj-disco_2
+  - first:
+      213: 1889800365603312741
+    second: dj-disco_3
+  - first:
+      213: -6820825974251592116
+    second: dj-disco_4
+  - first:
+      213: 5076095809290078386
+    second: dj-disco_5
+  - first:
+      213: -1321561102657311578
+    second: dj-disco_6
+  - first:
+      213: -3904992732076553392
+    second: dj-disco_7
+  - first:
+      213: -4929357261633842324
+    second: dj-disco_8
+  - first:
+      213: -703448365739330614
+    second: dj-disco_9
+  - first:
+      213: 1253755029647990185
+    second: dj-disco_10
+  - first:
+      213: -8426199187731736676
+    second: dj-disco_11
+  - first:
+      213: -5645752341085821764
+    second: dj-disco_12
+  - first:
+      213: -4958983797416865127
+    second: dj-disco_13
+  - first:
+      213: -1956091712827150265
+    second: dj-disco_14
+  - first:
+      213: 9215350123014157257
+    second: dj-disco_15
+  - first:
+      213: -284482554777125728
+    second: dj-disco_16
+  - first:
+      213: 8995966154281278442
+    second: dj-disco_17
+  - first:
+      213: 3257350762061979897
+    second: dj-disco_18
+  - first:
+      213: -8904293809594622079
+    second: dj-disco_19
+  - first:
+      213: -3069022005689097471
+    second: dj-disco_20
+  - first:
+      213: 8039602793547241802
+    second: dj-disco_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dj-disco_0
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 827
+        width: 36
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d42ff0e6d7bde15e0800000000000000
+      internalID: -1936869457958800819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_1
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 863
+        width: 44
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c2d7d9de2971b190800000000000000
+      internalID: -7948438625201958208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_2
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 839
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 939c18f6fe699eb60800000000000000
+      internalID: 7775912186743998777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_3
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 832
+        width: 39
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56450308b6be93a10800000000000000
+      internalID: 1889800365603312741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_4
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 861
+        width: 43
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c46e9f92aee8751a0800000000000000
+      internalID: -6820825974251592116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_5
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 828
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b885968e3ae17640800000000000000
+      internalID: 5076095809290078386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_6
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 708
+        width: 86
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ac2327dd2fd8ade0800000000000000
+      internalID: -1321561102657311578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_7
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 812
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05b481abccdaec9c0800000000000000
+      internalID: -3904992732076553392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_8
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 807
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c639259ffa7679bb0800000000000000
+      internalID: -4929357261633842324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_9
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 765
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac3374a3079dc36f0800000000000000
+      internalID: -703448365739330614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_10
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 759
+        width: 29
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad17898e8b366110800000000000000
+      internalID: 1253755029647990185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_11
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 804
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9790909b70201b80800000000000000
+      internalID: -8426199187731736676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_12
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 810
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb4efb3882246a1b0800000000000000
+      internalID: -5645752341085821764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_13
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 779
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 992dc0492862e2bb0800000000000000
+      internalID: -4958983797416865127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_14
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 776
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7403ad473f09ad4e0800000000000000
+      internalID: -1956091712827150265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_15
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 760
+        width: 25
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c37c13ac1083ef70800000000000000
+      internalID: 9215350123014157257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_16
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 745
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0acb6b9af905d0cf0800000000000000
+      internalID: -284482554777125728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_17
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 744
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeb5f5dfd8718dc70800000000000000
+      internalID: 8995966154281278442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_18
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 741
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f06d89824f643d20800000000000000
+      internalID: 3257350762061979897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_19
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 744
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18f176705f79d6480800000000000000
+      internalID: -8904293809594622079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_20
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 709
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1036b070fb4a865d0800000000000000
+      internalID: -3069022005689097471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dj-disco_21
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 703
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a491f942528629f60800000000000000
+      internalID: 8039602793547241802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dj-disco_0: -1936869457958800819
+      dj-disco_1: -7948438625201958208
+      dj-disco_10: 1253755029647990185
+      dj-disco_11: -8426199187731736676
+      dj-disco_12: -5645752341085821764
+      dj-disco_13: -4958983797416865127
+      dj-disco_14: -1956091712827150265
+      dj-disco_15: 9215350123014157257
+      dj-disco_16: -284482554777125728
+      dj-disco_17: 8995966154281278442
+      dj-disco_18: 3257350762061979897
+      dj-disco_19: -8904293809594622079
+      dj-disco_2: 7775912186743998777
+      dj-disco_20: -3069022005689097471
+      dj-disco_21: 8039602793547241802
+      dj-disco_3: 1889800365603312741
+      dj-disco_4: -6820825974251592116
+      dj-disco_5: 5076095809290078386
+      dj-disco_6: -1321561102657311578
+      dj-disco_7: -3904992732076553392
+      dj-disco_8: -4929357261633842324
+      dj-disco_9: -703448365739330614
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -3154,6 +3154,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.1663307
       objectReference: {fileID: 0}
+    - target: {fileID: 5179590257716276019, guid: 056e815c44df2164381beaa18fd51752, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179590257716276019, guid: 056e815c44df2164381beaa18fd51752, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.59
+      objectReference: {fileID: 0}
     - target: {fileID: 5240907907042357121, guid: 056e815c44df2164381beaa18fd51752, type: 3}
       propertyPath: dialogueLines
       value: 
