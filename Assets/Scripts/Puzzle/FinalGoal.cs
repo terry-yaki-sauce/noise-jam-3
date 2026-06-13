@@ -25,7 +25,7 @@ public class FinalGoal : MonoBehaviour
       GameManager.instance.GameCleared += SetUnlockStatus;
       subscribed = true;
     }
-    SetUnlockStatus(false);
+    SetUnlockStatus(GameManager.IsFinalDoorUnlocked());
   }
 
   void SetUnlockStatus(bool active)

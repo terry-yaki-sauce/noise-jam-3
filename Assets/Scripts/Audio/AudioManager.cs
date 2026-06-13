@@ -165,6 +165,8 @@ public class AudioManager : Singleton<AudioManager>
     {
         musicSource.Stop();
 
+        if (heavenSource.isPlaying || hellSource.isPlaying) return;
+
         startHeavenHellTrack = start;
         heavenSource.Play();
         hellSource.Play();
