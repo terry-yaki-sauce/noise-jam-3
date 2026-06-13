@@ -24,6 +24,7 @@ public class GridManager : Singleton<GridManager>
   private int rightBound { get => grid.WorldToCell(bottomRight.position).x; }
   private int bottomBound { get => grid.WorldToCell(bottomRight.position).y; }
   [SerializeField] private GridCell gridCellPrefab;
+  [SerializeField] private bool showGridCells = true;
 
   private GridObject selectedObject;
   public static GridObject SelectedObject => instance.selectedObject;
@@ -82,6 +83,10 @@ public class GridManager : Singleton<GridManager>
         GridCell cell = Instantiate(gridCellPrefab, gameObject.transform);
         cell.transform.position = grid.GetCellCenterWorld(new(leftBound + i, bottomBound + j));
         cells[i][j] = cell;
+
+#if UNITY_EDITOR
+        cell.gameObject.GetComponent<SpriteRenderer>().enabled = showGridCells;
+#endif
       }
     }
 
