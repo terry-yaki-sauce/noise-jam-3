@@ -12,6 +12,11 @@ namespace Dialogue
     [SerializeField] private UnityEvent finalCallback;
     public UnityEvent FinalCallback => finalCallback;
 
+    [SerializeField] private UnityEvent<DialogueContext> finalCallbackContext;
+    public UnityEvent<DialogueContext> FinalCallbackContext => finalCallbackContext;
+    [SerializeField] private DialogueContext finalContext;
+    public DialogueContext FinalContext => finalContext;
+
     [SerializeReference] private List<DialogueNode> lines = new List<DialogueNode>();
     public List<DialogueNode> Lines { get => lines; }
   }
@@ -37,8 +42,33 @@ namespace Dialogue
     public UnityEvent<Sprite,bool> OnStart => onStart;
     public UnityEvent<Sprite,bool> OnEnd => onEnd;
 
+    [SerializeField] private UnityEvent<DialogueContext> onStartContext,onEndContext;
+    public UnityEvent<DialogueContext> OnStartContext => onStartContext;
+    public UnityEvent<DialogueContext> OnEndContext => onEndContext;
+
     [SerializeField] private Sprite sprite;
     public Sprite Sprite => sprite;
+
+    [SerializeField] private DialogueContext context;
+    public DialogueContext Context => context;
+  }
+
+  [System.Serializable]
+  public class DialogueContext
+  {
+    public Sprite splashSprite;
+    public bool isSplashSpriteActive = false;
+
+    public string tag = "";
+    public bool isTagObjectActive = false;
+
+    public DialogueContext(Sprite sp = null, bool isSpActive = false, string tag = "", bool isTagObjectActive = false)
+    {
+      splashSprite = sp;
+      isSplashSpriteActive = isSpActive;
+      this.tag = tag;
+      this.isTagObjectActive = isTagObjectActive;
+    }
   }
 
   [System.Serializable]

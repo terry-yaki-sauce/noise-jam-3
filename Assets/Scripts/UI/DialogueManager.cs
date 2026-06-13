@@ -103,6 +103,7 @@ namespace Dialogue
         }
 
         currentNode.OnEnd.Invoke(currentNode.Sprite, true);
+        currentNode.OnEndContext.Invoke(currentNode.Context);
       }
       else if (currentNode is DialogueChoiceNode)
       {
@@ -133,6 +134,7 @@ namespace Dialogue
       currentNode = currentLines.Lines[dialogueIndex];
 
       currentNode.OnStart.Invoke(currentNode.Sprite, true);
+      currentNode.OnStartContext.Invoke(currentNode.Context);
 
       textBox.text = currentNode.Text;
 
@@ -224,7 +226,9 @@ namespace Dialogue
         textBox.maxVisibleCharacters = i + 1;
         yield return new WaitForSeconds(1 / characterFrequency);
       }
+      
       currentNode.OnEnd.Invoke(currentNode.Sprite, true);
+      currentNode.OnEndContext.Invoke(currentNode.Context);
 
       yield return new WaitForSeconds(textSkipLeniency); // give people a little time in case they mess up and press the next button too fast
       textScrollRoutine = null;
@@ -254,6 +258,7 @@ namespace Dialogue
     {
       GameManager.Player.PlayerInput.SwitchCurrentActionMap("Player");
       currentLines.FinalCallback.Invoke();
+      currentLines.FinalCallbackContext.Invoke(currentLines.FinalContext);
       Hide();
     }
 

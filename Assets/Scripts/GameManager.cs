@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dialogue;
 using DimensionSwapping;
 using NoteSystem;
 using UI;
@@ -25,7 +26,7 @@ public class GameManager : Singleton<GameManager>
 
     public event Action<PlayerInput> ControlsChanged;
     public event Action<UIMode> UIMenuChanged;
-    public event Action<UIMode,bool> UIMenuSetActive;
+    public event Action<UIMode, bool> UIMenuSetActive;
     private Stack<UIMode> menuHistory = new();
 
     [SerializeField] private Renderer2DData renderer2D;
@@ -36,7 +37,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private bool invertEnabled = true;
     private ScriptableRendererFeature invertFeature;
 
-    private bool [] solvedScenes;
+    private bool[] solvedScenes;
     public static bool CurrenSceneSolved => instance.solvedScenes[SceneManager.GetActiveScene().buildIndex];
     [SerializeField] private float solveSum = 3;
     public event Action<bool> GameCleared;
@@ -72,7 +73,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         solvedScenes = new bool[SceneManager.sceneCountInBuildSettings];
-        for(int i = 0; i < solvedScenes.Length; i++)
+        for (int i = 0; i < solvedScenes.Length; i++)
         {
             solvedScenes[i] = false;
         }
@@ -83,7 +84,7 @@ public class GameManager : Singleton<GameManager>
 
     public static void ReturnToTitle()
     {
-        for(int i = 0; i < instance.solvedScenes.Length; i++)
+        for (int i = 0; i < instance.solvedScenes.Length; i++)
         {
             instance.solvedScenes[i] = false;
         }
@@ -100,18 +101,18 @@ public class GameManager : Singleton<GameManager>
         GridManager.Hide();
         player.PlayerInput.SwitchCurrentActionMap("Player");
 
-        if(IsFinalDoorUnlocked())
+        if (IsFinalDoorUnlocked())
             GameCleared?.Invoke(true);
     }
 
     public static bool IsFinalDoorUnlocked()
     {
         int solveCount = 0;
-        foreach(bool b in instance.solvedScenes)
+        foreach (bool b in instance.solvedScenes)
         {
-            if(b) solveCount++;
+            if (b) solveCount++;
         }
-        
+
         return solveCount >= instance.solveSum;
     }
 
@@ -260,9 +261,31 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    public static void ShowUIKeybinds(UIMode mode, bool active) => instance?.ShowUIKeybindsHelper(mode,active);
+    public static void ShowUIKeybinds(UIMode mode, bool active) => instance?.ShowUIKeybindsHelper(mode, active);
     private void ShowUIKeybindsHelper(UIMode mode, bool active)
     {
-        UIMenuSetActive.Invoke(mode,active);
+        UIMenuSetActive.Invoke(mode, active);
     }
+
+    public static void SetActiveByName(DialogueContext context) => instance.SetActiveByTagHelper(context.tag, context.isTagObjectActive);
+    private void SetActiveByTagHelper(string tag, bool isObjectActive)
+    {
+        if (tag == null || tag.Length == 0) return;
+
+        Debug.Log("here");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject o in objs)
+        {
+            if(o.TryGetComponent(out SpriteRenderer sr))
+            {
+                sr.enabled = isObjectActive;
+            }
+
+            foreach (SpriteRenderer s in o.GetComponentsInChildren<SpriteRenderer>())
+            {
+                s.enabled = isObjectActive;
+            }
+        }
+    }
+
 }

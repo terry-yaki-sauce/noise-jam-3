@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3a4a3d871afd2c4c916c3d11fc713d7, type: 3}
   m_Name: ChoiceBoxes
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue.DialogueLines
+  finalCallback:
+    m_PersistentCalls:
+      m_Calls: []
+  finalCallbackContext:
+    m_PersistentCalls:
+      m_Calls: []
+  finalContext:
+    splashSprite: {fileID: 0}
+    isSplashSpriteActive: 0
+    tag: 
+    isTagObjectActive: 0
   lines:
   - rid: 1264014519372087443
   - rid: 1264014519372087446
@@ -31,6 +42,37 @@ MonoBehaviour:
         text: You can create a choice node rather than a regular node from the inspector.
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 4098656952399182351, guid: df1337e194d853e48b9c04d386fa5ee3, type: 3}
+              m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+              m_MethodName: SetActiveByName
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: poop
+          isTagObjectActive: 1
     - rid: 1264014519372087446
       type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -39,6 +81,25 @@ MonoBehaviour:
           of <b>Choice</b> objects to define string responses and jump indices.
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
         choices:
         - text: I don't get it, can you repeat?
           jumpIndex: 1
@@ -51,12 +112,50 @@ MonoBehaviour:
           "tree-like" dialogue around your choices.
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
     - rid: 1264014519372087448
       type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: Try clicking on one of the choices here.
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
         choices:
         - text: 1
           jumpIndex: 4
@@ -68,12 +167,50 @@ MonoBehaviour:
         text: I choose option 1.
         characterToShow: 0
         jumpIndex: 6
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
     - rid: 1264014519372087450
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
         text: I choose option 2.
         characterToShow: 0
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
     - rid: 1264014519372087451
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -81,6 +218,25 @@ MonoBehaviour:
           regardless of which option you chose, this text node appeared next.
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
     - rid: 1264014519372087452
       type: {class: DialogueNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -89,6 +245,25 @@ MonoBehaviour:
           end the dialogue immediately.'
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
     - rid: 1264014519372087462
       type: {class: DialogueChoiceNode, ns: Dialogue, asm: Assembly-CSharp}
       data:
@@ -96,6 +271,25 @@ MonoBehaviour:
           list, immediately ending the conversation.
         characterToShow: 2
         jumpIndex: -1
+        voice: {fileID: 0}
+        onStart:
+          m_PersistentCalls:
+            m_Calls: []
+        onEnd:
+          m_PersistentCalls:
+            m_Calls: []
+        onStartContext:
+          m_PersistentCalls:
+            m_Calls: []
+        onEndContext:
+          m_PersistentCalls:
+            m_Calls: []
+        sprite: {fileID: 0}
+        context:
+          splashSprite: {fileID: 0}
+          isSplashSpriteActive: 0
+          tag: 
+          isTagObjectActive: 0
         choices:
         - text: End the Dialogue
           jumpIndex: 9
